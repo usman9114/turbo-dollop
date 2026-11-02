@@ -69,7 +69,7 @@ def plan_batch(persona: Persona, count: int, brief: str = "") -> ContentPlan:
         else "No reference stills: use mode 't2v' with reference_index -1."
     )
     user = (
-        f"Persona:\n{persona.model_dump_json(indent=2, exclude={'reference_images'})}\n\n"
+        f"Persona:\n{persona.model_dump_json(indent=2, exclude={'reference_images', 'face_image'})}\n\n"
         f"Reference stills:\n{json.dumps(refs, indent=2)}\n\n"
         f"{mode_note}\n\n"
         f"Plan {count} distinct clips for this week. Vary settings, outfits and hooks across the "
@@ -83,3 +83,35 @@ def plan_batch(persona: Persona, count: int, brief: str = "") -> ContentPlan:
         if shot.mode == "i2v" and not (0 <= shot.reference_index < len(persona.reference_images)):
             shot.mode, shot.reference_index = "t2v", -1
     return plan
+
+
+STILLS_SYSTEM = SYSTEM.split("Writing Wan 2.1 prompts:")[0] + """\
+Writing still-photo prompts (Flux + PuLID; the face comes from a reference portrait):
+- One vertical (9:16) photorealistic photo per prompt, 50-100 words.
+- Describe hair and body from the persona's look, the outfit, setting, pose, framing
+  (full body or three-quarter, leave headroom), lighting and lens. Don't re-describe the face.
+- Pick poses that animate well later: seated, leaning, walking slowly, looking over a shoulder.
+  Keep hands relaxed and simple. No text, logos or other people.
+"""
+
+
+class StillIdea(BaseModel):
+    id: str = Field(description="short slug, e.g. 'pool-white-swimsuit'")
+    prompt: str
+    description: str = Field(description="one line: outfit, setting and pose (used later to pick it for a clip)")
+
+
+class StillsPlan(BaseModel):
+    stills: list[StillIdea]
+
+
+def plan_stills(persona: Persona, count: int, brief: str = "") -> StillsPlan:
+    existing = [r.description for r in persona.reference_images]
+    user = (
+        f"Persona:\n{persona.model_dump_json(indent=2, exclude={'reference_images', 'face_image'})}\n\n"
+        f"Stills we already have (don't repeat): {json.dumps(existing)}\n\n"
+        f"Plan {count} reference photos covering different outfits and settings from the persona's "
+        f"wardrobe and settings lists, each a good starting frame for a 5-second Reel.\n"
+        + (f"Extra brief from the operator: {brief}\n" if brief else "")
+    )
+    return structured(system=STILLS_SYSTEM, content=user, schema=StillsPlan, effort="medium")

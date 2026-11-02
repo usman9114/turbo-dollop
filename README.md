@@ -3,41 +3,80 @@
 Pipeline for a **fictional, adult, AI-generated Instagram persona**:
 
 ```
-persona.yaml ─▶ Claude (plan) ─▶ Wan 2.1 (render 5s 9:16 clips) ─▶ Claude vision (review) ─▶ approved/ + captions
+persona.yaml ─▶ face + stills (fal.ai Flux) ─▶ Claude (plan) ─▶ Wan 2.1 on fal.ai (5s 9:16 clips) ─▶ Claude vision (review) ─▶ approved/ + captions
 ```
 
+0. **Look**: fal.ai generates a face for the persona once, then reference stills in different outfits and settings that keep that face.
 1. **Plan**: Claude writes a batch of shot ideas, Wan 2.1 prompts, captions, hashtags and alt text in the persona's voice.
-2. **Render**: Wan 2.1 turns each prompt into a ~5 second vertical clip (81 frames at 16 fps). It uses image-to-video when you supply reference stills, which keeps the face consistent.
+2. **Render**: Wan 2.1 on fal.ai turns each prompt into a ~5 second vertical clip (81 frames at 16 fps). It animates a reference still, which keeps the face consistent.
 3. **Review**: Claude looks at the start, middle and end keyframes of each clip. It rejects anything that looks underage, isn't Instagram-safe, lacks an AI disclosure, or has visible AI glitches. When it rejects a clip it suggests a prompt fix.
 
-## Setup
+## Setup (no GPU needed)
+
+All the heavy generation runs on **fal.ai** (pay per image or clip). Claude runs through the Anthropic API. Any laptop works.
 
 ```bash
 python -m venv .venv && . .venv/bin/activate
-pip install -r requirements.txt          # planning + review only
-pip install -r requirements-gpu.txt      # on the GPU machine, for rendering
-export ANTHROPIC_API_KEY=sk-ant-...
+pip install -r requirements.txt
+export ANTHROPIC_API_KEY=sk-ant-...   # console.anthropic.com -> API keys
+export FAL_KEY=...                     # fal.ai/dashboard/keys
 ```
+
+A Claude.ai Pro or Max subscription doesn't include API usage. The API key is billed separately, but this pipeline uses only cents per batch.
 
 ## Usage
 
+### 1. One-time: give the persona a face
+
 ```bash
-# 1. Claude plans 6 clips
-python -m studio plan --persona personas/example.yaml --count 6 --brief "summer week, pool and rooftop"
-
-# 2. Wan 2.1 renders them (GPU)
-python -m studio render out/<batch>/plan.json --t2v t2v-1.3b --i2v i2v-480p
-
-# 3. Claude reviews: clips land in out/<batch>/approved or rejected, each with a .json caption file
-python -m studio review out/<batch>/plan.json
-
-# or all three at once
-python -m studio run --persona personas/example.yaml --count 3
+python -m studio faces --persona personas/example.yaml --count 4
+```
+This saves candidate portraits to `personas/references/faces/`. Pick one and add it to the YAML:
+```yaml
+face_image: references/faces/face-2.jpg
 ```
 
-Re-running `render` skips clips that already exist. Delete a rejected clip and run `render --force` (or edit its prompt in `plan.json`) to retry.
+### 2. Make reference stills (repeat whenever you want new outfits or settings)
 
-## Choosing a Wan 2.1 model
+```bash
+python -m studio stills --persona personas/example.yaml --count 6 --brief "summer, pool and rooftop"
+```
+Claude plans outfits, settings and poses. fal.ai (Flux + PuLID) renders vertical photos that **keep the chosen face**. They're saved to `personas/references/` and listed in `personas/example.references.json`. Delete any you don't like from both.
+
+The stills also work as normal photo posts.
+
+### 3. Weekly Reels
+
+```bash
+python -m studio run --persona personas/example.yaml --count 5
+```
+or step by step:
+```bash
+python -m studio plan   --persona personas/example.yaml --count 5   # Claude: prompts + captions
+python -m studio render out/<batch>/plan.json                       # fal.ai Wan 2.1
+python -m studio review out/<batch>/plan.json                       # Claude: approve / reject
+```
+Approved clips go to `out/<batch>/approved/`, each with a `.json` holding the caption, hashtags, alt text and cover text. Rejected clips include a suggested prompt fix. Edit `plan.json` and run `render --force` to retry.
+
+Render options: `--resolution 720p` (sharper, costs more) and `--fal-t2v fal-14b` (better text-to-video when a clip doesn't use a still).
+
+## Cost (hosted, approximate; check fal.ai/pricing)
+
+| Step | Approx. cost |
+|---|---|
+| Faces (4 portraits, one time) | ~$0.10–0.20 |
+| Stills (Flux PuLID) | ~$0.03–0.06 each |
+| Wan 2.1 image-to-video, 5s at 480p / 720p | ~$0.20 / ~$0.40 per clip |
+| Wan 2.1 1.3B text-to-video | ~$0.05–0.10 per clip |
+| Claude plan + review | ~$0.05–0.25 per batch |
+
+Posting one Reel a day, with about a third re-rendered, works out to **roughly $10–25/month**. fal.ai's safety checker stays on, and any flagged image is dropped automatically.
+
+## Optional: run Wan locally on your own GPU
+
+`python -m studio render out/<batch>/plan.json --backend local` uses Hugging Face diffusers instead of fal.ai. Install `requirements-gpu.txt` on a CUDA machine first.
+
+### Local model choice
 
 | `--t2v` / `--i2v` | Model | Use | GPU (rough guide) |
 |---|---|---|---|
@@ -54,7 +93,7 @@ Text-to-video **can't hold the same face** from clip to clip. For a consistent c
 
 Timing guide on a rented A100/H100: the 14B models take roughly **5–15 minutes per 5 second clip** at 50 steps. `--steps 30` is faster with slightly lower quality.
 
-## Cost per clip (rough)
+### Local GPU cost per clip (rough)
 
 | Item | Cost |
 |---|---|
@@ -67,7 +106,7 @@ That works out to roughly **$15–60/month** for a daily-posting schedule, inclu
 
 Set `STUDIO_CLAUDE_MODEL` to change the Claude model. A cheaper model works fine for review.
 
-## Running on RunPod or Vast.ai
+### Running on RunPod or Vast.ai
 
 1. Rent a pod: an RTX 4090 for 1.3B, or an A100 80GB / H100 for the 14B models. Use a PyTorch template.
 2. Run `git clone` on this repo, then `pip install -r requirements-gpu.txt`.
