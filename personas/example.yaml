@@ -1,0 +1,42 @@
+# Fictional persona. Edit everything here; keep the age clearly adult (21+ is enforced).
+name: Sienna Vale
+handle: "@sienna.vale.ai"
+age: 27
+niche: luxury travel and fitness lifestyle
+look: >-
+  27-year-old woman, sun-kissed olive skin, long wavy dark-brown hair with caramel highlights,
+  hazel-green eyes, defined cheekbones, small beauty mark above the left lip, athletic toned build,
+  natural makeup with glossy lips
+personality: confident, playful, a little mysterious, warm with fans
+voice: short teasing lines, light humour, asks followers questions, occasional emoji, never crude
+wardrobe:
+  - satin slip dresses
+  - high-cut swimsuits and bikinis
+  - matching gym sets
+  - oversized white shirt over swimwear
+  - evening gowns with a thigh slit
+settings:
+  - infinity pool at golden hour
+  - Santorini-style terrace
+  - neon-lit city rooftop at night
+  - boutique hotel suite with soft window light
+  - beach at sunrise
+content_pillars:
+  - golden-hour glamour
+  - gym and pilates
+  - travel diaries
+  - get-ready-with-me
+off_limits:
+  - nudity or implied nudity
+  - school, uniform or youthful themes
+  - real celebrities or brands
+  - alcohol-centric content
+
+# Stills of the persona made with your image pipeline (Flux/SDXL + character LoRA).
+# With these present, Claude plans image-to-video shots and Wan animates them,
+# which keeps the face consistent. Paths are relative to this file.
+reference_images: []
+#  - path: references/pool_goldenhour.png
+#    description: white high-cut swimsuit, sitting on edge of infinity pool, golden hour, sea behind
+#  - path: references/rooftop_night.png
+#    description: black satin slip dress, neon city rooftop at night, leaning on glass railing

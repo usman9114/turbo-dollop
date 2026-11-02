@@ -1,0 +1,7 @@
+out/
+__pycache__/
+*.pyc
+.venv/
+.env
+personas/references/*
+!personas/references/.gitkeep

@@ -1,0 +1,11 @@
+# Wan 2.1 rendering (CUDA GPU machine)
+-r requirements.txt
+torch>=2.4
+diffusers>=0.33
+transformers>=4.49
+accelerate>=1.0
+ftfy
+numpy
+pillow
+imageio
+imageio-ffmpeg
