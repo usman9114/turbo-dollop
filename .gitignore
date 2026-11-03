@@ -6,3 +6,5 @@ __pycache__/
 personas/references/*
 !personas/references/.gitkeep
 personas/*.references.json
+hunter.sqlite3*
+exports/

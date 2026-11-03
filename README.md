@@ -1,5 +1,7 @@
 # turbo-dollop: Claude + Wan 2.1 Reels studio
 
+> This repo also contains **`hunter/`**, a deal finder for repairing and reselling used electronics bought on Kleinanzeigen and eBay. See [hunter/README.md](hunter/README.md).
+
 Pipeline for a **fictional, adult, AI-generated Instagram persona**:
 
 ```

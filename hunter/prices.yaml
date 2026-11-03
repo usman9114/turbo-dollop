@@ -1,0 +1,181 @@
+# Comparison prices for repaired units, used by the scorer.
+#
+# Every number here is an ESTIMATE seeded from the plan (asking prices and refurbisher
+# prices, discounted). Replace each resale_p50 with the median of 10+ eBay *sold*
+# results (eBay search -> filter "Verkaufte Artikel") before you trust the EV numbers.
+#
+#   match:         regexes (case-insensitive) tried against title + description;
+#                  models are tried in file order and the first match wins
+#   resale_p50:    typical sale price after repair, € incl. shipping
+#   salvage:       what the parts bring if the repair fails, €
+#   repair_hours:  typical hands-on time for a common fault (diagnosis, fix, test)
+#   default_parts: parts budget when the fault is unclear, €
+#   ship_out:      override the default outbound shipping (bulky items)
+
+laptops:
+  thinkpad_t480:
+    label: ThinkPad T480 / T480s
+    match: ['\bt480s?\b']
+    resale_p50: 185
+    salvage: 60
+    repair_hours: 1.0
+    default_parts: 35
+  thinkpad_t490:
+    label: ThinkPad T490 / T490s
+    match: ['\bt490s?\b']
+    resale_p50: 210
+    salvage: 65
+    repair_hours: 1.0
+    default_parts: 35
+  thinkpad_t14_g3:
+    label: ThinkPad T14 / T14s Gen 3
+    match: ['\bt14s?\s*g(en)?\s*3\b', '\bt14s?\b.*(i5-12|i7-12|12\.\s*gen)']
+    resale_p50: 340
+    salvage: 90
+    repair_hours: 1.0
+    default_parts: 45
+  thinkpad_t14_g2:
+    label: ThinkPad T14 / T14s Gen 2
+    match: ['\bt14s?\s*g(en)?\s*2\b', '\bt14s?\b.*(i5-11|i7-11|11\.\s*gen)']
+    resale_p50: 290
+    salvage: 80
+    repair_hours: 1.0
+    default_parts: 45
+  thinkpad_t14_g1:
+    label: ThinkPad T14 / T14s Gen 1 (or generation unknown)
+    match: ['\bt14s?\b']  # catch-all for a T14 with no generation given (conservative)
+    resale_p50: 230
+    salvage: 70
+    repair_hours: 1.0
+    default_parts: 40
+  thinkpad_x280:
+    label: ThinkPad X280
+    match: ['\bx280\b']
+    resale_p50: 150
+    salvage: 50
+    repair_hours: 1.0
+    default_parts: 30
+  thinkpad_x390:
+    label: ThinkPad X390
+    match: ['\bx390\b']
+    resale_p50: 190
+    salvage: 55
+    repair_hours: 1.0
+    default_parts: 30
+  thinkpad_x1c_g8:
+    label: ThinkPad X1 Carbon Gen 8
+    match: ['x1\s*carbon\b.*(g(en)?\s*8\b|8th|8\.\s*gen)']
+    resale_p50: 330
+    salvage: 90
+    repair_hours: 1.0
+    default_parts: 50
+  thinkpad_x1c_g7:
+    label: ThinkPad X1 Carbon Gen 7
+    match: ['x1\s*carbon\b.*(g(en)?\s*7\b|7th|7\.\s*gen)']
+    resale_p50: 280
+    salvage: 80
+    repair_hours: 1.0
+    default_parts: 50
+  thinkpad_x1c_g6:
+    label: ThinkPad X1 Carbon Gen 6
+    match: ['x1\s*carbon\b.*(g(en)?\s*6\b|6th|6\.\s*gen)']
+    resale_p50: 220
+    salvage: 65
+    repair_hours: 1.0
+    default_parts: 45
+  thinkpad_x1c_g5:
+    label: ThinkPad X1 Carbon Gen 5 (7th-gen Intel, no official Windows 11)
+    match: ['x1\s*carbon\b.*(g(en)?\s*5\b|5th|5\.\s*gen)']
+    resale_p50: 140
+    salvage: 50
+    repair_hours: 1.0
+    default_parts: 45
+  thinkpad_e_l_480_580:
+    label: ThinkPad E480 / E580 / L480 / L580
+    match: ['\b[el][45]80\b']
+    resale_p50: 140
+    salvage: 45
+    repair_hours: 1.0
+    default_parts: 35
+  latitude_5400:
+    label: Dell Latitude 5400 / 5401
+    match: ['latitude\s*540[01]\b']
+    resale_p50: 170
+    salvage: 55
+    repair_hours: 1.0
+    default_parts: 35
+  latitude_5410:
+    label: Dell Latitude 5410 / 5411
+    match: ['latitude\s*541[01]\b']
+    resale_p50: 195
+    salvage: 60
+    repair_hours: 1.0
+    default_parts: 35
+  latitude_5420:
+    label: Dell Latitude 5420 / 5421
+    match: ['latitude\s*542[01]\b']
+    resale_p50: 235
+    salvage: 70
+    repair_hours: 1.0
+    default_parts: 40
+  latitude_5430:
+    label: Dell Latitude 5430 / 5431
+    match: ['latitude\s*543[01]\b']
+    resale_p50: 275
+    salvage: 80
+    repair_hours: 1.0
+    default_parts: 40
+  latitude_7400:
+    label: Dell Latitude 7400
+    match: ['latitude\s*7400\b']
+    resale_p50: 220
+    salvage: 65
+    repair_hours: 1.0
+    default_parts: 40
+  elitebook_840_g6:
+    label: HP EliteBook 840 G6
+    match: ['elitebook\s*840\s*g6\b']
+    resale_p50: 180
+    salvage: 55
+    repair_hours: 1.0
+    default_parts: 35
+  elitebook_840_g7:
+    label: HP EliteBook 840 G7
+    match: ['elitebook\s*840\s*g7\b']
+    resale_p50: 225
+    salvage: 65
+    repair_hours: 1.0
+    default_parts: 40
+  elitebook_840_g8:
+    label: HP EliteBook 840 G8
+    match: ['elitebook\s*840\s*g8\b']
+    resale_p50: 270
+    salvage: 75
+    repair_hours: 1.0
+    default_parts: 40
+
+vacuums:
+  dyson_v8:
+    label: Dyson V8
+    match: ['dyson\s*v8\b']
+    resale_p50: 110
+    salvage: 25
+    repair_hours: 0.75
+    default_parts: 40
+    ship_out: 9.99
+  dyson_v11:
+    label: Dyson V11
+    match: ['dyson\s*v11\b']
+    resale_p50: 200
+    salvage: 45
+    repair_hours: 0.75
+    default_parts: 96  # original battery, net
+    ship_out: 9.99
+  dyson_v15:
+    label: Dyson V15
+    match: ['dyson\s*v15\b']
+    resale_p50: 260
+    salvage: 60
+    repair_hours: 0.75
+    default_parts: 96
+    ship_out: 9.99

@@ -1,0 +1,7 @@
+# Product hunter (python -m hunter)
+anthropic>=2.4
+pydantic>=2.7
+pyyaml>=6
+beautifulsoup4>=4.12
+playwright>=1.48   # then: python -m playwright install chromium
+pytest>=8          # tests only
