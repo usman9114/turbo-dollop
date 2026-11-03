@@ -40,6 +40,30 @@ Then:
 5. **Telegram.** Create a bot with @BotFather and set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`.
    New listings that pass the buy rule arrive as cards with *Open ad*, *Copy offer*, *Pass* and *Bought* buttons.
 
+## On-demand Kleinanzeigen search (opt-in)
+
+Set `HUNTBOT_ONDEMAND=true` and each hunt also fetches the Kleinanzeigen results page for your query
+(Munich + radius) directly: `huntbot hunt --live thinkpad defekt`, the *search Kleinanzeigen live*
+checkbox in the web UI, or any Telegram query.
+
+> ⚠️ **This breaks Kleinanzeigen's terms (§5)** and can get your IP or account restricted. It's your
+> call. To keep the footprint small, it is deliberately limited:
+> - 1 results page per hunt (`HUNTBOT_ONDEMAND_PAGES`, max 3), only when you trigger it, never on a schedule;
+> - ≥ 30 s between requests and ≤ 100 per day, stored in the DB so restarts don't reset it;
+> - an honest `huntbot/0.1` User-Agent, no login, no proxies, no CAPTCHA solving;
+> - on HTTP 403/429, a CAPTCHA or the "IP eingeschränkt" page it stops for 24 h.
+>
+> Run it from your home connection. Alerts and the userscript keep working if it gets blocked.
+
+The parser reads each ad's embedded JSON-LD (title, description, image) and finds the price,
+location and "Versand möglich" by text pattern. CSS class changes therefore don't break it. It was
+checked against the live result list on 2026-11-03: 25/25 ads parsed with price, location and
+description. Kleinanzeigen fills thin local results with ads from elsewhere in Germany. Ads outside
+your pickup postcodes (`HUNTBOT_HOME_PLZ_PREFIXES`, default 80–86) are scored with shipping, or not
+alerted if the seller doesn't ship.
+
+Docks, bags, chargers and other accessories are rejected by title (`not_the_device`).
+
 ## Searching
 
 | Where | How |
@@ -101,7 +125,7 @@ Telegram: `/bought <listing-key or title> <€>`, `/cost <id> <€> [note]`, `/t
 ## Testing
 
 ```bash
-pytest                               # 37 unit/integration tests, no network
+pytest                               # 54 unit/integration tests, no network
 node tests/e2e/userscript_e2e.js     # Playwright: real server + userscript on fixture pages + web UI
 ```
 
@@ -110,20 +134,20 @@ never contacts the site.
 
 ## Things to verify on first real use
 
-The selectors and URL formats below are written from knowledge of the site's markup and have **not
-been checked against live pages**:
+**Verified on 2026-11-03 against the live site:** search URL format
+(`/s-muenchen/preis::150/<query>/k0l6411r30`, location and price filter applied) and result-list
+parsing (server and userscript use the same layout-independent approach).
+
+**Not yet checked against live pages:**
 
 - **Alert email layout.** Save one real alert as `.eml` and run `huntbot parse-email alert.eml`.
   The parser finds ads through their `/s-anzeige/<slug>/<id>` links, including tracking redirects,
   so it should survive layout changes. Price and location extraction may need adjusting.
-- **Userscript selectors** (`article.aditem`, `#viewad-title`, …). Each has a generic fallback. If
-  badges don't appear, open the browser console and run `__huntbot.extractSearchPage(document)`.
-- **Search URL format** `/s-muenchen/preis::150/<query>/k0l6411r30`. Open one generated link and
-  check that the location and price filters applied.
+- **Single-ad page** in the userscript (`#viewad-*` ids, falling back to `h1` and `og:` meta tags).
+  If no badge appears on an ad page, run `__huntbot.extractAdPage(document, location.href)` in the console.
 
-## Why not a Playwright scraper for Kleinanzeigen?
+## Catalog coverage
 
-Kleinanzeigen's terms (§5) ban automated access, including read-only, and the site IP-blocks
-scrapers. The plan's research flagged an account or IP ban as risk #3, and data-scraping SaaS as a
-legal risk. Your own browser plus the userscript gives the same result (type a query, see ranked
-deals on the page) with no automated traffic. Playwright is used here to test that flow end to end.
+On real Munich searches most ThinkPads were models not yet in `catalog.csv` (E480/E490, L490,
+X1 Carbon, X1 Yoga, T460s/T470…). They are listed but get no EV until you add a row with a real
+eBay sold median.

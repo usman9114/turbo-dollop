@@ -39,9 +39,21 @@ def _build(with_notifier: bool = True):
     return settings, db, pipeline, ebay, tg
 
 
+def _live(settings, db, force: bool = False):
+    if not (settings.ondemand_enabled or force):
+        return None
+    from .sources.kleinanzeigen_live import LiveSearch
+    return LiveSearch(db)
+
+
 def cmd_hunt(args) -> None:
     settings, db, pipeline, ebay, _ = _build(with_notifier=False)
-    out = pipeline.hunt(" ".join(args.query), ebay=ebay, llm_budget=args.budget)
+    live = _live(settings, db, force=args.live)
+    out = pipeline.hunt(" ".join(args.query), ebay=ebay, llm_budget=args.budget, live=live)
+    for i, info in enumerate(out.get("live", [])):
+        print(f"Kleinanzeigen live: {info['count']} listings from {info['url']}")
+        if args.save_html:
+            Path(f"{args.save_html}.{i}.html").write_text(info["html"], encoding="utf-8")
     results = out["results"][: args.limit]
     if not results:
         print("No stored or eBay listings matched. Open the Kleinanzeigen links below with the userscript installed.")
@@ -105,10 +117,10 @@ def cmd_serve(args) -> None:
         log.info("polling alert mails every %ss", args.email_interval)
     if tg and not args.no_telegram:
         from .telegram import Bot
-        threading.Thread(target=Bot(tg, pipeline, db, ebay).run_forever, daemon=True).start()
+        threading.Thread(target=Bot(tg, pipeline, db, ebay, live=_live(settings, db)).run_forever, daemon=True).start()
     if not settings.token:
         log.warning("HUNTBOT_TOKEN is empty: the API accepts requests from any local program")
-    uvicorn.run(create_app(settings, db, pipeline, ebay), host=args.host, port=args.port or settings.port)
+    uvicorn.run(create_app(settings, db, pipeline, ebay, live=_live(settings, db)), host=args.host, port=args.port or settings.port)
 
 
 def cmd_stats(args) -> None:
@@ -136,6 +148,9 @@ def main(argv: list[str] | None = None) -> None:
     h.add_argument("query", nargs="+")
     h.add_argument("--budget", type=int, default=15, help="max listings sent to Claude")
     h.add_argument("--limit", type=int, default=20)
+    h.add_argument("--save-html", metavar="PREFIX", help="debug: save fetched Kleinanzeigen pages")
+    h.add_argument("--live", action="store_true",
+                   help="also fetch one Kleinanzeigen results page now (opt-in, breaks ToS §5, rate-limited)")
     h.set_defaults(func=cmd_hunt)
 
     s = sub.add_parser("serve", help="run web UI, userscript endpoint, mail poller and Telegram bot")

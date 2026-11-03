@@ -89,8 +89,8 @@ def card(result: Result) -> tuple[str, dict]:
 class Bot:
     """Long-polling command loop."""
 
-    def __init__(self, tg: Telegram, pipeline: Pipeline, db: DB, ebay=None):
-        self.tg, self.pipeline, self.db, self.ebay = tg, pipeline, db, ebay
+    def __init__(self, tg: Telegram, pipeline: Pipeline, db: DB, ebay=None, live=None):
+        self.tg, self.pipeline, self.db, self.ebay, self.live = tg, pipeline, db, ebay, live
         self.offset = 0
 
     def run_forever(self) -> None:
@@ -155,7 +155,7 @@ class Bot:
             self.tg.send("Usage: /hunt thinkpad t480 bis 120")
             return
         self.tg.send(f"🔎 Hunting <b>{html.escape(arg)}</b> …")
-        out = self.pipeline.hunt(arg, ebay=self.ebay, llm_budget=10)
+        out = self.pipeline.hunt(arg, ebay=self.ebay, llm_budget=10, live=self.live)
         results = [r for r in out["results"] if not r.score.rejected]
         for r in results[:5]:
             self.tg.send_card(r)

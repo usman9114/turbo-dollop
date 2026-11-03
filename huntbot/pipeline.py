@@ -113,10 +113,26 @@ class Pipeline:
         return out
 
     # -- query-driven hunt -------------------------------------------------
-    def hunt(self, raw_query: str, ebay=None, llm_budget: int = 15, notify: bool = False) -> dict:
+    def hunt(self, raw_query: str, ebay=None, llm_budget: int = 15, notify: bool = False, live=None) -> dict:
         hq = q.parse(raw_query)
         listings: list[Listing] = []
         errors: list[str] = []
+        s = self.settings
+        live_info: list[dict] = []
+
+        if live is not None:
+            from .sources.kleinanzeigen_live import LiveSearchBlocked
+            for phrase in hq.variants[: s.ondemand_pages]:
+                url = q.kleinanzeigen_url(phrase, hq, s.location_slug, s.location_id, s.radius_km)
+                try:
+                    fetched = live.search(url)
+                except LiveSearchBlocked as exc:
+                    errors.append(f"Kleinanzeigen live: {exc}")
+                    break
+                live_info.append({"url": fetched.url, "count": len(fetched.listings), "html": fetched.html})
+                for l in fetched.listings:
+                    # The search store is filled by upsert in process(); FTS then finds it next time too.
+                    listings.append(l)
 
         if ebay is not None:
             seen = set()
@@ -134,7 +150,8 @@ class Pipeline:
 
         local = self.db.search(q.fts_query(hq), max_price=hq.max_price)
         known = {l.key for l in listings}
-        listings += [l for l in local if l.key not in known]
+        local = [l for l in local if l.key not in known]
+        listings += local
         if hq.shipping_only:
             listings = [l for l in listings if l.source == "ebay" or l.shipping]
 
@@ -142,11 +159,11 @@ class Pipeline:
         results = [r for r in results if not r.score.rejected] + [r for r in results if r.score.rejected]
         results.sort(key=lambda r: (not r.score.rejected, r.score.ev), reverse=True)
 
-        s = self.settings
         return {
             "query": hq,
             "results": results,
             "errors": errors,
+            "live": live_info,
             "kleinanzeigen_links": [
                 {"phrase": v, "url": q.kleinanzeigen_url(v, hq, s.location_slug, s.location_id, s.radius_km)}
                 for v in hq.variants

@@ -42,9 +42,28 @@ def _text(listing: Listing) -> str:
     return f"{listing.title}\n{listing.description}\n{listing.condition}".lower()
 
 
+# Title is about an accessory, not a device (docks, bags, chargers …).
+_ACC = (r"docking\s?station|dockingstation|docstation|dock|port\s?replicator|\w*tasche|\w*rucksack|sleeve|\w*hülle|netzteil|"
+        r"ladegerät|ladekabel|tastatur|maus|ersatzakku|displayschutz|halterung|ständer")
+ACCESSORY_TITLE = re.compile(rf"\b({_ACC})\b", re.I)
+ADDON_PHRASE = re.compile(rf"\b(mit|ohne|inkl\.?|inklusive|samt|plus|\+|und)\s+(\S+\s+){{0,3}}?({_ACC})\b", re.I)
+MODEL_TITLE = re.compile(r"\b(thinkpad\s+[a-z]{1,2}\s?\d{2,4}s?|[txelp]\d{2,3}s?\b|latitude\s+\d{4}|elitebook\s+\d{3,4}|"
+                         r"probook\s+\d{3}|v\s?\d{1,2}\b|macbook)", re.I)
+
+
+def is_accessory(title: str) -> bool:
+    core = ADDON_PHRASE.sub(" ", title)          # "T14 mit Netzteil" -> about the T14
+    if not ACCESSORY_TITLE.search(core):
+        return False
+    subject = re.split(r"\b(?:für|passend|kompatibel|fits|for)\b", core, maxsplit=1, flags=re.I)[0]
+    return not MODEL_TITLE.search(ACCESSORY_TITLE.sub(" ", subject))
+
+
 def red_flags(listing: Listing) -> list[str]:
     text = _text(listing)
     flags = [flag for pattern, flag in RED_FLAG_PATTERNS if re.search(pattern, text)]
+    if is_accessory(listing.title):
+        flags.append("not_the_device")
     if re.search(STOCK_PHOTO_HINTS, text):
         flags.append("stock_photos")
     # BIOS password mentioned as *not* set ("kein BIOS-Passwort") is a good sign, not a flag.

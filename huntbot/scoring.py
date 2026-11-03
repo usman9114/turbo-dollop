@@ -7,6 +7,8 @@ EV       = p_ok × net_sale + (1 − p_ok) × net_salvage − cost_in
 
 from __future__ import annotations
 
+import re
+
 from . import catalog
 from .config import Economics
 from .models import Listing, Score, Screen
@@ -30,6 +32,11 @@ def _net_of_sale(sale: float, buy: float, econ: Economics, shipped: bool = True)
     return sale - fees - ship - vat_25a(sale, buy, econ) - sale * econ.warranty_reserve
 
 
+def is_far(listing: Listing, econ: Economics) -> bool:
+    m = re.match(r"\s*(\d{5})", listing.location or "")
+    return bool(m) and not m.group(1).startswith(econ.home_plz_prefixes)
+
+
 def buy_estimate(listing: Listing, econ: Economics) -> float:
     if listing.price is None:
         return 0.0
@@ -43,8 +50,9 @@ def _ev(buy: float, listing: Listing, screen: Screen, resale: float, salvage: fl
         parts += CHARGER_COST
 
     if listing.source == "kleinanzeigen":
-        buy_fee = (buy * econ.buy_fee_rate + econ.buy_fee_fixed) if listing.shipping else 0.0
-        inbound = econ.ship_in if listing.shipping else econ.default_travel_km * econ.km_cost
+        shipped = bool(listing.shipping) or is_far(listing, econ)   # far away: only worth it shipped
+        buy_fee = (buy * econ.buy_fee_rate + econ.buy_fee_fixed) if shipped else 0.0
+        inbound = econ.ship_in if shipped else econ.default_travel_km * econ.km_cost
     else:  # eBay: shipping cost from the API, no buyer fee modelled
         buy_fee = 0.0
         inbound = listing.shipping_cost if listing.shipping_cost is not None else econ.ship_in
@@ -91,10 +99,13 @@ def score(listing: Listing, screen: Screen, econ: Economics) -> Score:
     hours = max(0.25, screen.repair_hours)
     reasons: list[str] = []
 
+    hard_flags = sorted(REJECT_FLAGS & set(screen.red_flags))
     if entry is None:
         return Score(ev=0.0, ev_per_hour=0.0, roi=0.0, buy_estimate=buy, max_buy=0.0, resale=0.0,
                      net_sale=0.0, cost_in=buy, hours=hours, p_ok=screen.p_ok, alert=False,
-                     rejected=False, reasons=["unknown model: add it to huntbot/data/catalog.csv"])
+                     rejected=bool(hard_flags),
+                     reasons=(["REJECT: " + ", ".join(hard_flags)] if hard_flags else [])
+                     + ["unknown model: add it to huntbot/data/catalog.csv"])
 
     ev, net_sale, cost_in, parts = _ev(buy, listing, screen, entry.resale_p50, entry.salvage, econ)
     ev, flag_reasons = _apply_flags(ev, screen.red_flags)
@@ -116,6 +127,12 @@ def score(listing: Listing, screen: Screen, econ: Economics) -> Score:
     )
     if listing.price is None:
         reasons.append("no price found")
+    if listing.source == "kleinanzeigen" and is_far(listing, econ):
+        if listing.shipping:
+            reasons.append("outside pickup area: priced with shipping")
+        else:
+            alert = False
+            reasons.append("outside pickup area and no shipping offered: ask seller to ship")
 
     return Score(
         ev=ev, ev_per_hour=ev_per_hour, roi=roi if roi != float("inf") else 99.0, buy_estimate=buy,

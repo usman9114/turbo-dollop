@@ -58,6 +58,8 @@ class Economics:
     min_ev: float = 40.0
     min_ev_per_hour: float = 25.0
     min_roi: float = 0.40
+    # Postcode prefixes reachable for pickup (Munich region). Outside them: shipping or skip.
+    home_plz_prefixes: tuple[str, ...] = ("80", "81", "82", "83", "84", "85", "86")
 
 
 @dataclass
@@ -82,6 +84,9 @@ class Settings:
 
     telegram_token: str = ""
     telegram_chat_id: str = ""
+
+    ondemand_enabled: bool = False   # Tier 1 live Kleinanzeigen search (breaks ToS §5, opt-in)
+    ondemand_pages: int = 1          # result pages fetched per hunt (each ≥30 s apart)
 
     location_slug: str = "muenchen"
     location_id: str = "6411"
@@ -114,6 +119,7 @@ def load_settings() -> Settings:
         min_ev=_float("HUNTBOT_MIN_EV", 40.0),
         min_ev_per_hour=_float("HUNTBOT_MIN_EV_PER_HOUR", 25.0),
         min_roi=_float("HUNTBOT_MIN_ROI", 0.40),
+        home_plz_prefixes=tuple(p.strip() for p in _env("HUNTBOT_HOME_PLZ_PREFIXES", "80,81,82,83,84,85,86").split(",") if p.strip()),
     )
     return Settings(
         db_path=Path(_env("HUNTBOT_DB", "huntbot.db")),
@@ -132,6 +138,8 @@ def load_settings() -> Settings:
         imap_folder=_env("IMAP_FOLDER", "INBOX"),
         telegram_token=_env("TELEGRAM_BOT_TOKEN"),
         telegram_chat_id=_env("TELEGRAM_CHAT_ID"),
+        ondemand_enabled=_bool("HUNTBOT_ONDEMAND", False),
+        ondemand_pages=max(1, min(3, int(_env("HUNTBOT_ONDEMAND_PAGES", "1")))),
         location_slug=_env("HUNTBOT_HOME_LOCATION_SLUG", "muenchen"),
         location_id=_env("HUNTBOT_HOME_LOCATION_ID", "6411"),
         radius_km=int(_env("HUNTBOT_RADIUS_KM", "30")),

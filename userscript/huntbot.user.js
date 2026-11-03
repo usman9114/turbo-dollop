@@ -46,25 +46,49 @@
   };
   const AD_RE = /\/s-anzeige\/[^/]+\/(\d{6,})/;
 
+  // Layout-independent (the 2026 markup is Tailwind utility classes): embedded JSON-LD first,
+  // then text patterns. Mirrors huntbot/sources/kleinanzeigen_live.py.
+  const PRICE_RE = /^(\d[\d.]*(,\d{2})?\s*€(\s*VB)?|VB|Zu verschenken)$/i;
+  const LOC_RE = /^\d{5}\s+\S/;
+  function ownTexts(root) {
+    const out = [];
+    root.querySelectorAll("*").forEach((el) => {
+      if (/^(SCRIPT|STYLE|SVG)$/i.test(el.tagName)) return;
+      const own = Array.from(el.childNodes).filter((n) => n.nodeType === 3).map((n) => n.textContent.trim()).filter(Boolean).join(" ");
+      if (own) out.push(own.replace(/\s+/g, " "));
+    });
+    return out;
+  }
+  function jsonld(root) {
+    for (const s of root.querySelectorAll("script[type='application/ld+json']")) {
+      try { const d = JSON.parse(s.textContent); if (d && typeof d === "object" && !Array.isArray(d)) return d; } catch (e) {}
+    }
+    return {};
+  }
+
   function extractSearchPage(doc) {
     const items = [];
-    const articles = doc.querySelectorAll("article.aditem, article[data-adid], li.ad-listitem article");
-    articles.forEach((a) => {
-      const link = a.querySelector("a[href*='/s-anzeige/']");
-      const href = a.getAttribute("data-href") || (link && link.getAttribute("href")) || "";
-      const url = absUrl(href);
+    doc.querySelectorAll("article[data-adid], article.aditem").forEach((a) => {
+      const links = Array.from(a.querySelectorAll("a[href*='/s-anzeige/']"));
+      const url = absUrl(a.getAttribute("data-href") || (links[0] && links[0].getAttribute("href")) || "");
       const m = url.match(AD_RE);
       const adId = a.getAttribute("data-adid") || (m && m[1]);
       if (!adId) return;
+      const ld = jsonld(a), texts = ownTexts(a);
+      const heading = a.querySelector("h2, h3");
+      const linkTitle = links.map((l) => (l.querySelector("img") ? "" : text(l))).find((t) => t && !/^\d+$/.test(t));
+      const img = a.querySelector("img");
+      const title = ld.title || (heading && text(heading)) || linkTitle || (img ? (img.alt || "").replace(/ Vorschau$/, "") : "");
+      const paras = Array.from(a.querySelectorAll("p")).map((p) => text(p)).filter((t) => t.length > 25 && !PRICE_RE.test(t));
       items.push({
         ad_id: adId,
         url,
-        title: text(a, "h2 a, .text-module-begin a, a.ellipsis") || (link ? text(link) : ""),
-        price_text: text(a, ".aditem-main--middle--price-shipping--price, [class*='price-shipping--price'], [class*='price']"),
-        shipping_text: text(a, ".aditem-main--middle--price-shipping--shipping, [class*='shipping--shipping']"),
-        location: text(a, ".aditem-main--top--left, [class*='top--left']"),
-        description: text(a, ".aditem-main--middle--description, [class*='description']"),
-        images: [imgSrc(a.querySelector(".imagebox img, .aditem-image img, img"))].filter(Boolean),
+        title,
+        price_text: texts.find((t) => PRICE_RE.test(t)) || "",
+        shipping_text: texts.some((t) => /versand möglich/i.test(t)) ? "Versand möglich" : "",
+        location: texts.find((t) => LOC_RE.test(t)) || "",
+        description: ld.description || paras[0] || "",
+        images: [ld.contentUrl || imgSrc(img)].filter((u) => u && u.startsWith("https://")),
         _el: a,
       });
     });
@@ -72,20 +96,25 @@
   }
 
   function extractAdPage(doc, href) {
+    // Ad-page markup not yet verified against the live site: id selectors first, then generic fallbacks.
     const m = href.match(AD_RE);
     if (!m) return [];
-    const imgs = Array.from(doc.querySelectorAll("#viewad-image, .galleryimage-element img, [class*='gallery'] img"))
+    const meta = (p) => { const el = doc.querySelector(`meta[property='${p}']`); return el ? el.content : ""; };
+    const main = doc.querySelector("#viewad-main, main, article") || doc.body;
+    const texts = ownTexts(main);
+    const imgs = Array.from(doc.querySelectorAll("#viewad-image, .galleryimage-element img, [class*='gallery'] img, [data-image-container] img"))
       .map(imgSrc).filter(Boolean);
+    const og = meta("og:image");
     return [{
       ad_id: m[1],
       url: href.split("?")[0],
-      title: text(doc, "#viewad-title, h1"),
-      price_text: text(doc, "#viewad-price, [class*='boxedarticle--price']"),
-      shipping_text: text(doc, ".boxedarticle--details--shipping, [class*='details--shipping']"),
-      location: text(doc, "#viewad-locality"),
-      description: text(doc, "#viewad-description-text, [itemprop='description']"),
+      title: text(doc, "#viewad-title") || text(doc, "h1") || meta("og:title"),
+      price_text: text(doc, "#viewad-price") || texts.find((t) => PRICE_RE.test(t)) || "",
+      shipping_text: texts.some((t) => /versand möglich/i.test(t)) ? "Versand möglich" : "",
+      location: text(doc, "#viewad-locality") || texts.find((t) => LOC_RE.test(t)) || "",
+      description: text(doc, "#viewad-description-text, [itemprop='description']") || meta("og:description"),
       seller: text(doc, ".userprofile-vip a, [class*='userprofile'] a"), // hashed server-side, never stored in clear
-      images: Array.from(new Set(imgs)).slice(0, 10),
+      images: Array.from(new Set(imgs.concat(og && og.startsWith("https://") ? [og] : []))).slice(0, 10),
       _el: doc.querySelector("#viewad-price, #viewad-title, h1"),
     }];
   }
@@ -97,8 +126,8 @@
     const label = r.rejected ? "REJECT" : `EV ${eur(r.ev)}`;
     const flags = (r.flags || []).join(", ");
     return `<span style="background:${color};color:#fff;border-radius:6px;padding:2px 8px;font:600 12px system-ui">${label}</span>
-      <span style="font:12px system-ui;color:${color};margin-left:6px">${r.rejected ? "" : `${eur(r.ev_per_hour)}/h · max buy ${eur(r.max_buy)} · `}
-      ${flags ? "🚩 " + flags.replace(/[<>&]/g, "") : ""}</span>`;
+      <span style="font:12px system-ui;color:${color};margin-left:6px">${[r.rejected ? "" : `${eur(r.ev_per_hour)}/h · max buy ${eur(r.max_buy)}`,
+        flags ? "🚩 " + flags.replace(/[<>&]/g, "") : ""].filter(Boolean).join(" · ")}</span>`;
   }
 
   function render(items, results, isAd) {

@@ -253,3 +253,22 @@ def test_hunt_llm_budget_limits_claude_calls(db):
     screened = [c[1] for c in screener.calls if c[0] == "screen"]
     assert len(screened) == 2 and set(screened) == {"ebay:0", "ebay:1"}   # cheapest = highest rule EV
     assert sum(r.model_used != "rules" for r in out["results"]) == 2
+
+
+def test_unknown_model_with_hard_flag_is_rejected():
+    s = scoring.score(Listing(source="kleinanzeigen", ad_id="1", title="Dock", url="u", price=70.0),
+                      make_screen(catalog_key="none", red_flags=["not_the_device"]), Economics())
+    assert s.rejected and s.reasons[0].startswith("REJECT")
+
+
+def test_far_away_listing_uses_shipping_or_is_not_alerted():
+    econ = Economics()
+    screen = make_screen(p_ok=0.85)
+    near = Listing(source="kleinanzeigen", ad_id="1", title="T14", url="u", price=60.0, location="80331 Altstadt")
+    far = Listing(**{**near.__dict__, "location": "22041 Wandsbek"})
+    far_ship = Listing(**{**far.__dict__, "shipping": True})
+    assert scoring.score(near, screen, econ).alert
+    s_far = scoring.score(far, screen, econ)
+    assert not s_far.alert and "ask seller to ship" in s_far.reasons[-1]
+    s_ship = scoring.score(far_ship, screen, econ)
+    assert s_ship.alert and s_ship.cost_in == pytest.approx(60 + 60 * 0.045 + 0.5 + 37.82 + 6.99)

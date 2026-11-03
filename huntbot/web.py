@@ -23,7 +23,7 @@ class IngestBody(BaseModel):
     items: list[dict]
 
 
-def create_app(settings: Settings, db: DB, pipeline: Pipeline, ebay=None) -> FastAPI:
+def create_app(settings: Settings, db: DB, pipeline: Pipeline, ebay=None, live=None) -> FastAPI:
     app = FastAPI(title="huntbot", docs_url="/docs")
 
     def check_token(token: str | None) -> None:
@@ -37,14 +37,14 @@ def create_app(settings: Settings, db: DB, pipeline: Pipeline, ebay=None) -> Fas
     @app.get("/api/status")
     def status() -> dict:
         return {
-            "llm": settings.use_llm, "ebay": settings.ebay_enabled and ebay is not None,
+            "llm": settings.use_llm, "ebay": settings.ebay_enabled and ebay is not None, "live": live is not None,
             "imap": settings.imap_enabled, "telegram": settings.telegram_enabled,
         }
 
     @app.get("/api/hunt")
-    def hunt(q: str, budget: int = 15, x_huntbot_token: str | None = Header(default=None)) -> dict:
+    def hunt(q: str, budget: int = 15, live_search: bool = False, x_huntbot_token: str | None = Header(default=None)) -> dict:
         check_token(x_huntbot_token)
-        out = pipeline.hunt(q, ebay=ebay, llm_budget=max(0, min(budget, 50)))
+        out = pipeline.hunt(q, ebay=ebay, llm_budget=max(0, min(budget, 50)), live=live if live_search else None)
         hq = out["query"]
         return {
             "query": {"keywords": hq.keywords, "max_price": hq.max_price, "min_price": hq.min_price,
@@ -53,6 +53,7 @@ def create_app(settings: Settings, db: DB, pipeline: Pipeline, ebay=None) -> Fas
             "kleinanzeigen_links": out["kleinanzeigen_links"],
             "ebay_sold_url": out["ebay_sold_url"],
             "errors": out["errors"],
+            "live": [{"url": l["url"], "count": l["count"]} for l in out["live"]],
         }
 
     @app.post("/api/ingest")

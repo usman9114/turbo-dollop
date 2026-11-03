@@ -37,7 +37,8 @@ async function withUserscript(page) {
   }, { api: API, token: TOKEN });
   await page.route("https://www.kleinanzeigen.de/**", (route) => {
     const url = route.request().url();
-    const body = url.includes("/s-anzeige/") ? fixture("ad_page.html") : fixture("search_page.html");
+    const body = url.includes("/s-anzeige/") ? fixture("ad_page.html")
+      : url.includes("layout2026") ? fixture("search_page_2026.html") : fixture("search_page.html");
     route.fulfill({ status: 200, contentType: "text/html; charset=utf-8", body });
   });
   await page.route("https://img.example.test/**", (route) => route.fulfill({ status: 200, contentType: "image/png", body: PNG }));
@@ -73,6 +74,17 @@ async function withUserscript(page) {
     assert(/EV €/.test(byId["2905555555"]), "Latitude 5420 with broken screen gets a score");
     if (shots) await page.screenshot({ path: path.join(shots, "userscript-search.png") });
 
+    console.log("2026 layout (structure of the live site)");
+    await page.goto("https://www.kleinanzeigen.de/s-muenchen/thinkpad-layout2026/k0l6411r30");
+    await page.addScriptTag({ content: userscript });
+    await page.waitForFunction(() => document.querySelectorAll(".huntbot-badge").length === 3, null, { timeout: 15000 });
+    const b26 = Object.fromEntries(await page.$$eval("article[data-adid]", (as) => as.map((a) => [a.dataset.adid, a.querySelector(".huntbot-badge").textContent.replace(/\s+/g, " ").trim()])));
+    console.log("   ", b26);
+    assert(/^EV €\d+/.test(b26["3600000001"]) && b26["3600000001"].includes("max buy"), "T480 'Passwort vergessen' scored on new layout");
+    assert(/^EV €\d+/.test(b26["3600000002"]), "photo-less X390 with <h3> title scored");
+    assert(b26["3600000003"].startsWith("REJECT") && b26["3600000003"].includes("not_the_device"), "dock rejected as accessory");
+    if (shots) await page.screenshot({ path: path.join(shots, "userscript-2026.png") });
+
     console.log("single ad page");
     await page.goto("https://www.kleinanzeigen.de/s-anzeige/hp-elitebook-840-g8-akku-defekt/2933333333-278-6411");
     await page.addScriptTag({ content: userscript });
@@ -96,7 +108,9 @@ async function withUserscript(page) {
     await ui.waitForSelector(".card", { timeout: 15000 });
     const cards = await ui.$$eval(".card", (cs) => cs.map((c) => [c.className, c.querySelector(".title").textContent, c.querySelector(".ev").textContent]));
     console.log("   ", cards);
-    assert(cards[0][1].includes("T14 Gen 2") && cards[0][0].includes("alert"), "best deal (T14 G2) ranked first and highlighted");
+    const evs = cards.filter((c) => !c[0].includes("rejected")).map((c) => parseInt(c[2].replace(/[^\d-]/g, ""), 10));
+    assert(cards[0][0].includes("alert") && evs.every((v, i) => i === 0 || evs[i - 1] >= v), "cards sorted by EV, best deal highlighted");
+    assert(cards.some((c) => c[1].includes("T14 Gen 2")) && cards.some((c) => c[1].includes("T480 i5-8350U")), "both layouts' listings searchable");
     assert(cards[cards.length - 1][0].includes("rejected"), "rejected listing sorted last");
     assert(await ui.$$eval(".links a", (as) => as.some((a) => a.href.includes("kleinanzeigen.de/s-muenchen/preis::150/"))), "Kleinanzeigen search links generated");
     if (shots) await ui.screenshot({ path: path.join(shots, "web-ui.png"), fullPage: true });
