@@ -1,0 +1,8 @@
+# Saved eBay queries for `huntbot run-once` (GitHub Actions / cron). One per line, same syntax as /hunt.
+# Kleinanzeigen is covered by your saved-search alert emails, not by this file.
+thinkpad t480 bis 160
+thinkpad t14 bis 250
+thinkpad x390 bis 150
+latitude 5420 bis 220
+elitebook 840 g7 bis 220
+dyson v11 bis 120

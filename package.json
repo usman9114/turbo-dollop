@@ -1,0 +1,7 @@
+{
+  "name": "huntbot-e2e",
+  "private": true,
+  "description": "Playwright end-to-end test for the userscript + web UI",
+  "scripts": { "e2e": "node tests/e2e/userscript_e2e.js" },
+  "devDependencies": { "playwright": "1.63.0" }
+}

@@ -58,6 +58,12 @@ class Economics:
     min_ev: float = 40.0
     min_ev_per_hour: float = 25.0
     min_roi: float = 0.40
+    # Quick flips: working device, just clean / wipe / photos / list.
+    flip_hours: float = 0.75
+    flip_parts: float = 3.0                 # cleaning supplies
+    flip_p_ok: float = 0.9                  # risk it isn't as described
+    flip_min_ev: float = 30.0
+    flip_min_discount: float = 0.25         # ≥25% under the typical asking price
     # Postcode prefixes reachable for pickup (Munich region). Outside them: shipping or skip.
     home_plz_prefixes: tuple[str, ...] = ("80", "81", "82", "83", "84", "85", "86")
 
@@ -119,6 +125,8 @@ def load_settings() -> Settings:
         min_ev=_float("HUNTBOT_MIN_EV", 40.0),
         min_ev_per_hour=_float("HUNTBOT_MIN_EV_PER_HOUR", 25.0),
         min_roi=_float("HUNTBOT_MIN_ROI", 0.40),
+        flip_min_ev=_float("HUNTBOT_FLIP_MIN_EV", 30.0),
+        flip_min_discount=_float("HUNTBOT_FLIP_MIN_DISCOUNT", 0.25),
         home_plz_prefixes=tuple(p.strip() for p in _env("HUNTBOT_HOME_PLZ_PREFIXES", "80,81,82,83,84,85,86").split(",") if p.strip()),
     )
     return Settings(

@@ -75,6 +75,13 @@ class Score:
     alert: bool
     rejected: bool
     reasons: list[str] = field(default_factory=list)
+    mode: str = "repair"               # repair | flip
+    sell_on: str = "ebay"              # platform with the better net
+    fair_ask: float | None = None      # typical asking price for this listing on its platform
+    discount: float | None = None      # 1 − buy / fair_ask
+    price_low: float | None = None     # 80% interval of the eBay resale estimate
+    price_high: float | None = None
+    price_source: str = ""
 
     def as_dict(self) -> dict:
         return {k: (round(v, 2) if isinstance(v, float) else v) for k, v in self.__dict__.items()}

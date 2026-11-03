@@ -109,7 +109,8 @@ function card(r) {
     <div class="num">
       <div class="ev ${s.rejected || s.ev < 0 ? "neg" : "pos"}">${s.rejected ? "REJECT" : eur(s.ev)}</div>
       <div class="small">${eur(s.ev_per_hour)}/h · ROI ${Math.round(s.roi * 100)}%</div>
-      <div class="small">max buy ${eur(s.max_buy)} · resale ${eur(s.resale)}</div>
+      <div class="small">max buy ${eur(s.max_buy)} · sell on ${esc(s.sell_on)} ${eur(s.resale)}</div>
+      <div class="small">${s.mode === "flip" ? "⚡ quick flip" : "🔧 repair"}${s.discount != null ? ` · ${Math.round(s.discount * 100)}% under typ. ${eur(s.fair_ask)}` : ""}</div>
       ${r.offer ? `<button class="copy" data-offer="${esc(r.offer)}">Copy offer</button>` : ""}
     </div>
   </div>`;

@@ -90,3 +90,18 @@ def test_telegram_card_and_commands(env):
     n = len(tg.sent)
     bot.handle(msg("/stats", chat="999"))                # other chats are ignored
     assert len(tg.sent) == n
+
+
+def test_process_pending_keeps_offset(env):
+    settings, db, pipeline, _ = env
+    tg = FakeTG()
+    batches = [[{"update_id": 10, "message": {"chat": {"id": "1"}, "text": "/stats"}}], []]
+    seen_offsets = []
+    def call(method, **kw):
+        seen_offsets.append(kw.get("offset"))
+        return batches.pop(0) if method == "getUpdates" else None
+    tg.call = call
+    bot = Bot(tg, pipeline, db)
+    assert bot.process_pending() == 1 and any("Flips sold" in s for s in tg.sent)
+    assert Bot(tg, pipeline, db).process_pending() == 0
+    assert seen_offsets == [0, 11]   # second run starts after the handled update

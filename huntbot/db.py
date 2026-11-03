@@ -57,6 +57,16 @@ CREATE TABLE IF NOT EXISTS inventory (
     sold_at REAL,
     channel TEXT DEFAULT ''
 );
+CREATE TABLE IF NOT EXISTS comps (           -- price observations you add: eBay sold, local sales, retail
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    description TEXT DEFAULT '',
+    price REAL NOT NULL,
+    platform TEXT NOT NULL,             -- ebay | kleinanzeigen
+    kind TEXT NOT NULL DEFAULT 'sold',  -- sold | ask
+    condition TEXT DEFAULT '',
+    at REAL NOT NULL
+);
 CREATE TABLE IF NOT EXISTS costs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     inventory_id INTEGER NOT NULL REFERENCES inventory(id),
@@ -195,6 +205,32 @@ class DB:
                  COALESCE((SELECT SUM(amount) FROM costs c WHERE c.inventory_id=i.id AND c.kind<>'labour_min'), 0) AS extra_costs,
                  COALESCE((SELECT SUM(amount) FROM costs c WHERE c.inventory_id=i.id AND c.kind='labour_min'), 0) AS labour_min
                FROM inventory i ORDER BY i.bought_at"""))
+
+    # ---- price comps / training data ---------------------------------------
+    def add_comp(self, title: str, price: float, platform: str = "ebay", kind: str = "sold",
+                 description: str = "", condition: str = "") -> int:
+        cur = self.conn.execute(
+            "INSERT INTO comps (title, description, price, platform, kind, condition, at) VALUES (?,?,?,?,?,?,?)",
+            (title, description, price, platform, kind, condition, time.time()))
+        self.conn.commit()
+        return int(cur.lastrowid)
+
+    def training_rows(self, max_age_days: int = 180) -> list[tuple[str, str, float, str, str, bool, str, float]]:
+        """(title, description, price, platform, kind, negotiable, condition_field, weight).
+        Asking prices weigh 1, sold comps and your own sales weigh 3."""
+        cutoff = time.time() - max_age_days * 86400
+        rows = [(r["title"], r["description"] or "", r["price"], r["source"], "ask", bool(r["negotiable"]),
+                 r["condition"] or "", 1.0)
+                for r in self.conn.execute(
+                    "SELECT title, description, price, source, negotiable, condition FROM listings "
+                    "WHERE price >= 10 AND last_seen > ?", (cutoff,))]
+        rows += [(r["title"], r["description"] or "", r["price"], r["platform"], r["kind"], False, r["condition"] or "",
+                  3.0 if r["kind"] == "sold" else 1.0)
+                 for r in self.conn.execute("SELECT * FROM comps")]
+        rows += [(r["title"], "", r["sale_price"], "kleinanzeigen" if "klein" in (r["channel"] or "") else "ebay",
+                  "sold", False, "", 3.0)
+                 for r in self.conn.execute("SELECT title, sale_price, channel FROM inventory WHERE sale_price IS NOT NULL")]
+        return rows
 
     # ---- retention ------------------------------------------------------
     def purge(self, days: int = 60) -> int:

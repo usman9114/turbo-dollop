@@ -22,17 +22,19 @@ RED_FLAG_PATTERNS: list[tuple[str, str]] = [
 ]
 
 # (regex, category, p_ok, parts_eur, hours). First match wins, so order = severity.
+_BAD = r"(defekt|kaputt|tot|fehlt|fehlen|gebrochen|beschädigt|geht\s+nicht|gehen\s+nicht|funktioniert\s+nicht|ausgebaut)"
 FAULT_PATTERNS: list[tuple[str, str, float, float, float]] = [
-    (r"wasserschaden|flüssigkeit|kaffee", "liquid", 0.25, 60, 2.5),
-    (r"mainboard\s*(defekt|kaputt)|board\s*defekt|kein\s+bild.*(lüfter|led)|geht\s+nicht\s+(mehr\s+)?an|(?<!windows )startet\s+nicht|keine\s+reaktion|tot\b", "mainboard", 0.35, 40, 2.0),
-    (r"display\s*(defekt|kaputt|gebrochen|gesprungen)|bildschirm\s*(defekt|kaputt|gebrochen)|streifen|displaybruch", "screen", 0.8, 60, 1.0),
-    (r"scharnier|gehäuse\s*(gebrochen|defekt)|hinge", "hinge_case", 0.75, 30, 1.5),
-    (r"lädt\s+nicht|ladebuchse|usb[- ]?c\s*(defekt|kaputt)|netzteilbuchse", "port_charging", 0.55, 25, 1.5),
-    (r"tastatur|keyboard|tasten\s+(defekt|gehen\s+nicht)", "keyboard", 0.85, 35, 1.0),
-    (r"akku\s*(defekt|kaputt|schwach|tot|hält\s+nicht)|battery", "battery", 0.9, 45, 0.5),
-    (r"ssd|festplatte|hdd|bootet\s+nicht|no\s+boot(able)?\s+device|kein\s+betriebssystem", "storage", 0.8, 45, 1.0),
-    (r"passwort\s+vergessen|kennwort\s+vergessen|windows\s*(fehler|startet\s+nicht|defekt|kaputt)|bluescreen|neu\s+aufsetzen|software", "software", 0.85, 0, 1.0),
-    (r"defekt|bastler|kaputt|ersatzteil|for\s+parts|not\s+working", "unknown", 0.5, 40, 1.5),
+    (r"wasserschaden|flüssigkeit\w*\s+(drüber|darüber|eingedrungen)|kaffee\s+(drüber|darüber|ausgekippt)", "liquid", 0.25, 60, 2.5),
+    (r"mainboard\s*(defekt|kaputt)|board\s*defekt|kein\s+bild.*(lüfter|led)|geht\s+nicht\s+(mehr\s+)?an|(?<!windows )startet\s+nicht|"
+     r"keine\s+reaktion|\btot\b", "mainboard", 0.35, 40, 2.0),
+    (rf"(display|bildschirm|lcd)\s*{_BAD}|streifen\s+im\s+(bild|display)|displaybruch|pixelfehler", "screen", 0.8, 60, 1.0),
+    (rf"(scharnier|gehäuse|hinge)\w*\s*{_BAD}|scharnier\s+locker", "hinge_case", 0.75, 30, 1.5),
+    (rf"lädt\s+nicht|(ladebuchse|usb[- ]?c|netzteilbuchse)\s*{_BAD}", "port_charging", 0.55, 25, 1.5),
+    (rf"(tastatur|keyboard|tasten|trackpad|touchpad)\s*{_BAD}", "keyboard", 0.85, 35, 1.0),
+    (rf"(akku|battery|batterie)\s*{_BAD}|akku\s+(schwach|hält\s+nicht|hält\s+nur)|akku\s+aufgebläht", "battery", 0.9, 45, 0.5),
+    (rf"(ssd|festplatte|hdd|m\.?2)\s*{_BAD}|ohne\s+(ssd|festplatte|hdd)|bootet\s+nicht|no\s+boot(able)?\s+device|kein\s+betriebssystem", "storage", 0.8, 45, 1.0),
+    (r"passwort\s+vergessen|kennwort\s+vergessen|windows\s*(fehler|startet\s+nicht|defekt|kaputt)|bluescreen|neu\s+aufsetzen", "software", 0.85, 0, 1.0),
+    (r"defekt|bastler|kaputt|ersatzteil|for\s+parts|not\s+working|zum\s+ausschlachten", "unknown", 0.5, 40, 1.5),
 ]
 
 STOCK_PHOTO_HINTS = r"symbolbild|beispielbild|herstellerbild|foto\s+aus\s+dem\s+internet"

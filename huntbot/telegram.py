@@ -69,8 +69,12 @@ def card(result: Result) -> tuple[str, dict]:
     lines = [
         f"<b>{html.escape(l.title[:120])}</b>",
         f"{l.source} · {price} · {html.escape(l.location or '-')}",
+        f"{'⚡ QUICK FLIP' if sc.mode == 'flip' else '🔧 REPAIR'}"
+        + (f" · {sc.discount:.0%} under typical {_eur(sc.fair_ask)}" if sc.discount is not None else ""),
         f"🧮 <b>EV {_eur(sc.ev)}</b> · {_eur(sc.ev_per_hour)}/h · ROI {sc.roi:.0%} · max buy {_eur(sc.max_buy)}",
-        f"🔧 {html.escape(s.device_model)} — {html.escape(s.fault_summary[:160])}",
+        f"💶 sell on {sc.sell_on} ~{_eur(sc.resale)}"
+        + (f" (80%: {_eur(sc.price_low)}–{_eur(sc.price_high)} on eBay)" if sc.price_low else ""),
+        f"📦 {html.escape(s.device_model)} — {html.escape(s.fault_summary[:160])}",
         f"p_ok {sc.p_ok:.2f} · parts {_eur(s.parts_cost_eur)} · {sc.hours:.1f} h · resale {_eur(sc.resale)}",
         f"🚩 {html.escape(flags)}",
         f"<i>{html.escape(result.model_used)} · {html.escape('; '.join(sc.reasons)[:200])}</i>",
@@ -110,6 +114,23 @@ class Bot:
                 except Exception as exc:
                     log.exception("update failed")
                     self.tg.send(f"⚠️ {html.escape(str(exc))}")
+
+    def process_pending(self) -> int:
+        """Answer commands that queued up since the last run (for cron / GitHub Actions)."""
+        self.db.conn.execute("CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT)")
+        row = self.db.conn.execute("SELECT v FROM kv WHERE k='tg_offset'").fetchone()
+        self.offset = int(row["v"]) if row else 0
+        updates = self.tg.call("getUpdates", offset=self.offset, timeout=0, allowed_updates=["message", "callback_query"])
+        for update in updates:
+            self.offset = update["update_id"] + 1
+            try:
+                self.handle(update)
+            except Exception as exc:
+                log.exception("update failed")
+                self.tg.send(f"⚠️ {html.escape(str(exc))}")
+            self.db.conn.execute("INSERT OR REPLACE INTO kv (k, v) VALUES ('tg_offset', ?)", (str(self.offset),))
+            self.db.conn.commit()
+        return len(updates)
 
     def handle(self, update: dict) -> None:
         if cq := update.get("callback_query"):

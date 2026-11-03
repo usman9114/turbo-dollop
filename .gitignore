@@ -8,3 +8,6 @@ test-results/
 *.egg-info/
 exports/
 var/
+dist/
+state/
+package-lock.json

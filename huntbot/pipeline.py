@@ -53,35 +53,48 @@ class Pipeline:
         if self.screener is None and settings.use_llm:
             self.screener = Screener(settings.screen_model, settings.review_model)
         self.notifier = notifier
+        self.model = None
+        self._seen_since_fit = 0
+        self.refit()
+
+    def refit(self) -> None:
+        """Retrain the price model on everything stored (cheap: pure-Python ridge, ~35 features)."""
+        from .pricemodel import fit_from_db
+        self.model = fit_from_db(self.db)
+        self._seen_since_fit = 0
 
     # -- scoring ----------------------------------------------------------
     def _screen(self, listing: Listing, use_llm: bool) -> tuple[Screen, Score, str]:
         rule = rules.screen(listing)
         best, model_used = rule, "rules"
-        result = scoring.score(listing, rule, self.econ)
+        result = scoring.score(listing, rule, self.econ, self.model)
         if not (use_llm and self.screener) or result.rejected:
             return best, result, model_used
 
         first = self.screener.screen(listing)
         if first:
             best, model_used = rules.merge(rule, first), self.screener.screen_model
-            result = scoring.score(listing, best, self.econ)
+            result = scoring.score(listing, best, self.econ, self.model)
             escalate = (result.ev >= self.econ.min_ev) or (first.confidence == "low" and result.ev > 0)
             if escalate and not result.rejected:
                 second = self.screener.review(listing)
                 if second:
                     best, model_used = rules.merge(rule, second), self.screener.review_model
-                    result = scoring.score(listing, best, self.econ)
+                    result = scoring.score(listing, best, self.econ, self.model)
         return best, result, model_used
 
     def process(self, listing: Listing, use_llm: bool = True, notify: bool = True) -> Result:
         listing.description = strip_pii(listing.description)
         is_new, changed = self.db.upsert_listing(listing, text_fingerprint(listing.title, listing.description))
+        if is_new:
+            self._seen_since_fit += 1
+            if self._seen_since_fit >= 25:
+                self.refit()
         stored = self.db.get_listing(listing.key) or listing
         cached = self.db.get_score(listing.key)
         if cached and not changed:
             screen, _, model_used = cached
-            return Result(stored, screen, scoring.score(stored, screen, self.econ), model_used, is_new)
+            return Result(stored, screen, scoring.score(stored, screen, self.econ, self.model), model_used, is_new)
 
         screen, score, model_used = self._screen(stored, use_llm)
         self.db.save_score(listing.key, screen, score, model_used)
