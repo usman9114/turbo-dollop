@@ -26,7 +26,8 @@ _BAD = r"(defekt|kaputt|tot|fehlt|fehlen|gebrochen|beschädigt|geht\s+nicht|gehe
 FAULT_PATTERNS: list[tuple[str, str, float, float, float]] = [
     (r"wasserschaden|flüssigkeit\w*\s+(drüber|darüber|eingedrungen)|kaffee\s+(drüber|darüber|ausgekippt)", "liquid", 0.25, 60, 2.5),
     (r"mainboard\s*(defekt|kaputt)|board\s*defekt|kein\s+bild.*(lüfter|led)|geht\s+nicht\s+(mehr\s+)?an|(?<!windows )startet\s+nicht|"
-     r"keine\s+reaktion|\btot\b", "mainboard", 0.35, 40, 2.0),
+     r"keine\s+reaktion|\btot\b|springt\s+nicht|springt\s+(nur\s+)?(\w+\s+)?sporadisch|nur\s+sporadisch|"
+     r"geht\s+(immer\s+)?(wieder\s+)?aus", "mainboard", 0.35, 40, 2.0),
     (rf"(display|bildschirm|lcd)\s*{_BAD}|streifen\s+im\s+(bild|display)|displaybruch|pixelfehler", "screen", 0.8, 60, 1.0),
     (rf"(scharnier|gehäuse|hinge)\w*\s*{_BAD}|scharnier\s+locker", "hinge_case", 0.75, 30, 1.5),
     (rf"lädt\s+nicht|(ladebuchse|usb[- ]?c|netzteilbuchse)\s*{_BAD}", "port_charging", 0.55, 25, 1.5),
@@ -34,7 +35,8 @@ FAULT_PATTERNS: list[tuple[str, str, float, float, float]] = [
     (rf"(akku|battery|batterie)\s*{_BAD}|akku\s+(schwach|hält\s+nicht|hält\s+nur)|akku\s+aufgebläht", "battery", 0.9, 45, 0.5),
     (rf"(ssd|festplatte|hdd|m\.?2)\s*{_BAD}|ohne\s+(ssd|festplatte|hdd)|bootet\s+nicht|no\s+boot(able)?\s+device|kein\s+betriebssystem", "storage", 0.8, 45, 1.0),
     (r"passwort\s+vergessen|kennwort\s+vergessen|windows\s*(fehler|startet\s+nicht|defekt|kaputt)|bluescreen|neu\s+aufsetzen", "software", 0.85, 0, 1.0),
-    (r"defekt|bastler|kaputt|ersatzteil|for\s+parts|not\s+working|zum\s+ausschlachten", "unknown", 0.5, 40, 1.5),
+    (r"defekt|bastler|kaputt|ersatzteil|for\s+parts|not\s+working|zum\s+ausschlachten|reparieren|reparatur\w*\s+nötig|"
+     r"muss\s+repariert", "unknown", 0.5, 40, 1.5),
 ]
 
 STOCK_PHOTO_HINTS = r"symbolbild|beispielbild|herstellerbild|foto\s+aus\s+dem\s+internet"
@@ -44,21 +46,30 @@ def _text(listing: Listing) -> str:
     return f"{listing.title}\n{listing.description}\n{listing.condition}".lower()
 
 
-# Title is about an accessory, not a device (docks, bags, chargers …).
-_ACC = (r"docking\s?station|dockingstation|docstation|dock|port\s?replicator|\w*tasche|\w*rucksack|sleeve|\w*hülle|netzteil|"
-        r"ladegerät|ladekabel|tastatur|maus|ersatzakku|displayschutz|halterung|ständer")
+# Title is about an accessory or a spare part, not a device.
+_ACC = (r"docking\s?station|dockingstation|docstation|dock|port\s?replicator|\w*tasche|\w*rucksack|sleeve|\w*hülle|"
+        r"netzteil|ladegerät|ladekabel|maus|displayschutz\w*|blickschutz\w*|\w*filter|halterung|ständer|stylus|"
+        r"\w*folie|skin|aufkleber")
+_PART = (r"tastatur|keyboard|display(?:einheit|panel)?|panel|lcd|bildschirm|akku|batterie|mainboard|motherboard|"
+         r"lüfter|kühler|scharnier\w*|gehäuse\w*|bodenplatte|palmrest|handauflage|touchpad|ram[- ]?riegel|"
+         r"arbeitsspeicher|ersatzteil\w*|ersatzakku")
 ACCESSORY_TITLE = re.compile(rf"\b({_ACC})\b", re.I)
-ADDON_PHRASE = re.compile(rf"\b(mit|ohne|inkl\.?|inklusive|samt|plus|\+|und)\s+(\S+\s+){{0,3}}?({_ACC})\b", re.I)
-MODEL_TITLE = re.compile(r"\b(thinkpad\s+[a-z]{1,2}\s?\d{2,4}s?|[txelp]\d{2,3}s?\b|latitude\s+\d{4}|elitebook\s+\d{3,4}|"
-                         r"probook\s+\d{3}|v\s?\d{1,2}\b|macbook)", re.I)
+PART_TITLE = re.compile(rf"\b({_PART})\b", re.I)
+ADDON_PHRASE = re.compile(rf"\b(mit|ohne|inkl\.?|inklusive|samt|plus|neue[mnrs]?|\+|und)\s+(\S+\s+){{0,3}}?({_ACC}|{_PART})\b", re.I)
+FAULT_AFTER = re.compile(rf"\b({_PART})\w*\s*(defekt|kaputt|gebrochen|beschädigt|fehlt|geht|hält|schwach|tot|locker|streifen)", re.I)
+PART_SPEC_AFTER = re.compile(rf"\b({_PART})\w*\s*(neu|neuwertig|getauscht|erneuert|gewechselt|ok|gut|top|voll|\d{{1,3}}\s?%)", re.I)
+DEVICE_WORD = re.compile(r"\b(laptop|notebook|ultrabook|convertible|2[- ]in[- ]1)\b", re.I)
 
 
 def is_accessory(title: str) -> bool:
+    """Accessory (dock, bag, charger, filter) or spare part (keyboard, panel, battery) sold on its own."""
     core = ADDON_PHRASE.sub(" ", title)          # "T14 mit Netzteil" -> about the T14
-    if not ACCESSORY_TITLE.search(core):
-        return False
-    subject = re.split(r"\b(?:für|passend|kompatibel|fits|for)\b", core, maxsplit=1, flags=re.I)[0]
-    return not MODEL_TITLE.search(ACCESSORY_TITLE.sub(" ", subject))
+    if ACCESSORY_TITLE.search(core):
+        return True
+    if PART_TITLE.search(core):
+        # "T480 Tastatur defekt" / "Notebook, Display gebrochen" = a device with a fault
+        return not (FAULT_AFTER.search(core) or PART_SPEC_AFTER.search(core) or DEVICE_WORD.search(core))
+    return False
 
 
 def red_flags(listing: Listing) -> list[str]:

@@ -94,7 +94,9 @@ class Pipeline:
         cached = self.db.get_score(listing.key)
         if cached and not changed:
             screen, _, model_used = cached
-            return Result(stored, screen, scoring.score(stored, screen, self.econ, self.model), model_used, is_new)
+            score = scoring.score(stored, screen, self.econ, self.model)   # re-price with the current model
+            self.db.save_score(listing.key, screen, score, model_used)
+            return Result(stored, screen, score, model_used, is_new)
 
         screen, score, model_used = self._screen(stored, use_llm)
         self.db.save_score(listing.key, screen, score, model_used)

@@ -8,6 +8,7 @@ from huntbot.features import extract
 from huntbot.models import Listing
 from huntbot.pipeline import Pipeline
 from huntbot.pricemodel import PRIOR, PriceModel, can_price, fit_from_db
+from tests.test_core import make_screen
 from huntbot import rules, scoring
 
 
@@ -15,7 +16,7 @@ from huntbot import rules, scoring
     ("Lenovo ThinkPad T14 Gen 2 i5-1135G7 16GB 512GB", "mit Netzteil",
      dict(line="thinkpad_t", year=2021, ram_gb=16, ssd_gb=512, condition="good", charger=True)),
     ("Lenovo Thinkpad E480 ,i5-8th Gen ,als defekt", "", dict(line="thinkpad_e", year=2018, condition="defect")),
-    ("ThinkPad X1 Carbon 5th Gen i7-7500U 8GB RAM", "", dict(line="thinkpad_x1", year=2016, ram_gb=8)),
+    ("ThinkPad X1 Carbon 5th Gen i7-7500U 8GB RAM", "", dict(line="thinkpad_x1", year=2017, ram_gb=8)),   # model gen beats CPU gen
     ("Dell Latitude 5420", "i5-1145G7 16 GB RAM 256GB SSD neuwertig", dict(line="latitude_5", year=2021, condition="like_new")),
     ("Dell Latitude 5400", "", dict(line="latitude_5", year=2019)),
     ("MacBook Air M1 8/256GB", "", dict(line="macbook_air", year=2020, ram_gb=8, ssd_gb=256)),
@@ -98,3 +99,74 @@ def test_comps_train_the_model(tmp_path):
         db.add_comp("ThinkPad T480 i5-8350U 8GB 256GB SSD", 260.0, "ebay", "sold")
     after = fit_from_db(db).predict(extract("ThinkPad T480 i5-8350U 8GB 256GB", platform="ebay", price_kind="sold")).price
     assert base < after < 262
+
+
+# Regression cases taken from real Kleinanzeigen titles (2026-11-03 live test).
+@pytest.mark.parametrize("title,is_part", [
+    ("Lenovo Blickschutzfilter für ThinkPad P14s T14 T14s X1 von 3M", True),
+    ("Lenovo ThinkPad T14 Gen 1 Tastatur – Deutsch QWERTZ", True),
+    ('Lenovo ThinkPad T480 14" Display HD Panel Innolux', True),
+    ("Tastatur thinkpad T480s", True),
+    ("ThinkPad T480 Akku", True),
+    ("ThinkPad T480 Tastatur defekt", False),
+    ("ThinkPad T480 mit neuer Tastatur", False),
+    ("Lenovo ThinkPad T460s Display defekt", False),
+    ("Lenovo ThinkPad T480s silber i7/512 SSD/24 RAM mit Dockingstation", False),
+    ("Laptop Lenovo ThinkPad T440 Laptop als Ersatzteile", False),
+])
+def test_real_part_titles(title, is_part):
+    assert rules.is_accessory(title) is is_part
+
+
+@pytest.mark.parametrize("title,desc,year,cond", [
+    ("Lenovo Thinkpad T14 Gen. 5", "Ist original verpackt", 2024, "new"),
+    ("Lenovo ThinkPad T14 Gen 6 – gut", "Intel Core Ultra 5 225U 16 GB DDR5", 2025, "good"),
+    ("Lenovo ThinkPad T14 Gen 4 AMD *UNBENUTZT*", "", 2023, "new"),
+    ("ThinkPad T14 G1 | Refurbished + Garantie", "", 2020, "like_new"),
+    ("Lenovo ThinkPad X1 Carbon 7th Generation", "", 2019, "good"),
+])
+def test_real_generation_titles(title, desc, year, cond):
+    f = extract(title, desc)
+    assert (f.year, f.condition) == (year, cond)
+
+
+def test_implausibly_cheap_flip_gets_no_buy_signal(tmp_path):
+    p = Pipeline(Settings(), DB(tmp_path / "s.db"))
+    r = p.process(Listing(source="kleinanzeigen", ad_id="9", url="u", price=40.0, location="80331",
+                          title="Lenovo ThinkPad T14 Gen 2 i5-1135G7 16GB 512GB", description="funktioniert"), use_llm=False)
+    assert not r.score.alert and r.score.reasons[0].startswith("CHECK")
+
+
+def test_more_real_titles():
+    assert not rules.is_accessory("⭕ Kompakter Lenovo Thinkpad T480 - i3 - SSD - Win 11 - Akku neu")
+    l = Listing(source="kleinanzeigen", ad_id="1", url="u", title='Laptop Lenovo ThinkPad T480 i5,16 GB 500GB, 14" Full HD',
+                description="Laptop springt nicht nur sporadisch an. Reparieren easy wer es kann.")
+    assert rules.screen(l).fault_category == "mainboard"
+    s = scoring.score(l, rules.screen(l), Economics(), PriceModel())
+    assert s.mode == "repair" and s.buy_estimate > 0 and "assumed typical" in " ".join(s.reasons)
+
+
+def test_stated_purchase_price_caps_estimate(tmp_path):
+    """Real ad: unused T14 Gen 4 'Kaufpreis: 799,01 € (Februar 2026)', asking €700 VB → not a deal."""
+    p = Pipeline(Settings(), DB(tmp_path / "r.db"))
+    l = Listing(source="kleinanzeigen", ad_id="1", url="u", price=700.0, negotiable=True, shipping=True,
+                location="81541 Au-Haidhausen", title="Lenovo ThinkPad T14 Gen 4 AMD *UNBENUTZT*",
+                description="Ryzen 5 7540U * 16 GB RAM * 256 GB SSD * Kaufpreis: 799,01 € (Februar 2026) Rechnung")
+    s = p.process(l, use_llm=False).score
+    assert s.fair_ask <= 799 * 0.85 * 1.08 + 1 and s.resale <= 799 * 0.85 + 1
+    assert not s.alert and s.max_buy < 595
+
+
+def test_local_listing_is_picked_up_even_if_seller_ships():
+    econ = Economics()
+    screen = make_screen(fault_category="none")
+    near = Listing(source="kleinanzeigen", ad_id="1", title="ThinkPad T480", url="u", price=100.0, location="81541", shipping=True)
+    far = Listing(**{**near.__dict__, "location": "22041"})
+    assert scoring.score(near, screen, econ, PriceModel()).cost_in < scoring.score(far, screen, econ, PriceModel()).cost_in
+
+
+@pytest.mark.parametrize("text,price", [("Kaufpreis: 799,01 € (Februar 2026)", 799.01), ("NP 1.299€", 1299.0),
+                                        ("Neupreis war 1.299,00 €", 1299.0), ("UVP: 449 EUR", 449.0), ("Preis 200 €", None)])
+def test_retail_parse(text, price):
+    from huntbot.features import retail_from_text
+    assert retail_from_text(text) == price

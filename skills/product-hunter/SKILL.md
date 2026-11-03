@@ -34,7 +34,13 @@ The classic flip is **buy on Kleinanzeigen, sell on eBay**, or sell locally when
 
 4. **Price it with the script** (run with code execution, from this skill's folder):
    - Laptops (ThinkPad, Latitude, EliteBook, MacBook, Surface) and Dyson cordless vacuums:
-     `python scripts/price.py laptop "<title>" --desc "<description>" --ask <price> [--vb] [--shipped-in]`.
+     `python scripts/price.py laptop "<title>" --desc "<description>" --ask <price> [--vb] [--shipped-in] [--fault <f>]`.
+     - Always pass the full description. It carries RAM, SSD, condition and any stated *Kaufpreis* or
+       *Neupreis*, which caps the estimate.
+     - `--shipped-in` when the ad is outside the user's pickup range.
+     - `--fault` for broken devices: `liquid`, `mainboard` (doesn't turn on), `screen`, `hinge_case`,
+       `port_charging`, `keyboard`, `battery`, `storage`, `software` (password, Windows), `unknown`.
+       Each fault has its own chance the fix works, parts cost and hours.
      This uses a regression model on product line, CPU generation (= age), RAM, SSD, condition,
      charger and platform. It returns typical asking and sold prices on both platforms with 80%
      ranges, plus the flip maths.

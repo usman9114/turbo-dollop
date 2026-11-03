@@ -44,6 +44,12 @@ CURVES = {
     "other": (0.30, 0.12),
 }
 CONDITION = {"new": 1.25, "like_new": 1.10, "good": 1.00, "worn": 0.85, "defect": 0.35}
+# Repair assumptions per fault: (p_ok, parts €, hours). MUST equal huntbot/rules.py FAULT_PATTERNS (tested).
+FAULTS = {
+    "liquid": (0.25, 60, 2.5), "mainboard": (0.35, 40, 2.0), "screen": (0.8, 60, 1.0), "hinge_case": (0.75, 30, 1.5),
+    "port_charging": (0.55, 25, 1.5), "keyboard": (0.85, 35, 1.0), "battery": (0.9, 45, 0.5), "storage": (0.8, 45, 1.0),
+    "software": (0.85, 0, 1.0), "unknown": (0.5, 40, 1.5),
+}
 PLATFORM = {("ebay", "sold"): 1.00, ("ebay", "ask"): 1.10, ("kleinanzeigen", "ask"): 1.05, ("kleinanzeigen", "sold"): 0.93}
 
 
@@ -86,6 +92,8 @@ def cmd_laptop(a) -> dict:
                 "features": f.as_dict()}
     m = load_model()
     sell_cond = f.condition if f.condition in ("new", "like_new", "worn") else "good"
+    # Same failure case as the bot: if it isn't as described, it still sells as defective (×0.8).
+    salvage = 0.8 * m.predict(replace(f, platform="ebay", price_kind="sold", condition="defect", negotiable=False)).price
     est = {}
     for platform in ("kleinanzeigen", "ebay"):
         for kind in ("ask", "sold"):
@@ -97,15 +105,18 @@ def cmd_laptop(a) -> dict:
     if a.ask is not None:
         fair = m.predict(f).price
         buy = a.ask * (0.85 if a.vb else 1.0)
+        if a.fault == "none" and f.condition == "defect":
+            a.fault = "unknown"
+        p_ok, parts, hours = (0.9, 3.0, 0.75) if a.fault == "none" else FAULTS[a.fault]
+        kw = dict(shipped_in=a.shipped_in, salvage=salvage, p_ok=p_ok, parts=parts, hours=hours)
         options = {}
         for sell_on in ("ebay", "kleinanzeigen"):
             sell = est[f"{sell_on}_sold"]["price"]
-            options[sell_on] = {**flip_ev(buy, sell, sell_on, shipped_in=a.shipped_in,
-                                          hours=0.75 if f.condition != "defect" else 2.0),
-                                "sell_price": sell,
-                                "max_buy": max_buy(sell, sell_on, shipped_in=a.shipped_in)}
+            options[sell_on] = {**flip_ev(buy, sell, sell_on, **kw), "sell_price": sell,
+                                "max_buy": max_buy(sell, sell_on, target_ev=30.0 if a.fault == "none" else 40.0, **kw)}
         best = max(options, key=lambda k: options[k]["ev"])
-        out["deal"] = {"asking": a.ask, "expected_buy": round(buy, 2), "typical_ask_same_platform": round(fair),
+        out["deal"] = {"mode": "flip" if a.fault == "none" else f"repair ({a.fault}: p_ok {p_ok}, parts €{parts}, {hours} h)",
+                       "asking": a.ask, "expected_buy": round(buy, 2), "typical_ask_same_platform": round(fair),
                        "discount_vs_typical": round(1 - buy / fair, 3), "best_exit": best, "exits": options}
     return out
 
@@ -120,14 +131,15 @@ def cmd_generic(a) -> dict:
     if a.ask is not None:
         typical = prices[f"{a.platform}_ask"]
         sell_on = "ebay" if prices["ebay_sold"] * 0.95 - 9 > prices["kleinanzeigen_sold"] else "kleinanzeigen"
+        salvage = 0.8 * prices["ebay_sold"] / CONDITION[a.condition] * CONDITION["defect"]
         out["deal"] = {"asking": a.ask, "typical_ask_same_platform": typical,
                        "discount_vs_typical": round(1 - a.ask / typical, 3),
-                       "flip": {**flip_ev(a.ask, prices[f"{sell_on}_sold"], sell_on), "sell_on": sell_on}}
+                       "flip": {**flip_ev(a.ask, prices[f"{sell_on}_sold"], sell_on, salvage=salvage), "sell_on": sell_on}}
     return out
 
 
 def cmd_flip(a) -> dict:
-    return {**flip_ev(a.buy, a.sell, a.sell_on, a.hours, a.shipped_in, kleinunternehmer=a.kleinunternehmer),
+    return {**flip_ev(a.buy, a.sell, a.sell_on, a.hours, a.shipped_in, salvage=a.salvage, kleinunternehmer=a.kleinunternehmer),
             "max_buy_for_30_ev": max_buy(a.sell, a.sell_on, hours=a.hours, shipped_in=a.shipped_in,
                                          kleinunternehmer=a.kleinunternehmer)}
 
@@ -141,7 +153,9 @@ def main() -> None:
     lp.add_argument("--ask", type=float)
     lp.add_argument("--vb", action="store_true", help="price is negotiable (VB)")
     lp.add_argument("--platform", choices=["kleinanzeigen", "ebay"], default="kleinanzeigen")
-    lp.add_argument("--shipped-in", action="store_true", help="seller ships (adds fee + shipping)")
+    lp.add_argument("--shipped-in", action="store_true", help="seller ships (adds fee + shipping); use when outside pickup range")
+    lp.add_argument("--fault", choices=["none", *FAULTS], default="none",
+                    help="what's broken (none = working device / quick flip); defect text without a choice → unknown")
     gp = sub.add_parser("generic")
     gp.add_argument("--new-price", type=float, required=True)
     gp.add_argument("--age", type=float, required=True, help="years since bought / released")
@@ -156,6 +170,7 @@ def main() -> None:
     fp.add_argument("--hours", type=float, default=0.75)
     fp.add_argument("--shipped-in", action="store_true")
     fp.add_argument("--kleinunternehmer", action="store_true")
+    fp.add_argument("--salvage", type=float, default=0.0, help="what it sells for if it turns out broken")
     a = p.parse_args()
     print(json.dumps({"laptop": cmd_laptop, "generic": cmd_generic, "flip": cmd_flip}[a.cmd](a), indent=1, ensure_ascii=False))
 

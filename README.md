@@ -129,8 +129,14 @@ and list it, about 45 minutes. When the listing shows no fault, the scorer switc
 Telegram cards and the web UI show `⚡ QUICK FLIP · 48% under typical €363`, where to sell, and
 the price range.
 
-On the 40 real Munich ThinkPad ads tested on 2026-11-03, nothing qualified: all working devices
-were listed at or above typical price. Real flips are rare and fast, which is why push alerts matter.
+Guards learned from the live test: spare parts that name a model (keyboard, display panel, privacy
+filter) are rejected. A "working" device more than 70% under typical gets no buy signal and a
+"part only, scam or stolen?" check. A stated *Kaufpreis* or *Neupreis* caps the estimate (an unused
+T14 Gen 4 "bought Feb 2026 for €799" isn't worth €910). Local ads are costed as pickup even if
+the seller ships.
+
+On the 66 real Munich ThinkPad ads tested on 2026-11-03, nothing qualified: all working devices
+were listed near typical price. Real flips are rare and fast, which is why push alerts matter.
 
 ## How a listing is scored
 
@@ -228,7 +234,7 @@ Telegram: `/bought <listing-key or title> <€>`, `/cost <id> <€> [note]`, `/t
 ## Testing
 
 ```bash
-pytest                               # 77 unit/integration tests, no network
+pytest                               # 105 unit/integration tests, no network
 node tests/e2e/userscript_e2e.js     # Playwright: real server + userscript on fixture pages + web UI
 ```
 

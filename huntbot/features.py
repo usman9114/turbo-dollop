@@ -57,9 +57,11 @@ MODEL_YEAR = [
 ]
 
 CONDITION_PATTERNS = [
-    ("new", r"\b(neu\s+(und\s+)?ovp|originalverpackt|ungeöffnet|neu,?\s+unbenutzt|brandneu)\b"),
-    ("defect", r"defekt|bastler|ersatzteil|kaputt|zum\s+ausschlachten|for\s+parts|not\s+working|startet\s+nicht|geht\s+nicht"),
-    ("like_new", r"\b(neuwertig|wie\s+neu|top\s+zustand|sehr\s+gut(er)?\s+zustand|kaum\s+benutzt|neuzustand)\b"),
+    ("new", r"\b(neu\s+(und\s+)?(in\s+)?ovp|original\s*verpackt|ungeöffnet|unbenutzt|brandneu|versiegelt)\b"),
+    ("defect", r"defekt|bastler|ersatzteil|kaputt|zum\s+ausschlachten|for\s+parts|not\s+working|startet\s+nicht|geht\s+nicht|"
+               r"springt\s+nicht|sporadisch|reparieren|muss\s+repariert"),
+    ("like_new", r"\b(neuwertig\w*|wie\s+neu|top\s+zustand|sehr\s+gut(er)?\s+zustand|kaum\s+benutzt|neuzustand|"
+                 r"refurbished|generalüberholt|aufbereitet)\b"),
     ("worn", r"gebrauchsspuren|kratzer|delle|abgenutzt|risse?\b|verfärb"),
 ]
 
@@ -75,6 +77,7 @@ class Features:
     platform: str             # kleinanzeigen | ebay
     price_kind: str           # ask | sold
     negotiable: bool
+    retail_price: float | None = None   # "Kaufpreis/Neupreis/UVP … €" stated in the ad
 
     @property
     def age(self) -> float | None:
@@ -87,6 +90,16 @@ class Features:
 
 
 def _first_year(text: str) -> int | None:
+    # Intel Core Ultra 5 125U / 155H → 2024 (Series 1), 225U / 258V → 2025 (Series 2)
+    if m := re.search(r"\bultra\s*[579]\s*(\d)\d{2}[a-z]", text):
+        return 2023 + int(m.group(1))
+    # Model generations: "T14 Gen 5", "T14s Gen. 3", "X1 Carbon G9", "X13 Gen 2"
+    if m := re.search(r"\b(t14s?|t16|x13|l14|l15|e14|e15|p14s|p15s|p16s)\b[^|]{0,25}?\b(?:gen\.?|g)\s?(\d)\b", text):
+        return 2019 + int(m.group(2))
+    if m := re.search(r"x1\s*carbon[^|]{0,25}?\b(?:gen\.?\s?|g)(\d{1,2})\b|x1\s*carbon[^|]{0,25}?\b(\d{1,2})(?:th|te|\.)\s*gen", text):
+        return 2012 + int(m.group(1) or m.group(2))
+    if m := re.search(r"x1\s*yoga[^|]{0,25}?\b(?:gen\.?\s?|g)(\d)\b|x1\s*yoga[^|]{0,25}?\b(\d)(?:th|te|\.)\s*gen", text):
+        return 2015 + int(m.group(1) or m.group(2))
     # Intel Core iX-NNNN: 8350U → 8th gen, 10210U / 1065G7 → 10th, 1135G7 → 11th, 1245U → 12th
     for m in re.finditer(r"\bi[3579][\s-]?(\d{4,5})[a-z]{0,2}\d?\b", text):
         digits = m.group(1)
@@ -117,7 +130,8 @@ def _gb(text: str, kind: str) -> float | None:
     if kind == "ram":
         m = re.search(r"(\d{1,2})\s?gb\s*(?:ddr\d\s*)?(?:ram|arbeitsspeicher|ddr)", text) or \
             re.search(r"(?:ram|arbeitsspeicher)\s*:?\s*(\d{1,2})\s?gb", text) or \
-            re.search(r"\b(\d{1,2})\s?/\s?\d{3,4}\s?gb\b", text) or re.search(r"\b(\d{1,2})\s?gb\b", text)
+            re.search(r"\b(\d{1,2})\s?/\s?\d{3,4}\s?gb\b", text) or re.search(r"\b(\d{1,2})\s*(?:gb\s*)?ram\b", text) or \
+            re.search(r"\b(\d{1,2})\s?gb\b", text)
         val = float(m.group(1)) if m else None
         return val if val and 2 <= val <= 64 else None
     m = re.search(r"(\d(?:[.,]\d)?)\s?tb\b", text)
@@ -125,7 +139,8 @@ def _gb(text: str, kind: str) -> float | None:
         return float(m.group(1).replace(",", ".")) * 1024
     m = re.search(r"(\d{3,4})\s?gb\s*(?:m\.?2\s*)?(?:nvme\s*)?(?:ssd|festplatte|hdd|speicher|m\.2)", text) or \
         re.search(r"(?:ssd|festplatte)\s*:?\s*(\d{3,4})\s?gb", text) or re.search(r"\b\d{1,2}\s?/\s?(\d{3,4})\s?gb\b", text) or \
-        re.search(r"\b(128|256|500|512|1000|1024|2048)\s?gb\b", text)
+        re.search(r"\b(128|256|500|512|1000|1024|2048)\s?gb\b", text) or \
+        re.search(r"\b(128|256|500|512|1000|1024|2048)\s*(?:gb\s*)?(?:ssd|nvme|m\.2)\b", text)
     val = float(m.group(1)) if m else None
     return val if val and 64 <= val <= 8192 else None
 
@@ -137,6 +152,21 @@ def _condition(text: str) -> str:
         if re.search(pattern, text):
             return name
     return "good"
+
+
+RETAIL = re.compile(r"(?:kaufpreis|neupreis|np|uvp|listenpreis|neu\s+gekauft\s+für|gekauft\s+für|damals)\s*(?:war|lag\s+bei|von|:|=)?\s*"
+                    r"(?:ca\.?|rund|über)?\s*(\d{1,5}(?:[.,]\d{3})*(?:[.,]\d{1,2})?)\s*(?:€|eur|euro)", re.I)
+
+
+def retail_from_text(text: str) -> float | None:
+    m = RETAIL.search(text)
+    if not m:
+        return None
+    raw = m.group(1)
+    if re.search(r"[.,]\d{3}$", raw) or re.search(r"[.,]\d{3}[.,]", raw):   # 1.299 / 1.299,00
+        raw = re.sub(r"[.,](\d{3})", r"\1", raw)
+    value = float(raw.replace(",", "."))
+    return value if 30 <= value <= 20000 else None
 
 
 def extract(title: str, description: str = "", platform: str = "kleinanzeigen", price_kind: str = "ask",
@@ -155,6 +185,7 @@ def extract(title: str, description: str = "", platform: str = "kleinanzeigen", 
     return Features(
         line=line, year=_first_year(text), ram_gb=_gb(text, "ram"), ssd_gb=_gb(text, "ssd"),
         condition=condition, charger=charger, platform=platform, price_kind=price_kind, negotiable=negotiable,
+        retail_price=retail_from_text(f"{title} {description}"),
     )
 
 

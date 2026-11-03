@@ -116,7 +116,9 @@ def _ev(buy: float, listing: Listing, screen: Screen, v: Valuation, econ: Econom
     parts = v.parts + (CHARGER_COST if "no_charger" in screen.red_flags else 0.0)
 
     if listing.source == "kleinanzeigen":
-        shipped = bool(listing.shipping) or is_far(listing, econ)   # far away: only worth it shipped
+        # Pickup when it's local (cheaper than fee + shipping); shipped when far or location unknown.
+        local = bool(re.match(r"\s*\d{5}", listing.location or "")) and not is_far(listing, econ)
+        shipped = is_far(listing, econ) or (bool(listing.shipping) and not local)
         buy_fee = (buy * econ.buy_fee_rate + econ.buy_fee_fixed) if shipped else 0.0
         inbound = econ.ship_in if shipped else econ.default_travel_km * econ.km_cost
     else:  # eBay: shipping cost from the API, no buyer fee modelled
@@ -179,14 +181,18 @@ def score(listing: Listing, screen: Screen, econ: Economics, model: PriceModel |
                      + ["unknown model: add it to huntbot/data/catalog.csv"])
 
     reasons: list[str] = []
+    if listing.price is None and v.fair_ask:   # "VB" with no number: assume the typical price, not free
+        buy = v.fair_ask * econ.vb_discount
+        reasons.append(f"no price given: assumed typical €{buy:.0f}")
     ev, net_sale, cost_in, sell_on, resale = _ev(buy, listing, screen, v, econ)
     ev, flag_reasons = _apply_flags(ev, screen.red_flags)
     reasons += flag_reasons
     reasons.append(f"sell on {sell_on} ~€{resale:.0f} ({v.source})")
 
     rejected = bool(hard_flags)
-    if rejected:
+    if rejected:   # don't let a dock or a locked phone carry a laptop's profit figure anywhere
         reasons.insert(0, "REJECT: " + ", ".join(hard_flags))
+        ev = net_sale = 0.0
 
     invested = buy + v.parts
     roi = ev / invested if invested > 0 else (99.0 if ev > 0 else 0.0)
@@ -194,15 +200,18 @@ def score(listing: Listing, screen: Screen, econ: Economics, model: PriceModel |
     discount = (1 - buy / v.fair_ask) if (v.fair_ask and listing.price) else None
     free = listing.price == 0
 
+    too_cheap = v.mode == "flip" and discount is not None and discount > 0.70 and not free
     if v.mode == "flip":
         good = (ev >= econ.flip_min_ev and ev_per_hour >= econ.min_ev_per_hour
-                and (discount is None or discount >= econ.flip_min_discount))
+                and (discount is None or discount >= econ.flip_min_discount)) and not too_cheap
         if discount is not None:
             reasons.append(f"{discount:.0%} under typical {listing.source} price €{v.fair_ask:.0f}")
     else:
         good = ev >= econ.min_ev and ev_per_hour >= econ.min_ev_per_hour and roi >= econ.min_roi
     alert = (not rejected) and listing.price is not None and ((free and ev > 0) or good)
 
+    if too_cheap:
+        reasons.insert(0, "CHECK: >70% under typical – part only, scam or stolen? Ask for photos of the device + serial")
     if listing.price is None:
         reasons.append("no price found")
     if listing.source == "kleinanzeigen" and is_far(listing, econ):

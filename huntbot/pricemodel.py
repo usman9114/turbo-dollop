@@ -157,8 +157,8 @@ class PriceModel:
         sd = math.sqrt(var)
         n_line = self.line_counts.get(f.line, 0)
         src = f"model (n={self.n}, {n_line} {f.line})" if self.n else "model priors (no data yet)"
-        return Estimate(price=math.exp(mu), low=math.exp(mu - 1.2816 * sd), high=math.exp(mu + 1.2816 * sd),
-                        n_line=n_line, source=src)
+        return cap_by_retail(Estimate(price=math.exp(mu), low=math.exp(mu - 1.2816 * sd), high=math.exp(mu + 1.2816 * sd),
+                                      n_line=n_line, source=src), f)
 
     def explain(self) -> dict[str, float]:
         return {n: round(c, 3) for n, c in zip(NAMES, self.coef)}
@@ -173,6 +173,22 @@ class PriceModel:
         d = json.loads(text)
         coef = [d["coef"][d["names"].index(n)] if n in d["names"] else PRIOR[n] for n in NAMES]
         return cls(coef=coef, sigma=d["sigma"], n=d["n"], line_counts=d.get("line_counts", {}))
+
+
+# A used device rarely sells above these shares of what it cost new.
+RETAIL_CAP = {"new": 0.85, "like_new": 0.78, "good": 0.70, "worn": 0.60, "defect": 0.35}
+
+
+def cap_by_retail(est: "Estimate", f: Features) -> "Estimate":
+    """If the ad states what it cost new, never estimate above a sane share of that."""
+    if not f.retail_price:
+        return est
+    cap = f.retail_price * RETAIL_CAP.get(f.condition, 0.7) * (1.0 if f.price_kind == "sold" else 1.08)
+    if est.price <= cap:
+        return est
+    k = cap / est.price
+    return Estimate(price=cap, low=est.low * k, high=min(est.high * k, f.retail_price), n_line=est.n_line,
+                    source=est.source + f", capped by stated new price €{f.retail_price:.0f}")
 
 
 def can_price(f: Features) -> bool:

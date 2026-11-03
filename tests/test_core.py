@@ -272,3 +272,10 @@ def test_far_away_listing_uses_shipping_or_is_not_alerted():
     assert not s_far.alert and "ask seller to ship" in s_far.reasons[-1]
     s_ship = scoring.score(far_ship, screen, econ)
     assert s_ship.alert and s_ship.cost_in == pytest.approx(60 + 60 * 0.045 + 0.5 + 37.82 + 6.99)
+
+
+def test_rejected_listing_has_zero_profit():
+    from huntbot.pricemodel import PriceModel
+    l = Listing(source="kleinanzeigen", ad_id="1", title="Lenovo ThinkPad T14 Gen 1 Tastatur – Deutsch QWERTZ", url="u", price=40.0)
+    s = scoring.score(l, rules.screen(l), Economics(), PriceModel())
+    assert s.rejected and s.ev == 0 and s.max_buy == 0 and not s.alert
