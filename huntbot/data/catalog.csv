@@ -1,0 +1,20 @@
+key,name,pattern,resale_p50,salvage,repair_hours,label
+thinkpad-t480,ThinkPad T480,"\bt\s?480s?\b",185,70,1.5,EST
+thinkpad-t490,ThinkPad T490,"\bt\s?490s?\b",215,80,1.5,EST
+thinkpad-t14-g2,ThinkPad T14 Gen 2,"\bt14s?\b.*(gen\s?2\b|\bg2\b|11\d{2}g7|5\d50u)",290,90,1.5,EST
+thinkpad-t14-g3,ThinkPad T14 Gen 3,"\bt14s?\b.*(gen\s?3\b|\bg3\b|12\d{2}p|6\d50u)",340,110,1.5,EST
+thinkpad-t14-g1,ThinkPad T14 Gen 1,"\bt14s?\b.*(gen\s?1\b|\bg1\b|10\d{3}u)",235,85,1.5,EST
+thinkpad-t14,ThinkPad T14 (gen unknown),"\bt14s?\b",250,85,1.5,EST
+thinkpad-x280,ThinkPad X280,"\bx\s?280\b",160,60,1.5,EST
+thinkpad-x390,ThinkPad X390,"\bx\s?390\b",200,70,1.5,EST
+latitude-5400,Dell Latitude 5400,"latitude\s?5400\b",180,65,1.5,EST
+latitude-5410,Dell Latitude 5410,"latitude\s?5410\b",200,70,1.5,EST
+latitude-5420,Dell Latitude 5420,"latitude\s?5420\b",230,80,1.5,EST
+latitude-5430,Dell Latitude 5430,"latitude\s?5430\b",270,90,1.5,EST
+latitude-7400,Dell Latitude 7400,"latitude\s?7400\b",220,75,1.5,EST
+elitebook-840-g6,HP EliteBook 840 G6,"elitebook\s?840\s?g6\b",200,70,1.5,EST
+elitebook-840-g7,HP EliteBook 840 G7,"elitebook\s?840\s?g7\b",240,80,1.5,EST
+elitebook-840-g8,HP EliteBook 840 G8,"elitebook\s?840\s?g8\b",280,90,1.5,EST
+dyson-v8,Dyson V8,"dyson.*\bv\s?8\b",110,40,0.75,EST
+dyson-v11,Dyson V11,"dyson.*\bv\s?11\b",220,60,0.75,EST
+dyson-v15,Dyson V15,"dyson.*\bv\s?15\b",280,80,0.75,EST

@@ -1,0 +1,11 @@
+services:
+  huntbot:
+    build: .
+    env_file: .env
+    environment:
+      HUNTBOT_DB: /data/huntbot.db
+    volumes:
+      - ./var:/data
+    ports:
+      - "127.0.0.1:8787:8787"   # local only; the userscript talks to this
+    restart: unless-stopped

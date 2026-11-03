@@ -1,0 +1,21 @@
+From: Kleinanzeigen <noreply@example.kleinanzeigen.test>
+To: hunter@example.test
+Subject: Neue Anzeigen zu Ihrem Suchauftrag "thinkpad defekt"
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<html><body>
+<!-- Synthetic fixture: structure guessed, links in the real format, one wrapped in a tracking redirect -->
+<table>
+ <tr><td>
+   <a href="https://www.kleinanzeigen.de/s-anzeige/thinkpad-x390-akku-defekt/2911111111-278-6411?utm_source=email"><img src="https://img.example.test/x390.jpg"></a>
+   <a href="https://www.kleinanzeigen.de/s-anzeige/thinkpad-x390-akku-defekt/2911111111-278-6411?utm_source=email">ThinkPad X390 Akku defekt</a>
+   <p>75 € VB</p><p>80333 Maxvorstadt</p>
+ </td></tr>
+ <tr><td>
+   <a href="https://click.example.test/track?u=https%3A%2F%2Fwww.kleinanzeigen.de%2Fs-anzeige%2Fhp-elitebook-840-g7-passwort-vergessen%2F2922222222-278-6411">HP EliteBook 840 G7 Passwort vergessen</a>
+   <p>Zu verschenken</p><p>81541 Au-Haidhausen</p>
+ </td></tr>
+ <tr><td><a href="https://www.kleinanzeigen.de/s-suchanfrage.html">Suchauftrag verwalten</a></td></tr>
+</table>
+</body></html>
