@@ -16,10 +16,12 @@ Downloads a reel's audio with `yt-dlp` and transcribes it locally with
    which ffmpeg || echo "ffmpeg missing: install it (apt-get install -y ffmpeg)"
    ```
 
-2. **Run the script** with one or more URLs. Tracking params like `?xtok=` / `?igsh=` are stripped automatically.
+2. **Run the script** `scripts/transcribe_reel.py` from this skill's directory with one or more URLs.
+   Tracking params like `?xtok=` / `?igsh=` are stripped automatically.
    ```bash
-   python3 .claude/skills/transcribe-reel/scripts/transcribe_reel.py "<URL>" [more URLs] --out out/transcripts
+   python3 <this-skill-dir>/scripts/transcribe_reel.py "<URL>" [more URLs] --out out/transcripts
    ```
+   (In this repo that's `.claude/skills/transcribe-reel/scripts/transcribe_reel.py`.)
    - `--model small` (default) is a good speed/accuracy balance on CPU (~1 min for a 1-min reel).
      Use `base` for speed, `medium`/`large-v3` for accented speech, music-heavy audio or non-English.
    - `--language en` forces a language when autodetect guesses wrong.
