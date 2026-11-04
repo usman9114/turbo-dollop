@@ -1,0 +1,5 @@
+id,variant,item_type,working,seller_type,scam,price_for_item,expected,notes
+9001,orig,device,working,private,no,yes,ANY,deal
+9001,-thin,device,working,private,no,yes,NOT_BUY,thin
+9002,orig,part,,private,no,yes,PASS,keyboard
+9003,orig,device,working,dealer,no,no,PASS,dealer ab-price

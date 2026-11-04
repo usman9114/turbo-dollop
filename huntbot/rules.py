@@ -19,6 +19,11 @@ RED_FLAG_PATTERNS: list[tuple[str, str]] = [
     (r"muss\s+heute\s+weg|nur\s+heute|dringend.*(weg|verkauf)|schnell\s+weg", "suspicious_urgency"),
     (r"ohne\s+(ssd|festplatte|ram|arbeitsspeicher|display)|(ssd|festplatte|ram)\s+(fehlt|ausgebaut|entfernt)", "parts_missing"),
     (r"\b(nur\s+)?(karton|ovp|verpackung|hülle|tasche|netzteil)\s+(zu\s+verkaufen|ohne\s+gerät)|nur\s+(das\s+)?(gehäuse|mainboard|display)\b", "not_the_device"),
+    # Rules v2: deterministic catches for scams and dealers (0 LLM calls).
+    (r"paypal\s*(an\s+)?(freunde|familie|friends|f\s?&\s?f)|nur\s+(per\s+)?(vorkasse|überweisung)|western\s+union|"
+     r"(bin|wohne)\s+(\w+\s+){0,2}(im|in\s+der)\s+ausland|nur\s+versand[^.]{0,40}kein\w*\s+abholung", "scam_pattern"),
+    (r"\bab\s+\d{2,4}\s?(€|eur)|verschiedene[n]?\s+konfiguration|gewerbliche[rn]?\s+(händler|verkäufer|anbieter)|unsere\s+vorteile|"
+     r"mwst\.?\s+ausweisbar|rechnung\s+mit\s+(ausgewiesener\s+)?mwst", "dealer_listing"),
 ]
 
 # (regex, category, p_ok, parts_eur, hours). First match wins, so order = severity.
@@ -36,7 +41,8 @@ FAULT_PATTERNS: list[tuple[str, str, float, float, float]] = [
     (rf"(ssd|festplatte|hdd|m\.?2)\s*{_BAD}|ohne\s+(ssd|festplatte|hdd)|bootet\s+nicht|no\s+boot(able)?\s+device|kein\s+betriebssystem", "storage", 0.8, 45, 1.0),
     (r"passwort\s+vergessen|kennwort\s+vergessen|windows\s*(fehler|startet\s+nicht|defekt|kaputt)|bluescreen|neu\s+aufsetzen", "software", 0.85, 0, 1.0),
     (r"defekt|bastler|kaputt|ersatzteil|for\s+parts|not\s+working|zum\s+ausschlachten|reparieren|reparatur\w*\s+nötig|"
-     r"muss\s+repariert", "unknown", 0.5, 40, 1.5),
+     r"muss\s+repariert|funktioniert\s+(leider\s+)?nicht|nicht\s+(mehr\s+)?funktionsfähig|keine\s+funktion|"
+     r"ungetestet|nicht\s+getestet", "unknown", 0.5, 40, 1.5),
 ]
 
 STOCK_PHOTO_HINTS = r"symbolbild|beispielbild|herstellerbild|foto\s+aus\s+dem\s+internet"
@@ -77,12 +83,28 @@ def red_flags(listing: Listing) -> list[str]:
     flags = [flag for pattern, flag in RED_FLAG_PATTERNS if re.search(pattern, text)]
     if is_accessory(listing.title):
         flags.append("not_the_device")
+    if re.match(r"\s*(suche|gesucht|tausche)\b", listing.title, re.I):
+        flags.append("wanted_ad")
     if re.search(STOCK_PHOTO_HINTS, text):
         flags.append("stock_photos")
     # BIOS password mentioned as *not* set ("kein BIOS-Passwort") is a good sign, not a flag.
     if "bios_password" in flags and re.search(r"(kein|ohne)\s+bios[- ]?(passwort|password|pw|kennwort)", text):
         flags.remove("bios_password")
     return sorted(set(flags))
+
+
+# category -> (p_ok, parts_eur, hours): the first pattern per category in FAULT_PATTERNS, plus "none".
+FAULT_DEFAULTS: dict[str, tuple[float, float, float]] = {"none": (0.9, 0.0, 0.75)}
+for _pat, _cat, _p, _cost, _h in FAULT_PATTERNS:
+    FAULT_DEFAULTS.setdefault(_cat, (_p, _cost, _h))
+
+
+def defaults_for(category: str, entry: "catalog.CatalogEntry | None" = None) -> tuple[float, float, float]:
+    """(p_ok, parts_eur, hours) for a fault category: code-owned, never taken from an LLM."""
+    p_ok, parts, hours = FAULT_DEFAULTS.get(category, FAULT_DEFAULTS["unknown"])
+    if entry:
+        hours = max(hours, entry.repair_hours if category != "none" else 0.75)
+    return p_ok, parts, hours
 
 
 def screen(listing: Listing) -> Screen:

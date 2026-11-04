@@ -38,6 +38,36 @@ def _float(name: str, default: float) -> float:
     return float(value) if value else default
 
 
+def _int(name: str, default: int) -> int:
+    value = _env(name)
+    return int(float(value)) if value else default
+
+
+def _opt_int(name: str) -> int | None:
+    value = _env(name)
+    return int(float(value)) if value else None
+
+
+def _tuple(name: str) -> tuple[str, ...] | None:
+    value = _env(name)
+    return tuple(x.strip() for x in value.split(",") if x.strip()) if value else None
+
+
+# Screening-team model chains (primary first, then OpenRouter fallbacks), per profile.
+PROFILES: dict[str, dict[str, tuple[str, ...]]] = {
+    "glm": {
+        "reader": ("z-ai/glm-5.3-flash", "z-ai/glm-4.7-flash", "google/gemma-4-31b-it:free"),
+        "inspector": ("z-ai/glm-5.3-flash", "nvidia/nemotron-3.5-super-vl:free", "google/gemma-4-31b-it:free"),
+        "skeptic": ("z-ai/glm-5.3", "nvidia/nemotron-3-ultra-550b-a55b:free", "xingchen-agi/xing4.0-29b-a4b:free"),
+    },
+    "free": {
+        "reader": ("google/gemma-4-31b-it:free", "nvidia/nemotron-3.5-super-vl:free", "xingchen-agi/xing4.0-29b-a4b:free"),
+        "inspector": ("nvidia/nemotron-3.5-super-vl:free", "google/gemma-4-31b-it:free", "google/gemma-4-26b-a4b-it:free"),
+        "skeptic": ("nvidia/nemotron-3-ultra-550b-a55b:free", "xingchen-agi/xing4.0-29b-a4b:free", "google/gemma-4-31b-it:free"),
+    },
+}
+
+
 @dataclass
 class Economics:
     """Constants of the EV formula (plan section 4.2). All amounts in EUR."""
@@ -79,6 +109,25 @@ class Settings:
     screen_model: str = "claude-haiku-5-5"
     review_model: str = "claude-sonnet-5-5"
 
+    # Screening team (OpenRouter). Defaults keep today's behaviour when no key is set.
+    openrouter_key: str = ""
+    screen_provider: str = "auto"            # auto | openrouter | anthropic | rules  (aliases: team, claude)
+    agent_profile: str = "glm"               # glm | free
+    team_reader_models: tuple[str, ...] | None = None      # None = from the profile
+    team_inspector_models: tuple[str, ...] | None = None
+    team_skeptic_models: tuple[str, ...] | None = None
+    agent_daily_cap: int | None = None       # free-model requests/day (None = server limit - 3)
+    agent_run_cap: int = 12                  # free-model requests per run
+    agent_max_calls_run: int = 40            # all requests per run (paid + free)
+    agent_max_usd_day: float = 0.50          # paid spend per UTC day
+    agent_run_seconds: int = 300
+    agent_reserve: int | None = None         # free requests kept for interactive use
+    agent_max_wait_min: int = 45
+    push_watch: bool = True
+    team_enforce: bool = False               # False = shadow mode: verdicts shown, alerts as before
+    or_allow_paid: bool = False
+    or_timeout: float = 60.0
+
     ebay_client_id: str = ""
     ebay_client_secret: str = ""
     ebay_zip: str = "80331"
@@ -113,8 +162,26 @@ class Settings:
         return bool(self.telegram_token and self.telegram_chat_id)
 
     @property
+    def resolved_provider(self) -> str:
+        """rules | claude | team (team = OpenRouter screening team)."""
+        if not self.llm_enabled:
+            return "rules"
+        p = {"openrouter": "team", "anthropic": "claude"}.get(self.screen_provider, self.screen_provider)
+        if p == "auto":
+            return "team" if self.openrouter_key else ("claude" if self.anthropic_key_present else "rules")
+        if p == "team" and not self.openrouter_key:
+            return "rules"
+        if p == "claude" and not self.anthropic_key_present:
+            return "rules"
+        return p if p in ("team", "claude") else "rules"
+
+    @property
     def use_llm(self) -> bool:
-        return self.llm_enabled and self.anthropic_key_present
+        return self.resolved_provider in ("claude", "team")
+
+    def team_chain(self, role: str) -> tuple[str, ...]:
+        override = getattr(self, f"team_{role}_models")
+        return tuple(override) if override else PROFILES.get(self.agent_profile, PROFILES["glm"])[role]
 
 
 def load_settings() -> Settings:
@@ -133,6 +200,23 @@ def load_settings() -> Settings:
         db_path=Path(_env("HUNTBOT_DB", "huntbot.db")),
         port=int(_env("HUNTBOT_PORT", "8787")),
         token=_env("HUNTBOT_TOKEN"),
+        openrouter_key=_env("OPENROUTER_API_KEY"),
+        screen_provider=_env("HUNTBOT_SCREEN_PROVIDER", "auto").lower(),
+        agent_profile=_env("HUNTBOT_AGENT_PROFILE", "glm").lower(),
+        team_reader_models=_tuple("HUNTBOT_TEAM_READER_MODELS"),
+        team_inspector_models=_tuple("HUNTBOT_TEAM_INSPECTOR_MODELS"),
+        team_skeptic_models=_tuple("HUNTBOT_TEAM_SKEPTIC_MODELS"),
+        agent_daily_cap=_opt_int("HUNTBOT_AGENT_DAILY_CAP"),
+        agent_run_cap=_int("HUNTBOT_AGENT_RUN_CAP", 12),
+        agent_max_calls_run=_int("HUNTBOT_AGENT_MAX_CALLS_RUN", 40),
+        agent_max_usd_day=_float("HUNTBOT_AGENT_MAX_USD_DAY", 0.50),
+        agent_run_seconds=_int("HUNTBOT_AGENT_RUN_SECONDS", 300),
+        agent_reserve=_opt_int("HUNTBOT_AGENT_RESERVE"),
+        agent_max_wait_min=_int("HUNTBOT_AGENT_MAX_WAIT_MIN", 45),
+        push_watch=_bool("HUNTBOT_PUSH_WATCH", True),
+        team_enforce=_bool("HUNTBOT_TEAM_ENFORCE", False),
+        or_allow_paid=_bool("HUNTBOT_OR_ALLOW_PAID", False),
+        or_timeout=_float("HUNTBOT_OR_TIMEOUT", 60.0),
         anthropic_key_present=bool(_env("ANTHROPIC_API_KEY") or _env("ANTHROPIC_AUTH_TOKEN")),
         llm_enabled=_bool("HUNTBOT_LLM_ENABLED", True),
         screen_model=_env("HUNTBOT_SCREEN_MODEL", "claude-haiku-5-5"),

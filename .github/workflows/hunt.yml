@@ -8,7 +8,8 @@
 #   TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID          required for push
 #   IMAP_USER, IMAP_PASSWORD (IMAP_HOST optional)  alert emails
 #   EBAY_CLIENT_ID, EBAY_CLIENT_SECRET             eBay API
-#   ANTHROPIC_API_KEY                              optional: Claude screening
+#   OPENROUTER_API_KEY                             optional: screening team (GLM / free models)
+#   ANTHROPIC_API_KEY                              optional: Claude screening (used if no OpenRouter key)
 #
 # Minutes: every 30 min ≈ 1,450 min/month (private repos get 2,000 free). Public repos: unlimited.
 name: Deal hunt
@@ -32,7 +33,12 @@ jobs:
     env:
       HUNTBOT_DB: state/huntbot.db
       HUNTBOT_ONDEMAND: "false"
-      HUNTBOT_LLM_ENABLED: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+      HUNTBOT_LLM_ENABLED: ${{ secrets.ANTHROPIC_API_KEY != '' || secrets.OPENROUTER_API_KEY != '' }}
+      HUNTBOT_SCREEN_PROVIDER: auto
+      HUNTBOT_AGENT_PROFILE: glm            # glm | free
+      HUNTBOT_TEAM_ENFORCE: "false"         # shadow mode until you have reviewed the verdicts
+      HUNTBOT_AGENT_MAX_USD_DAY: "0.50"
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -60,6 +66,10 @@ jobs:
       - run: mkdir -p state
       - name: Hunt (alert mails + eBay) and push alerts to Telegram
         run: huntbot run-once --hunts hunts.txt --telegram-commands
+
+      - name: Screening team status (logs only)
+        if: always()
+        run: huntbot agents-status --offline || true
 
       - name: Save state
         if: always()

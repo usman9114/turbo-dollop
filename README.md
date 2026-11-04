@@ -10,7 +10,7 @@ requests to kleinanzeigen.de and never messages sellers.
 
 ```
  Kleinanzeigen alert emails ─┐ (IMAP, your own mailbox)
- eBay Browse API ────────────┼─► dedup ─► rules + Claude Haiku 5.5 ─► Sonnet 5.5 if promising ─► EV score
+ eBay Browse API ────────────┼─► dedup ─► rules ─► screening team (OpenRouter) or Claude ─► EV score
  Userscript (pages you open) ┘                                                                    │
                                      web UI · Telegram cards · EV badges on Kleinanzeigen pages ◄─┘
                                      inventory / profit / §25a / DAC7 ledger
@@ -147,8 +147,8 @@ EV       = p_ok × net_sale + (1 − p_ok) × salvage − cost_in        (p_ok c
 alert if EV ≥ €40 AND EV/h ≥ €25 AND EV/(buy + parts) ≥ 40%, or the item is free
 ```
 
-- **Rejected:** activation/iCloud/FRP lock, MDM/Autopilot, or "not the device" (box or part only).
-- **Discounted:** BIOS password ×0.5, company asset tag ×0.5, stock photos ×0.7. Missing charger adds €25.
+- **Rejected:** activation/iCloud/FRP lock, MDM/Autopilot, "not the device" (box or part only), scam wording (PayPal Friends, prepayment only, "I am abroad") and wanted ads ("Suche …").
+- **Discounted:** BIOS password ×0.5, company asset tag ×0.5, stock photos ×0.7, dealer listing ("ab X €", several configurations) ×0.7. Missing charger adds €25.
 - **Max buy** is the highest price that still clears the €40 EV rule. The drafted offer anchors at
   85% of it and always asks about the BIOS password, account sign-out and the serial number.
 - The test suite checks the formula against the plan's §6 worked example (T14 G2: €70.20 profit).
@@ -163,6 +163,74 @@ trusting any EV, replace them with real eBay *sold* medians, 10+ results per mod
 to the sold-items search). Then change `label` to `SOLD`. To add a model, add a row: rows match top to
 bottom, so put specific patterns first.
 
+## Screening team (OpenRouter)
+
+With `OPENROUTER_API_KEY` set, listings that could plausibly be a deal go through a small team
+(plan: `docs/agent-team-plan.md`). The LLMs only **read and look**; every number (EV, max buy, p_ok,
+parts, hours) and the final decision come from code.
+
+```
+rules + price model ─► gate ─► Reader ─► Inspector ─► Skeptic (only on a would-be BUY) ─► Judge (code) ─► card / web
+                        │         text      photos       devil's advocate                 BUY/WATCH/PASS
+                        └ not a candidate (rejected, far away, no shot at a deal) = 0 requests
+```
+
+| Role | Kind | Does |
+|---|---|---|
+| Reader | LLM (text) | spec, working status, fault, seller type, lock/scam signals, purchase price, German seller questions, each with a **verbatim quote** |
+| Inspector | LLM (vision) | stock photo vs real, lock screens, damage, asset stickers |
+| Skeptic | LLM (text) | devil's advocate, runs only when the code Judge would say BUY |
+| Gatekeeper, Merger, Judge | code | gate, quote verification, merge into `Screen`/`Features`, fixed decision table |
+
+A fact counts only if its quote really appears in the ad text (code checks it). Unverified signals can
+push a listing toward WATCH, never to BUY or PASS. **BUY** needs every planned agent to succeed and
+nothing to be found; a thin listing (< 60 characters, typical for alert mails) is never BUY. Opening the
+ad with the userscript delivers the full text and re-screens it.
+
+Decisions: **BUY** (alert), **WATCH** (maybe; pushed if the rules alert and `HUNTBOT_PUSH_WATCH=true`),
+**PASS**, **UNSCREENED** (budget or models unavailable: rules alert, labelled), **PENDING** (queued, the
+next `run-once` drains it; after 45 min it becomes UNSCREENED).
+
+**Models / profiles** (`HUNTBOT_AGENT_PROFILE`, chains are OpenRouter fallbacks, override with
+`HUNTBOT_TEAM_{READER,INSPECTOR,SKEPTIC}_MODELS`):
+
+| Role | `glm` (default) | `free` |
+|---|---|---|
+| Reader | `z-ai/glm-5.3-flash` → `glm-4.7-flash` → `gemma-4-31b-it:free` | `gemma-4-31b-it:free` → `nemotron-3.5-super-vl:free` → `xing4.0-29b-a4b:free` |
+| Inspector | `z-ai/glm-5.3-flash` → `nemotron-3.5-super-vl:free` → `gemma-4-31b-it:free` | `nemotron-3.5-super-vl:free` → `gemma-4-31b-it:free` → `gemma-4-26b-a4b-it:free` |
+| Skeptic | `z-ai/glm-5.3` → `nemotron-3-ultra-550b-a55b:free` → `xing4.0-29b-a4b:free` | `nemotron-3-ultra-550b-a55b:free` → `xing4.0-29b-a4b:free` → `gemma-4-31b-it:free` |
+
+**Budget.** Every request is logged in SQLite (`llm_calls`, survives Actions runs via the cache) and
+reconciled with `GET /api/v1/key`. Free `:free` models: 50 requests/day (1000 after buying ≥ $10 credits
+once), 20/min; the bot stays 3 under and keeps a reserve for interactive use. Paid models (GLM): capped by
+`HUNTBOT_AGENT_MAX_USD_DAY` (default `0.50`) and `HUNTBOT_AGENT_MAX_CALLS_RUN` (default 40 per run);
+the cost comes from `usage.cost` (fallback: tokens × live price). When a cap is hit the paid models are
+dropped from the chain (free fallbacks still work), then the pipeline falls back to rules (UNSCREENED /
+PENDING). Non-`:free` ids are refused unless the profile is `glm` or `HUNTBOT_OR_ALLOW_PAID=true`;
+`stealth/*`, `:batch` and `~…-latest` ids are never used. OpenRouter 404 "data policy": allow free
+endpoints that may log prompts under OpenRouter → Settings → Privacy. Only PII-stripped public ad text and
+public image URLs are sent.
+
+**Shadow mode** (`HUNTBOT_TEAM_ENFORCE=false`, the default): verdicts are computed, stored and shown on
+Telegram cards, `huntbot hunt` and the web UI, but alerts behave exactly as before. Run `huntbot agents-eval`
+and review the verdicts for a few days, then set `HUNTBOT_TEAM_ENFORCE=true`.
+
+**Cost.** A listing that uses all three agents costs well under $0.01 on the `glm` profile; typically
+only 5 to 25% of new listings reach the Reader. Check `huntbot agents-status`.
+
+```bash
+export OPENROUTER_API_KEY=sk-or-...
+huntbot agents-status                                  # provider, budget, chains, recent errors
+python evals/build_eval_set.py --pages <saved result pages> --db real.db   # writes evals/data/ads.jsonl (git-ignored)
+huntbot agents-eval --role reader --models z-ai/glm-5.3-flash,google/gemma-4-31b-it:free   # bake-off, each model alone
+huntbot agents-eval --role team --profile glm          # false BUY must be 0 before enforcing
+huntbot agents-eval --replay DIR / --record DIR        # offline fixtures
+```
+
+`evals/labels.csv` (ids and labels only) is committed; the scraped ad text is not. Switch provider with
+`HUNTBOT_SCREEN_PROVIDER=openrouter|anthropic|rules` (default `auto`: OpenRouter if its key is set, else
+Claude if `ANTHROPIC_API_KEY` is set, else rules). The bot never contacts sellers.
+
 ## Push notifications via GitHub Actions
 
 `.github/workflows/hunt.yml` runs `huntbot run-once` every 30 minutes. It reads new Kleinanzeigen
@@ -171,7 +239,8 @@ queued Telegram commands (`/hunt`, `/stats` …; replies arrive with the next ru
 persists in the Actions cache.
 
 Add the repository secrets `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `IMAP_USER`, `IMAP_PASSWORD`,
-`EBAY_CLIENT_ID`, `EBAY_CLIENT_SECRET` and optionally `ANTHROPIC_API_KEY`. Then run it once via
+`EBAY_CLIENT_ID`, `EBAY_CLIENT_SECRET` and optionally `OPENROUTER_API_KEY` (screening team) or
+`ANTHROPIC_API_KEY`. Then run it once via
 *Actions → Deal hunt → Run workflow*.
 
 - **Live Kleinanzeigen search is forced off there.** A schedule on GitHub's servers is exactly the
@@ -234,7 +303,7 @@ Telegram: `/bought <listing-key or title> <€>`, `/cost <id> <€> [note]`, `/t
 ## Testing
 
 ```bash
-pytest                               # 105 unit/integration tests, no network
+pytest                               # unit/integration tests, no network (the screening team is tested against a scripted OpenRouter)
 node tests/e2e/userscript_e2e.js     # Playwright: real server + userscript on fixture pages + web UI
 ```
 

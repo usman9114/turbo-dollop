@@ -1,0 +1,34 @@
+id,variant,item_type,working,seller_type,scam,price_for_item,expected,notes
+3560335006,orig,accessory,,private,no,yes,PASS,dock
+3560223788,orig,accessory,,private,no,yes,PASS,dock
+3560193355,orig,accessory,,private,no,yes,PASS,dock
+3559786963,orig,accessory,,private,no,yes,PASS,dock
+3559641832,orig,accessory,,private,no,yes,PASS,dock
+3559419544,orig,accessory,,private,no,yes,PASS,dock
+3558501715,orig,accessory,,private,no,yes,PASS,dock
+3558058068,orig,accessory,,private,no,yes,PASS,dock
+3557027540,orig,accessory,,private,no,yes,PASS,dock
+3555543918,orig,accessory,,private,no,yes,PASS,dock
+3559637400,orig,accessory,,private,no,yes,PASS,bag
+3557647676,orig,accessory,,private,no,yes,PASS,bag
+3556859392,orig,accessory,,private,no,yes,PASS,bag
+3555287514,orig,accessory,,private,no,yes,PASS,bag
+3530366415,orig,accessory,,private,no,yes,PASS,privacy filter
+3365720050,orig,part,,private,no,yes,PASS,keyboard
+3558498578,orig,part,,private,no,yes,PASS,keyboard
+3546972540,orig,part,,private,no,yes,PASS,keyboard
+3559378005,orig,part,,private,no,yes,PASS,T480 display panel
+3342488123,orig,device,broken,private,yes,yes,PASS,nur PayPal + Symbolbilder; springt nicht nur sporadisch an
+3353989836,orig,device,working,dealer,no,no,PASS,"renewone refurbisher: ab 290 EUR, configurations"
+3524945698,orig,device,working,private,no,yes,PASS,"new; Kaufpreis 799,01 EUR (2026-02)"
+3550598646,orig,device,broken,private,no,yes,ANY,repair
+3485388135,orig,device,broken,private,no,yes,ANY,repair
+3560164750,orig,device,broken,private,no,yes,ANY,repair
+3560079695,orig,device,broken,private,no,yes,ANY,repair
+3558713835,orig,device,broken,private,no,yes,ANY,repair
+3560464900,orig,device,broken,private,no,yes,ANY,repair
+3559756110,orig,device,broken,private,no,yes,ANY,repair
+3560465698,orig,device,broken,private,no,yes,ANY,repair
+3542119859,orig,device,unknown,unknown,no,yes,NOT_BUY,description < 25 chars
+3542119257,orig,device,unknown,unknown,no,yes,NOT_BUY,description < 25 chars
+3559489311,orig,device,broken,private,no,yes,NOT_BUY,price None (VB only)

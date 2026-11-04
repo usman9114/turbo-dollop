@@ -30,7 +30,8 @@ Return:
 - red_flags: every flag that applies. activation_lock = iCloud/Google/FRP lock; mdm_or_autopilot = "managed by your organisation",
   Intune, Autopilot; bios_password = BIOS/supervisor password set; company_asset_tag = inventory sticker or company device
   without explanation; stock_photos = manufacturer/internet photos instead of the real item; not_the_device = box, bag,
-  charger or single part only.
+  charger or single part only; dealer_listing = commercial refurbisher / 'ab X €' / several configurations;
+  scam_pattern = PayPal friends, prepayment only, 'I am abroad, shipping only'; wanted_ad = the ad is a request ('Suche ...').
 - confidence: how sure you are overall.
 - questions_for_seller: up to 3 short German questions that would resolve the biggest uncertainties
   (e.g. BIOS-Passwort gesetzt? Foto vom Typenschild/Seriennummer? Rechnung vorhanden?).

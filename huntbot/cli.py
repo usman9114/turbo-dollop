@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 import sys
 import threading
 import time
@@ -48,6 +49,8 @@ def _live(settings, db, force: bool = False):
 
 def cmd_hunt(args) -> None:
     settings, db, pipeline, ebay, _ = _build(with_notifier=False)
+    if pipeline.team:
+        pipeline.team.start_run()
     live = _live(settings, db, force=args.live)
     out = pipeline.hunt(" ".join(args.query), ebay=ebay, llm_budget=args.budget, live=live)
     for i, info in enumerate(out.get("live", [])):
@@ -60,10 +63,16 @@ def cmd_hunt(args) -> None:
     for r in results:
         s = r.score
         mark = "✗" if s.rejected else ("★" if s.alert else " ")
+        if r.verdict is not None:
+            mark = r.verdict.decision[:1]       # B/W/P/U (PENDING shows as P too: see the full word below)
+            if r.verdict.decision == "PENDING":
+                mark = "…"
         price = "free" if r.listing.price == 0 else (f"€{r.listing.price:.0f}" if r.listing.price is not None else "?")
         print(f"{mark} EV €{s.ev:6.0f}  €{s.ev_per_hour:4.0f}/h  max €{s.max_buy:4.0f}  {price:>6}  "
               f"[{r.listing.source[:2]}] {r.listing.title[:60]}")
         print(f"     {r.screen.device_model} · {r.screen.fault_summary[:70]} · flags: {', '.join(r.screen.red_flags) or '-'}")
+        if r.verdict is not None:
+            print(f"     team {r.verdict.decision} ({r.verdict.confidence}): {'; '.join(r.verdict.reasons[:2])}")
         print(f"     {r.listing.url}")
     print("\nKleinanzeigen searches:")
     for link in out["kleinanzeigen_links"]:
@@ -82,8 +91,12 @@ def poll_email_once(settings, pipeline) -> int:
 
 
 def email_loop(settings, pipeline, interval: int) -> None:
+    last_start = 0.0
     while True:
         try:
+            if pipeline.team and time.time() - last_start > 1800:
+                pipeline.team.start_run()
+                last_start = time.time()
             n = poll_email_once(settings, pipeline)
             if n:
                 log.info("processed %d listings from alert mails", n)
@@ -112,6 +125,8 @@ def cmd_serve(args) -> None:
     import uvicorn
     from .web import create_app
     settings, db, pipeline, ebay, tg = _build()
+    if pipeline.team:
+        pipeline.team.start_run()
     if settings.imap_enabled and not args.no_email:
         threading.Thread(target=email_loop, args=(settings, pipeline, args.email_interval), daemon=True).start()
         log.info("polling alert mails every %ss", args.email_interval)
@@ -188,6 +203,14 @@ def cmd_run_once(args) -> None:
     """One unattended pass for cron / GitHub Actions: alert mails + saved eBay hunts → Telegram."""
     settings, db, pipeline, ebay, tg = _build()
     total = 0
+    if pipeline.team:
+        pipeline.team.start_run()
+        try:
+            n = pipeline.drain_pending()
+            if n:
+                log.info("drained %d pending listings", n)
+        except Exception as exc:
+            log.error("draining pending listings failed: %s", exc)
     if settings.imap_enabled:
         try:
             total += poll_email_once(settings, pipeline)
@@ -198,7 +221,7 @@ def cmd_run_once(args) -> None:
     if ebay is not None:
         for query in hunts:
             try:
-                out = pipeline.hunt(query, ebay=ebay, llm_budget=args.budget, notify=True)
+                out = pipeline.hunt(query, ebay=ebay, llm_budget=args.budget, notify=True, purpose="pipeline")
                 total += len(out["results"])
             except Exception as exc:
                 log.error("hunt %r failed: %s", query, exc)
@@ -208,6 +231,36 @@ def cmd_run_once(args) -> None:
         log.info("answered %d queued Telegram updates", n)
     alerts = db.conn.execute("SELECT COUNT(*) AS n FROM listings WHERE status='notified'").fetchone()["n"]
     print(f"processed {total} listings; {alerts} alerts sent so far; telegram={'on' if tg else 'off'}")
+    if pipeline.team:
+        st = pipeline.team.status()
+        print(f"team: {st['free_used_local']}/{st['free_limit']} free requests, ${st['usd_today']:.4f}/${st['usd_cap']:.2f} paid today, "
+              f"{st['pending']} pending" + (f"; DISABLED: {st['disabled']}" if st["disabled"] else ""))
+
+
+def cmd_agents_status(args) -> None:
+    settings = load_settings()
+    if settings.resolved_provider != "team":
+        print(f"screening provider: {settings.resolved_provider} (set OPENROUTER_API_KEY to enable the team)")
+        return
+    from .agents import build_team
+    team = build_team(settings, DB(settings.db_path))
+    if not args.offline:
+        team.start_run()
+    st = team.status()
+    print(f"provider: openrouter · profile: {st['profile']} · tier: {st['tier']} · enforce: {st['enforce']}")
+    print(f"free requests today: {st['free_used_local']} local / limit {st['free_limit']} · remaining {st['free_remaining']} "
+          f"(reserve {st['reserve']})")
+    print(f"all requests today: {st['calls_today']} · paid spend ${st['usd_today']:.4f} of ${st['usd_cap']:.2f}")
+    print(f"pending in queue: {st['pending']} · role success today: {st['role_success_today'] or '-'}")
+    for role, chain in st["chains"].items():
+        print(f"  {role:<10} {' -> '.join(chain)}")
+    for err in st["last_errors"]:
+        print(f"  ! {err}")
+
+
+def cmd_agents_eval(args) -> None:
+    from .agents import evals
+    sys.exit(evals.main(args))
 
 
 def cmd_stats(args) -> None:
@@ -287,6 +340,23 @@ def main(argv: list[str] | None = None) -> None:
 
     sub.add_parser("mcp", help="run the MCP server on stdio (Claude Desktop / Claude Code)").set_defaults(
         func=lambda a: __import__("huntbot.mcp_server", fromlist=["main"]).main())
+
+    ag = sub.add_parser("agents-status", help="screening team: provider, budget, models, recent errors (logs only)")
+    ag.add_argument("--offline", action="store_true", help="don't call OpenRouter to refresh the limits")
+    ag.set_defaults(func=cmd_agents_status)
+
+    ae = sub.add_parser("agents-eval", help="measure the screening team on a labelled eval set (data stays out of git)")
+    ae.add_argument("--role", choices=["reader", "inspector", "skeptic", "team"], default="team")
+    ae.add_argument("--profile", choices=["glm", "free"], help="model profile to evaluate (default: configured)")
+    ae.add_argument("--models", help="comma-separated model ids; each is evaluated ALONE (no fallback)")
+    ae.add_argument("--set", default=os.environ.get("HUNTBOT_EVAL_SET", "evals/data/ads.jsonl"))
+    ae.add_argument("--labels", default=os.environ.get("HUNTBOT_EVAL_LABELS", "evals/labels.csv"))
+    ae.add_argument("--limit", type=int, default=0)
+    ae.add_argument("--record", metavar="DIR", help="save every request/response as a fixture")
+    ae.add_argument("--replay", metavar="DIR", help="no network: answer from recorded fixtures")
+    ae.add_argument("--out", default="evals/results")
+    ae.add_argument("--yes", action="store_true", help="don't stop at the cost estimate")
+    ae.set_defaults(func=cmd_agents_eval)
 
     sub.add_parser("stats").set_defaults(func=cmd_stats)
     ex = sub.add_parser("export", help="ledger CSV for your tax advisor")

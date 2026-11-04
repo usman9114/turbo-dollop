@@ -21,8 +21,8 @@ from .config import Economics
 from .models import Listing, Score, Screen
 from .pricemodel import PriceModel, can_price
 
-REJECT_FLAGS = {"activation_lock", "mdm_or_autopilot", "not_the_device"}
-EV_MULTIPLIERS = {"bios_password": 0.5, "stock_photos": 0.7, "company_asset_tag": 0.5}
+REJECT_FLAGS = {"activation_lock", "mdm_or_autopilot", "not_the_device", "scam_pattern", "wanted_ad"}
+EV_MULTIPLIERS = {"bios_password": 0.5, "stock_photos": 0.7, "company_asset_tag": 0.5, "dealer_listing": 0.7}
 CHARGER_COST = 25.0
 
 
@@ -69,10 +69,11 @@ class Valuation:
     label: str = "EST"
 
 
-def valuation(listing: Listing, screen: Screen, econ: Economics, model: PriceModel | None) -> Valuation | None:
+def valuation(listing: Listing, screen: Screen, econ: Economics, model: PriceModel | None,
+              feats: "features.Features | None" = None) -> Valuation | None:
     entry = catalog.by_key(screen.catalog_key)
-    feats = features.extract(listing.title, listing.description, listing.source,
-                             negotiable=listing.negotiable, condition_field=listing.condition)
+    feats = feats or features.extract(listing.title, listing.description, listing.source,
+                                      negotiable=listing.negotiable, condition_field=listing.condition)
     working = screen.fault_category == "none" and feats.condition != "defect"
     mode = "flip" if working else "repair"
     # After cleaning (flip) or repair the device sells as "good", keeping like-new/new/worn as is.
@@ -147,9 +148,10 @@ def _apply_flags(ev: float, flags: list[str]) -> tuple[float, list[str]]:
 
 
 def max_buy_price(listing: Listing, screen: Screen, econ: Economics, target_ev: float | None = None,
-                  model: PriceModel | None = None, v: Valuation | None = None) -> float:
+                  model: PriceModel | None = None, v: Valuation | None = None,
+                  feats: "features.Features | None" = None) -> float:
     """Highest buy price that still meets the EV threshold (bisection; EV falls as buy rises)."""
-    v = v or valuation(listing, screen, econ, model)
+    v = v or valuation(listing, screen, econ, model, feats)
     if v is None:
         return 0.0
     if target_ev is None:
@@ -169,10 +171,11 @@ def max_buy_price(listing: Listing, screen: Screen, econ: Economics, target_ev: 
     return float(int(lo))
 
 
-def score(listing: Listing, screen: Screen, econ: Economics, model: PriceModel | None = None) -> Score:
+def score(listing: Listing, screen: Screen, econ: Economics, model: PriceModel | None = None,
+          feats: "features.Features | None" = None) -> Score:
     buy = buy_estimate(listing, econ)
     hard_flags = sorted(REJECT_FLAGS & set(screen.red_flags))
-    v = valuation(listing, screen, econ, model)
+    v = valuation(listing, screen, econ, model, feats)
     if v is None:
         return Score(ev=0.0, ev_per_hour=0.0, roi=0.0, buy_estimate=buy, max_buy=0.0, resale=0.0,
                      net_sale=0.0, cost_in=buy, hours=max(0.25, screen.repair_hours), p_ok=screen.p_ok, alert=False,
@@ -223,7 +226,7 @@ def score(listing: Listing, screen: Screen, econ: Economics, model: PriceModel |
 
     return Score(
         ev=ev, ev_per_hour=ev_per_hour, roi=roi, buy_estimate=buy,
-        max_buy=0.0 if rejected else max_buy_price(listing, screen, econ, model=model, v=v),
+        max_buy=0.0 if rejected else max_buy_price(listing, screen, econ, model=model, v=v, feats=feats),
         resale=resale, net_sale=net_sale, cost_in=cost_in, hours=v.hours, p_ok=min(v.p_ok, econ.p_ok_cap),
         alert=alert, rejected=rejected, reasons=reasons, mode=v.mode, sell_on=sell_on,
         fair_ask=v.fair_ask, discount=discount, price_low=v.low, price_high=v.high, price_source=v.source,

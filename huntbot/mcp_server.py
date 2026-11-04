@@ -36,6 +36,7 @@ def _compact(r) -> dict:
         "discount": round(s.discount, 2) if s.discount is not None else None, "buy_signal": s.alert,
         "rejected": s.rejected, "red_flags": sc.red_flags, "device": sc.device_model, "fault": sc.fault_summary,
         "why": s.reasons, "offer_draft": r.as_dict()["offer"],
+        "team_verdict": r.verdict.decision if r.verdict else None,
     }
 
 
@@ -88,7 +89,7 @@ def build(settings=None, db: DB | None = None) -> MCPServer:
         listing = Listing(source="ebay" if platform == "ebay" else "kleinanzeigen", ad_id=f"pasted-{abs(hash((title, price))) % 10**9}",
                           title=title, url=url or "pasted", price=price, negotiable=negotiable, description=description,
                           location=location, shipping=shipping, raw_source="mcp")
-        return _compact(pipeline.process(listing, use_llm=True, notify=False))
+        return _compact(pipeline.process(listing, use_llm=True, notify=False, purpose="interactive"))
 
     @server.tool()
     def top_deals(limit: int = 10, buy_signals_only: bool = True) -> list[dict]:

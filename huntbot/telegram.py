@@ -79,6 +79,24 @@ def card(result: Result) -> tuple[str, dict]:
         f"🚩 {html.escape(flags)}",
         f"<i>{html.escape(result.model_used)} · {html.escape('; '.join(sc.reasons)[:200])}</i>",
     ]
+    v = result.verdict
+    head = []
+    if v is not None:
+        if v.decision == "BUY":
+            head.append(f"✅ <b>BUY</b> ({v.confidence})")
+        elif v.decision == "WATCH":
+            head.append(f"🔎 <b>WATCH</b>: {html.escape(v.reasons[0] if v.reasons else '')}")
+        elif v.decision == "UNSCREENED":
+            head.append("⚠️ <b>UNSCREENED</b> (rules only)")
+        elif v.decision == "PASS":
+            head.append(f"⛔ <b>PASS</b>: {html.escape(v.reasons[0] if v.reasons else '')}")
+        elif v.decision == "PENDING":
+            head.append("⏳ <b>PENDING</b> (team screening queued)")
+        if v.photo:
+            head.append(f"📷 {html.escape(v.photo)}")
+        if v.objection:
+            head.append(f"😈 {html.escape(v.objection)}")
+    lines = head + lines
     buttons = [[{"text": "Open ad", "url": l.url}]]
     offer = draft_offer(l, s, sc)
     row = []

@@ -18,6 +18,7 @@ RedFlag = Literal[
     "activation_lock", "mdm_or_autopilot", "bios_password", "stock_photos",
     "company_asset_tag", "no_charger", "liquid_damage", "suspicious_urgency",
     "parts_missing", "not_the_device",
+    "dealer_listing", "scam_pattern", "wanted_ad",
 ]
 
 

@@ -39,6 +39,7 @@ def create_app(settings: Settings, db: DB, pipeline: Pipeline, ebay=None, live=N
         return {
             "llm": settings.use_llm, "ebay": settings.ebay_enabled and ebay is not None, "live": live is not None,
             "imap": settings.imap_enabled, "telegram": settings.telegram_enabled,
+            "provider": settings.resolved_provider, "team_enforce": settings.team_enforce,
         }
 
     @app.get("/api/hunt")
@@ -62,9 +63,9 @@ def create_app(settings: Settings, db: DB, pipeline: Pipeline, ebay=None, live=N
         check_token(x_huntbot_token)
         listings = [l for l in (from_companion(i) for i in body.items[:100]) if l]
         if body.page == "ad":
-            results = [pipeline.process(l, use_llm=True) for l in listings]
+            results = [pipeline.process(l, use_llm=True, purpose="interactive") for l in listings]
         else:
-            results = pipeline.process_many(listings, llm_budget=5)
+            results = pipeline.process_many(listings, llm_budget=5, purpose="interactive")
         return {"results": {r.listing.ad_id: _badge(r) for r in results}}
 
     @app.get("/api/top")
@@ -100,4 +101,6 @@ def _badge(r) -> dict:
         "flags": d["screen"]["red_flags"], "model": d["screen"]["device_model"],
         "fault": d["screen"]["fault_summary"], "p_ok": d["score"]["p_ok"], "offer": d["offer"],
         "model_used": d["model_used"],
+        "verdict": (d["verdict"] or {}).get("decision"),
+        "verdict_reason": ((d["verdict"] or {}).get("reasons") or [""])[0],
     }

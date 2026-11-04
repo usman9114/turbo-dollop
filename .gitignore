@@ -11,3 +11,5 @@ var/
 dist/
 state/
 package-lock.json
+evals/data/
+evals/results/
