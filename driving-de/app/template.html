@@ -1,0 +1,384 @@
+<title>Schilderwald Trainer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one narrow column like a sign post; a tab bar of four "plates"; the sign itself is the hero of every card. */
+:root {
+  --asphalt: #232831;      /* ink */
+  --ground: #f3f4f1;       /* page, Verkehrsweiß with a cool bias */
+  --plate: #ffffff;        /* card surface */
+  --line: #d9dcd6;
+  --muted: #5f6672;
+  --blue: #0e518d;         /* RAL 5017 Verkehrsblau: accent */
+  --blue-ink: #ffffff;
+  --yellow: #f6b600;       /* RAL 1023 Verkehrsgelb: highlight */
+  --red: #b21f24;          /* RAL 3020-ish: wrong */
+  --red-soft: #f7e3e2;
+  --green: #1f7a45;        /* right */
+  --green-soft: #e1f1e6;
+  --signbed: #e8eae5;
+  --f-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --f-body: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --asphalt: #e9ebe7; --ground: #15181d; --plate: #1e232a; --line: #323843; --muted: #a0a7b2;
+  --blue: #4f93d6; --blue-ink: #0b1420; --yellow: #f6c233; --red: #ef6b66; --red-soft: #3a2224;
+  --green: #5cc58a; --green-soft: #1b3326; --signbed: #d9dcd6; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --asphalt: #e9ebe7; --ground: #15181d; --plate: #1e232a; --line: #323843; --muted: #a0a7b2;
+  --blue: #4f93d6; --blue-ink: #0b1420; --yellow: #f6c233; --red: #ef6b66; --red-soft: #3a2224;
+  --green: #5cc58a; --green-soft: #1b3326; --signbed: #d9dcd6; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--ground); color: var(--asphalt); font-family: var(--f-body); font-size: 16px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 48px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ground); }
+.wrap { max-width: 720px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 700; text-wrap: balance; line-height: 1.1; margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: .88em; }
+#runner { scroll-margin-top: 72px; }
+
+/* Header */
+header.top { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 20px 12px; }
+.brand { display: flex; gap: 12px; align-items: center; }
+.brand-mark { width: 44px; height: 44px; flex: none; }
+.brand h1 { font-size: 30px; letter-spacing: .01em; }
+.brand p { margin: 0; color: var(--muted); font-size: 14px; }
+.lesson-pill { font-size: 13px; font-weight: 600; background: var(--yellow); color: #1d1d1b; padding: 4px 10px; border-radius: 4px; letter-spacing: .02em; }
+
+/* Tabs */
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--ground); display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding-block: 8px; border-bottom: 1px solid var(--line); }
+nav.tabs a { text-decoration: none; color: var(--asphalt); text-align: center; padding: 8px 4px; border-radius: 6px; font-family: var(--f-display); font-weight: 600; font-size: 17px; letter-spacing: .02em; border: 1.5px solid var(--line); background: var(--plate); }
+nav.tabs a small { display: block; font-family: var(--f-body); font-weight: 500; font-size: 11px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+nav.tabs a[aria-current="page"] { background: var(--blue); color: var(--blue-ink); border-color: var(--blue); }
+nav.tabs a[aria-current="page"] small { color: var(--blue-ink); opacity: .8; }
+main { padding-top: 20px; display: grid; gap: 20px; }
+
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.panel { background: var(--plate); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.btn { border: 1.5px solid var(--blue); background: var(--blue); color: var(--blue-ink); border-radius: 6px; padding: 10px 16px; font-weight: 600; }
+.btn.ghost { background: transparent; color: var(--blue); }
+.btn:disabled { opacity: .45; cursor: default; }
+.chip { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+
+/* Lesson view */
+.checklist { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 6px; }
+.checklist label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+.checklist input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--blue); flex: none; }
+.mnemo { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: 10px; }
+.mnemo div { border-left: 4px solid var(--yellow); padding: 4px 0 4px 12px; }
+.mnemo b { font-family: var(--f-display); font-size: 18px; display: block; }
+details.sec { background: var(--plate); border: 1px solid var(--line); border-radius: 10px; }
+details.sec summary { list-style: none; cursor: pointer; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+details.sec summary::-webkit-details-marker { display: none; }
+details.sec summary h3 { font-size: 22px; }
+details.sec summary .n { color: var(--muted); font-size: 13px; white-space: nowrap; }
+details.sec[open] summary { border-bottom: 1px solid var(--line); }
+.points { margin: 0; padding: 6px 18px 14px; list-style: none; display: grid; }
+.points li { padding: 10px 0; border-bottom: 1px dashed var(--line); }
+.points li:last-child { border-bottom: 0; }
+.points b { display: block; }
+.source-note { font-size: 13px; color: var(--muted); }
+.source-note a { color: var(--blue); }
+
+/* Quiz */
+.weeks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.week { text-align: left; border: 1.5px solid var(--line); background: var(--plate); border-radius: 8px; padding: 10px 12px; }
+.week[aria-pressed="true"] { border-color: var(--blue); box-shadow: inset 0 0 0 1px var(--blue); }
+.week .t { font-family: var(--f-display); font-weight: 700; font-size: 20px; }
+.week .s { font-size: 12px; color: var(--muted); }
+.week.locked { opacity: .6; }
+.meter { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-top: 6px; }
+.meter i { display: block; height: 100%; background: var(--green); }
+.card { background: var(--plate); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.card-head { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line); gap: 8px; }
+.signbed { background: var(--signbed); display: grid; place-items: center; padding: 22px 16px; }
+.signbed img { height: 170px; width: auto; max-width: 100%; object-fit: contain; filter: drop-shadow(0 2px 3px rgba(0,0,0,.18)); }
+.card-body { padding: 16px; display: grid; gap: 12px; }
+.q { font-size: 19px; font-weight: 600; }
+.opts { display: grid; gap: 8px; }
+.opt { display: flex; gap: 12px; align-items: flex-start; text-align: left; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 8px; background: var(--plate); }
+.opt .k { font-family: var(--f-mono); font-size: 13px; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; color: var(--muted); flex: none; margin-top: 2px; }
+.opt:not(:disabled):hover { border-color: var(--blue); }
+.opt.right { border-color: var(--green); background: var(--green-soft); }
+.opt.right .k { border-color: var(--green); color: var(--green); }
+.opt.wrong { border-color: var(--red); background: var(--red-soft); }
+.opt.wrong .k { border-color: var(--red); color: var(--red); }
+.opt:disabled { cursor: default; color: var(--asphalt); }
+.verdict { font-family: var(--f-display); font-size: 24px; font-weight: 700; }
+.verdict.ok { color: var(--green); } .verdict.no { color: var(--red); }
+.explain { display: grid; gap: 10px; border-top: 1px solid var(--line); padding-top: 12px; }
+.explain .name { font-family: var(--f-display); font-size: 22px; font-weight: 700; }
+.explain .en { color: var(--muted); }
+.tip { background: color-mix(in srgb, var(--yellow) 18%, var(--plate)); border-left: 4px solid var(--yellow); padding: 10px 12px; border-radius: 0 6px 6px 0; }
+.tip b { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; display: block; }
+.confused { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+.confused img { height: 44px; width: auto; }
+.hint-keys { font-size: 12px; color: var(--muted); }
+.result-big { font-family: var(--f-display); font-size: 56px; font-weight: 700; line-height: 1; }
+.missed { display: grid; gap: 8px; margin-top: 10px; }
+.missed div { display: flex; gap: 12px; align-items: center; }
+.missed img { height: 48px; width: 56px; object-fit: contain; flex: none; }
+
+/* All signs */
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.filters select { font: inherit; padding: 8px 10px; border-radius: 6px; border: 1.5px solid var(--line); background: var(--plate); color: var(--asphalt); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.tile { background: var(--plate); border: 1px solid var(--line); border-radius: 10px; padding: 10px; display: grid; gap: 6px; text-align: left; position: relative; }
+.tile .img { background: var(--signbed); border-radius: 6px; display: grid; place-items: center; height: 104px; padding: 8px; }
+.tile img { max-height: 88px; width: auto; }
+.tile .num { font-size: 12px; color: var(--muted); }
+.tile .nm { font-weight: 600; font-size: 14px; line-height: 1.25; }
+.tile .mean { font-size: 13px; color: var(--muted); }
+.dot { position: absolute; top: 14px; right: 14px; width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+.dot.m1 { background: var(--yellow); } .dot.m2 { background: var(--green); } .dot.mx { background: var(--red); }
+.legend { font-size: 13px; color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend .dot { position: static; }
+.confirm { border: 1.5px solid var(--yellow); border-radius: 8px; padding: 12px; }
+footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
+footer a { color: var(--blue); }
+
+@media (max-width: 520px) {
+  nav.tabs a { font-size: 15px; } nav.tabs a small { display: none; }
+  .weeks { grid-template-columns: 1fr; }
+  .signbed img { height: 140px; }
+  .brand h1 { font-size: 26px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card { animation: up .22s ease-out; }
+  @keyframes up { from { transform: translateY(6px); } to { transform: none; } }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4 96 50 50 96 4 50Z" fill="#fff" stroke="#232831" stroke-width="3"/><path d="M50 18 82 50 50 82 18 50Z" fill="#f6b600"/></svg>
+      <div><h1>Schilderwald Trainer</h1><p>German road signs and city rules, 50 signs a week</p></div>
+    </div>
+    <span class="lesson-pill" id="lessonPill">Lesson: Fri 6 Nov</span>
+  </header>
+  <nav class="tabs" aria-label="Sections">
+    <a href="#lesson" data-v="lesson">Tomorrow<small>lesson prep</small></a>
+    <a href="#quiz" data-v="quiz">Sign quiz<small>MCQ</small></a>
+    <a href="#situations" data-v="situations">Situations<small>right of way</small></a>
+    <a href="#signs" data-v="signs">All signs<small>browse</small></a>
+  </nav>
+  <main id="view"></main>
+  <footer>
+    Sign images: official StVO pictograms from <a href="https://commons.wikimedia.org/wiki/Category:Diagrams_of_road_signs_of_Germany" target="_blank" rel="noopener">Wikimedia Commons</a> (German official signs are public domain, §5 UrhG). Rules follow the StVO as amended in 2020; check <a href="https://www.gesetze-im-internet.de/stvo_2013/" target="_blank" rel="noopener">gesetze-im-internet.de/stvo_2013</a> when in doubt. Questions written by Claude Sonnet, cross-checked by Claude Haiku, reviewed by Claude Opus. Progress is saved in this browser only.
+  </footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const START = new Date(DATA.start + "T00:00:00");
+const LETTERS = ["A", "B", "C", "D"];
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const store = {
+  get(k, d) { try { const v = localStorage.getItem("swt:" + k); return v ? JSON.parse(v) : d; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem("swt:" + k, JSON.stringify(v)); } catch {} }
+};
+const signById = Object.fromEntries(DATA.signs.map(s => [s.num, s]));
+let progress = store.get("progress", {});    // num -> {box: 0..3, seen, wrong}
+let unlockedEarly = store.get("unlocked", []);
+const weeks = [...new Set(DATA.signs.map(s => s.week))].sort();
+
+function unlockDate(w) { const d = new Date(START); d.setDate(d.getDate() + 7 * (w - 1)); return d; }
+function isUnlocked(w) { return new Date() >= unlockDate(w) || unlockedEarly.includes(w); }
+const fmtDate = d => d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function mastery(num) { const p = progress[num]; if (!p) return ""; if (p.box >= 2) return "m2"; if (p.lastWrong) return "mx"; return "m1"; }
+function record(key, ok) {
+  const p = progress[key] || { box: 0, seen: 0, wrong: 0 };
+  p.seen++; if (ok) { p.box = Math.min(3, p.box + 1); p.lastWrong = false; } else { p.box = 0; p.wrong++; p.lastWrong = true; }
+  progress[key] = p; store.set("progress", progress);
+}
+
+/* ---------- Lesson view ---------- */
+function viewLesson(el) {
+  const g = DATA.lesson.guide; const done = store.get("checklist", {});
+  const lesson = new Date(DATA.lessonDate + "T09:00:00"); const days = Math.ceil((lesson - new Date()) / 864e5);
+  el.innerHTML = `
+    <section class="panel">
+      <div class="eyebrow">${days > 1 ? `Lesson in ${days} days` : days === 1 ? "Lesson tomorrow" : days === 0 ? "Lesson today" : "After your lesson"} · 2 × 45 min city driving</div>
+      <h2 style="font-size:28px;margin-top:4px">Before you get in the car</h2>
+      <ul class="checklist">${g.checklist.map((c, i) => `<li><label for="ck${i}"><input type="checkbox" id="ck${i}" ${done[i] ? "checked" : ""}><span>${esc(c)}</span></label></li>`).join("")}</ul>
+    </section>
+    <section class="panel">
+      <div class="eyebrow">Say these in your head</div>
+      <div class="mnemo">${g.mnemonics.map(m => `<div><b>${esc(m.name)}</b>${esc(m.text)}</div>`).join("")}</div>
+    </section>
+    <div class="row" style="justify-content:space-between"><div class="eyebrow">The rules, ordered by how often they matter in city traffic</div>
+      <button class="btn ghost" id="toggleAll" type="button">Open all</button></div>
+    ${g.sections.map((s, i) => `<details class="sec" ${i === 0 ? "open" : ""}><summary><h3>${esc(s.title)}</h3><span class="n">${s.points.length} rules</span></summary>
+      <ul class="points">${s.points.map(p => `<li><b>${esc(p.head)}</b>${esc(p.body)}</li>`).join("")}</ul></details>`).join("")}
+    <section class="panel row" style="justify-content:space-between">
+      <div><div class="eyebrow">Test yourself</div><b>30 real city situations</b> with explanations.</div>
+      <a class="btn" href="#situations" style="text-decoration:none">Start situations</a>
+    </section>`;
+  el.querySelectorAll(".checklist input").forEach((cb, i) => cb.addEventListener("change", () => { done[i] = cb.checked; store.set("checklist", done); }));
+  $("#toggleAll", el).addEventListener("click", e => { const all = el.querySelectorAll("details.sec"); const open = [...all].some(d => !d.open); all.forEach(d => d.open = open); e.target.textContent = open ? "Close all" : "Open all"; });
+}
+
+/* ---------- Generic MCQ runner ---------- */
+function runQuiz(el, items, opts) {
+  // items: [{key, img?, question, options, answer, render(after) -> html}]
+  let i = 0, score = 0; const missed = [];
+  const order = items.map(it => { const idx = shuffle([0, 1, 2, 3].slice(0, it.options.length)); return { ...it, idx }; });
+  function show() {
+    const it = order[i]; let answered = false;
+    el.innerHTML = `<article class="card">
+      <div class="card-head"><span>${esc(opts.label)} · <span class="mono">${i + 1}/${order.length}</span></span><span class="mono">Score ${score}</span></div>
+      ${it.img ? `<div class="signbed"><img src="${it.img}" alt="Road sign to identify"></div>` : ""}
+      <div class="card-body">
+        ${it.chip ? `<div><span class="chip">${esc(it.chip)}</span></div>` : ""}
+        <div class="q">${esc(it.question)}</div>
+        <div class="opts">${it.idx.map((o, k) => `<button class="opt" type="button" data-o="${o}"><span class="k">${LETTERS[k]}</span><span>${esc(it.options[o])}</span></button>`).join("")}</div>
+        <div class="hint-keys">Keys: 1–4 or A–D to answer, Enter for next</div>
+        <div id="after" hidden></div>
+      </div></article>`;
+    const btns = [...el.querySelectorAll(".opt")];
+    function answer(o) {
+      if (answered) return; answered = true;
+      const ok = o === it.answer; if (ok) score++; else missed.push(it);
+      record(it.key, ok);
+      btns.forEach(b => { b.disabled = true; const v = +b.dataset.o; if (v === it.answer) b.classList.add("right"); else if (v === o) b.classList.add("wrong"); });
+      const a = $("#after", el); a.hidden = false;
+      a.innerHTML = `<div class="explain"><div class="verdict ${ok ? "ok" : "no"}">${ok ? "Correct" : "Not quite"}</div>${it.render()}
+        <div class="row"><button class="btn" id="next" type="button">${i + 1 < order.length ? "Next question" : "See result"}</button></div></div>`;
+      $("#next", el).addEventListener("click", next); $("#next", el).focus({ preventScroll: true });
+      $(".card-head .mono:last-child", el).textContent = "Score " + score;
+    }
+    btns.forEach(b => b.addEventListener("click", () => answer(+b.dataset.o)));
+    el._key = e => {
+      if (e.target.tagName === "SELECT") return;
+      const k = e.key.toUpperCase(); const n = "1234".indexOf(k) >= 0 ? "1234".indexOf(k) : "ABCD".indexOf(k);
+      if (!answered && n >= 0 && btns[n]) { e.preventDefault(); btns[n].click(); }
+      else if (answered && e.key === "Enter" && document.activeElement?.id !== "next") { e.preventDefault(); next(); }
+    };
+  }
+  function next() { i++; if (i < order.length) { show(); el.scrollIntoView({ block: "start", behavior: "smooth" }); } else finish(); }
+  function finish() {
+    el._key = null; const pct = Math.round(100 * score / order.length);
+    el.innerHTML = `<section class="panel"><div class="eyebrow">${esc(opts.label)} finished</div>
+      <div class="row" style="gap:16px;margin:8px 0"><div class="result-big mono">${score}/${order.length}</div><div>${pct >= 90 ? "Excellent. You are ready for this set." : pct >= 70 ? "Good. Repeat the ones you missed." : "Keep going. Missed signs come back first next round."}</div></div>
+      ${missed.length ? `<div class="eyebrow" style="margin-top:12px">Review these</div><div class="missed">${missed.map(m => `<div>${m.img ? `<img src="${m.img}" alt="">` : ""}<span><b>${esc(m.title)}</b><br><span style="color:var(--muted)">${esc(m.options[m.answer])}</span></span></div>`).join("")}</div>` : ""}
+      <div class="row" style="margin-top:16px"><button class="btn" id="again" type="button">New round</button>${missed.length ? `<button class="btn ghost" id="retry" type="button">Retry missed (${missed.length})</button>` : ""}</div></section>`;
+    $("#again", el).addEventListener("click", opts.restart);
+    if (missed.length) $("#retry", el).addEventListener("click", () => runQuiz(el, missed, opts));
+  }
+  show();
+}
+document.addEventListener("keydown", e => { const el = $("#runner"); if (el && el._key) el._key(e); });
+
+/* ---------- Sign quiz view ---------- */
+let selWeek = store.get("week", null);
+function viewQuiz(el) {
+  if (!selWeek || !isUnlocked(selWeek)) selWeek = Math.max(...weeks.filter(isUnlocked));
+  const stat = w => { const s = DATA.signs.filter(x => x.week === w); return { n: s.length, m: s.filter(x => (progress[x.num]?.box || 0) >= 2).length }; };
+  el.innerHTML = `
+    <section>
+      <div class="eyebrow" style="margin-bottom:8px">Choose your set · a new set of 50 unlocks every week</div>
+      <div class="weeks">${weeks.map(w => { const st = stat(w), un = isUnlocked(w); return `<button class="week ${un ? "" : "locked"}" type="button" data-w="${w}" aria-pressed="${w === selWeek}">
+        <div class="t">Week ${w}</div><div class="s">${un ? `${st.m}/${st.n} mastered` : `Unlocks ${fmtDate(unlockDate(w))}`}</div>
+        <div class="meter"><i style="width:${100 * st.m / st.n}%"></i></div></button>`; }).join("")}</div>
+      <div id="unlockBox"></div>
+    </section>
+    <section class="panel row" style="justify-content:space-between">
+      <div><b>Week ${selWeek}</b>: ${esc(DATA.weekTitles[selWeek])}<div class="source-note">Signs you missed or have not seen come first.</div></div>
+      <div class="row"><label for="qlen" class="source-note">Questions</label>
+        <select id="qlen" style="font:inherit;padding:8px;border-radius:6px;border:1.5px solid var(--line);background:var(--plate);color:var(--asphalt)">
+          ${[10, 20, 50].map(n => `<option value="${n}" ${n === store.get("qlen", 10) ? "selected" : ""}>${n}</option>`).join("")}</select>
+        <button class="btn" id="go" type="button">Start</button></div>
+    </section>
+    <div id="runner"></div>`;
+  el.querySelectorAll(".week").forEach(b => b.addEventListener("click", () => {
+    const w = +b.dataset.w;
+    if (isUnlocked(w)) { selWeek = w; store.set("week", w); viewQuiz(el); return; }
+    $("#unlockBox", el).innerHTML = `<div class="confirm row" style="margin-top:10px;justify-content:space-between"><span>Week ${w} opens on ${fmtDate(unlockDate(w))}. Open it now?</span>
+      <span class="row"><button class="btn" id="yesUnlock" type="button">Unlock week ${w}</button><button class="btn ghost" id="noUnlock" type="button">Not yet</button></span></div>`;
+    $("#yesUnlock", el).onclick = () => { unlockedEarly.push(w); store.set("unlocked", unlockedEarly); selWeek = w; store.set("week", w); viewQuiz(el); };
+    $("#noUnlock", el).onclick = () => { $("#unlockBox", el).innerHTML = ""; };
+  }));
+  $("#qlen", el).addEventListener("change", e => store.set("qlen", +e.target.value));
+  const start = () => {
+    const n = +$("#qlen", el)?.value || store.get("qlen", 10);
+    const pool = DATA.signs.filter(s => s.week === selWeek);
+    const pri = s => { const p = progress[s.num]; return !p ? 1 : p.lastWrong ? 0 : 2 + p.box; };
+    const pick = shuffle(pool).sort((a, b) => pri(a) - pri(b)).slice(0, n);
+    const runner = $("#runner", el);
+    runQuiz(runner, pick.map(s => ({
+      key: s.num, img: s.img, question: s.question, options: s.options, answer: s.answer, title: `${s.name_de} (Z ${s.num})`,
+      render: () => { const c = s.confused_with && signById[s.confused_with];
+        return `<div><div class="name">${esc(s.name_de)}</div><div class="en">${esc(s.name_en)} · <span class="mono">Zeichen ${esc(s.num)}</span> · ${esc(s.category)}</div></div>
+          <div>${esc(s.explanation)}</div>
+          ${s.tip ? `<div class="tip"><b>In the car</b>${esc(s.tip)}</div>` : ""}
+          ${c ? `<div class="confused"><img src="${c.img}" alt=""><span>Don't mix it up with <b>Z ${esc(c.num)}</b>: ${esc(c.name_en)}</span></div>` : ""}`; }
+    })), { label: `Week ${selWeek} signs`, restart: () => viewQuiz(el) });
+    runner.scrollIntoView({ block: "start", behavior: "smooth" });
+  };
+  $("#go", el).addEventListener("click", start);
+}
+
+/* ---------- Situations view ---------- */
+let selTopic = "All";
+function viewSituations(el) {
+  const sc = DATA.lesson.scenarios; const topics = ["All", ...new Set(sc.map(s => s.topic))];
+  const done = sc.filter(s => (progress["s:" + s.id]?.box || 0) >= 1).length;
+  el.innerHTML = `<section class="panel row" style="justify-content:space-between">
+      <div><div class="eyebrow">City situations · ${done}/${sc.length} answered right at least once</div><b>Right of way, turning, lights, buses, parking.</b></div>
+      <div class="row"><label for="topic" class="source-note">Topic</label><select id="topic" style="font:inherit;padding:8px;border-radius:6px;border:1.5px solid var(--line);background:var(--plate);color:var(--asphalt)">
+        ${topics.map(t => `<option ${t === selTopic ? "selected" : ""}>${esc(t)}</option>`).join("")}</select>
+        <button class="btn" id="go" type="button">Start</button></div></section>
+    <div id="runner"></div>`;
+  $("#topic", el).addEventListener("change", e => { selTopic = e.target.value; });
+  const start = () => {
+    const pool = sc.filter(s => selTopic === "All" || s.topic === selTopic);
+    runQuiz($("#runner", el), shuffle(pool).map(s => ({ key: "s:" + s.id, chip: s.topic, question: s.question, options: s.options, answer: s.answer, title: s.question,
+      render: () => `<div>${esc(s.explanation)}</div>` })), { label: selTopic === "All" ? "Situations" : selTopic, restart: () => viewSituations(el) });
+  };
+  $("#go", el).addEventListener("click", start);
+  start();
+}
+
+/* ---------- Browse view ---------- */
+let browse = { week: "1", cat: "All" };
+function viewSigns(el) {
+  const cats = ["All", ...new Set(DATA.signs.map(s => s.category))];
+  el.innerHTML = `<div class="filters">
+      <label class="source-note" for="fw" hidden>Week</label><select id="fw">${weeks.map(w => `<option value="${w}" ${String(w) === browse.week ? "selected" : ""}>Week ${w}${isUnlocked(w) ? "" : " (locked)"}</option>`).join("")}<option value="all" ${browse.week === "all" ? "selected" : ""}>All weeks</option></select>
+      <label class="source-note" for="fc" hidden>Category</label><select id="fc">${cats.map(c => `<option ${c === browse.cat ? "selected" : ""}>${esc(c)}</option>`).join("")}</select></div>
+    <div class="legend"><span><i class="dot"></i>not seen</span><span><i class="dot mx"></i>last answer wrong</span><span><i class="dot m1"></i>learning</span><span><i class="dot m2"></i>mastered (2 right in a row)</span></div>
+    <div class="grid" id="grid"></div>`;
+  const draw = () => {
+    const list = DATA.signs.filter(s => (browse.week === "all" || String(s.week) === browse.week) && (browse.cat === "All" || s.category === browse.cat));
+    $("#grid", el).innerHTML = list.map(s => { const lock = !isUnlocked(s.week);
+      return `<div class="tile"><i class="dot ${mastery(s.num)}"></i><div class="img"><img src="${s.img}" alt="${esc(s.name_en)}" loading="lazy"></div>
+      <span class="num mono">Z ${esc(s.num)}</span><span class="nm">${lock ? "Unlocks " + fmtDate(unlockDate(s.week)) : esc(s.name_de)}</span>${lock ? "" : `<span class="mean">${esc(s.name_en)}</span>`}</div>`; }).join("") || `<p>No signs match these filters.</p>`;
+  };
+  $("#fw", el).addEventListener("change", e => { browse.week = e.target.value; draw(); });
+  $("#fc", el).addEventListener("change", e => { browse.cat = e.target.value; draw(); });
+  draw();
+}
+
+/* ---------- Router ---------- */
+const views = { lesson: viewLesson, quiz: viewQuiz, situations: viewSituations, signs: viewSigns };
+function route() {
+  const v = views[location.hash.slice(1)] ? location.hash.slice(1) : "lesson";
+  document.querySelectorAll("nav.tabs a").forEach(a => a.toggleAttribute("aria-current", a.dataset.v === v) || (a.dataset.v === v && a.setAttribute("aria-current", "page")));
+  document.querySelectorAll("nav.tabs a").forEach(a => { if (a.dataset.v === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+  views[v]($("#view"));
+}
+$("#lessonPill").textContent = "Lesson: " + fmtDate(new Date(DATA.lessonDate + "T09:00:00"));
+window.addEventListener("hashchange", () => { route(); window.scrollTo(0, 0); });
+route();
+</script>

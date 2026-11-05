@@ -1,0 +1,847 @@
+{
+ "guide": {
+  "sections": [
+   {
+    "title": "Right of way (Vorfahrt): your top priority",
+    "icon": "🚦",
+    "points": [
+     {
+      "head": "No signs, no lights = rechts vor links (§8)",
+      "body": "Give way to every vehicle coming from your right, cyclists included. This is the rule experienced drivers miss most often."
+     },
+     {
+      "head": "Order of precedence",
+      "body": "Police officer's signals beat traffic lights, which beat signs, which beat general rules like rechts vor links. Follow the highest one."
+     },
+     {
+      "head": "Entering from anywhere 'not a normal road' (§10)",
+      "body": "If you come out of a driveway, parking lot, field track, over a lowered kerb (abgesenkter Bordstein) or out of a verkehrsberuhigter Bereich, you give way to ALL other road users. Rechts vor links does not help you here."
+     },
+     {
+      "head": "Z 205 = give way, Z 206 STOP = full stop",
+      "body": "At STOP, stop completely at the stop line (Haltlinie). Without a line, stop where you can see the crossing traffic. A rolling stop is a violation and an instant test fail. Then give way."
+     },
+     {
+      "head": "Yellow diamond (Z 306) = priority until Z 307",
+      "body": "You have priority at all following junctions. If an additional sign shows the priority road bending (abknickende Vorfahrt), indicate when you follow the bend and when you leave it going straight."
+     },
+     {
+      "head": "Z 301 and Z 102",
+      "body": "Z 301 gives you priority at the NEXT junction only. Z 102 is a warning that rechts vor links applies at the junction ahead."
+     },
+     {
+      "head": "Roundabout (Z 215)",
+      "body": "Traffic in the circle has priority. Do NOT indicate when entering. You MUST indicate right before exiting. Never stop inside the roundabout."
+     }
+    ]
+   },
+   {
+    "title": "Turning and your shoulder checks (§9)",
+    "icon": "🔄",
+    "points": [
+     {
+      "head": "Full routine every time",
+      "body": "Inner mirror, outer mirror, indicate, shoulder check (Schulterblick), position (einordnen), slow down, final shoulder check, then turn."
+     },
+     {
+      "head": "Right turn: the cyclist check",
+      "body": "Cyclists and e-scooters going straight on the cycle lane or path to your right have priority. This final shoulder check is the most important one in German cities."
+     },
+     {
+      "head": "Right turn: stay right",
+      "body": "Keep as far right as possible before you turn."
+     },
+     {
+      "head": "Left turn: oncoming traffic first",
+      "body": "Give way to oncoming vehicles going straight or turning right, trams included. Position near the centre line, or on a one-way street at the left edge."
+     },
+     {
+      "head": "Two cars both turning left",
+      "body": "Normally you pass in front of each other (voreinander). The exception is when the traffic or junction layout requires passing first."
+     },
+     {
+      "head": "Pedestrians in the street you turn into",
+      "body": "They have priority over you, even when you have a green light."
+     }
+    ]
+   },
+   {
+    "title": "Speed zones: know which number applies",
+    "icon": "🏙️",
+    "points": [
+     {
+      "head": "50 km/h starts at the yellow town sign",
+      "body": "The limit begins at the Ortstafel (Z 310), not at a speed sign. It ends at Z 311."
+     },
+     {
+      "head": "Tempo-30-Zone (Z 274.1)",
+      "body": "The limit is 30 km/h in the whole zone until Z 274.2. Normally there are no priority signs inside, so rechts vor links applies at junctions. There are usually no zebra crossings or traffic lights either."
+     },
+     {
+      "head": "After a 30-zone: 50 applies again",
+      "body": "A typical mistake is speeding after the zone ends without noticing. Watch for the end sign (Z 274.2)."
+     },
+     {
+      "head": "Verkehrsberuhigter Bereich (Z 325.1)",
+      "body": "Drive at walking pace (Schrittgeschwindigkeit). Courts accept about 4–7 km/h and never more than about 10. Pedestrians may use the whole road and children may play everywhere."
+     },
+     {
+      "head": "Leaving a Spielstraße (Z 325.2)",
+      "body": "When you leave it onto a normal road, you must give way to everyone (§10)."
+     },
+     {
+      "head": "Don't crawl either",
+      "body": "Being far too slow without reason is also wrong (§3(2)), and examiners mark it."
+     }
+    ]
+   },
+   {
+    "title": "Traffic lights and the green arrow",
+    "icon": "🚥",
+    "points": [
+     {
+      "head": "Amber (Gelb) means stop",
+      "body": "Stop if you can do so safely before the stop line. Accelerating through amber is a typical mistake."
+     },
+     {
+      "head": "Grünpfeil sign (Z 720)",
+      "body": "This is a metal green arrow on black next to the red light. Turning right on red is allowed ONLY after a full stop at the stop line. You must not hinder or endanger pedestrians, cyclists or crossing traffic."
+     },
+     {
+      "head": "Lit green arrow is different",
+      "body": "A green arrow LIGHT is a normal green for that direction (protected turn). It is not the metal sign."
+     },
+     {
+      "head": "Green is not a free pass",
+      "body": "When turning, pedestrians crossing the road you enter still have priority."
+     },
+     {
+      "head": "Phone at the red light",
+      "body": "Holding or using a phone is forbidden even when stopped at red. It is only allowed with the engine fully switched off, not with auto start-stop."
+     }
+    ]
+   },
+   {
+    "title": "Pedestrians and cyclists",
+    "icon": "🚲",
+    "points": [
+     {
+      "head": "Zebra crossing (Z 350 / Z 293)",
+      "body": "Let clearly waiting or crossing pedestrians and wheelchair users cross. Approach at moderate speed and do not overtake before the zebra. Do not halt on it or within 5 m before it."
+     },
+     {
+      "head": "Overtaking distance",
+      "body": "Leave at least 1.5 m lateral distance to cyclists, e-scooters and pedestrians inside built-up areas, and 2 m outside."
+     },
+     {
+      "head": "Schutzstreifen (DASHED line)",
+      "body": "You may cross it only when needed, and halting on it is forbidden."
+     },
+     {
+      "head": "Radfahrstreifen (SOLID line, Z 237)",
+      "body": "Cars must not drive or halt on it."
+     },
+     {
+      "head": "Oncoming bikes in one-way streets",
+      "body": "Many one-way streets (Z 220 / Z 267 with 'Radverkehr frei') allow cyclists both ways, so expect bikes coming towards you."
+     },
+     {
+      "head": "Fahrradstraße (Z 244.1)",
+      "body": "It is for bicycles. Other vehicles are allowed only with an additional sign, and then at max 30 km/h. Cyclists may ride side by side and must not be hindered."
+     },
+     {
+      "head": "Children, elderly, people needing help (§3(2a))",
+      "body": "Reduce speed and be ready to brake."
+     }
+    ]
+   },
+   {
+    "title": "Buses and trams",
+    "icon": "🚌",
+    "points": [
+     {
+      "head": "Bus approaching a stop with hazard lights",
+      "body": "Do not overtake it."
+     },
+     {
+      "head": "Bus standing at a stop with hazard lights",
+      "body": "Pass in either direction only at walking pace and at a distance that does not endanger passengers. Stop if necessary."
+     },
+     {
+      "head": "Bus pulling out of a marked stop",
+      "body": "Let it leave and wait if needed."
+     },
+     {
+      "head": "Tram stopped at a stop without a traffic island",
+      "body": "Pass on the right only at walking pace and only if passengers are not endangered. Otherwise wait."
+     },
+     {
+      "head": "Overtaking trams",
+      "body": "Trams are overtaken on the right. On one-way streets you may also pass on the left."
+     }
+    ]
+   },
+   {
+    "title": "Halting and parking (§12)",
+    "icon": "🅿️",
+    "points": [
+     {
+      "head": "Halten vs. Parken",
+      "body": "Halten is stopping up to 3 minutes, or to load, unload or let people in or out. Leaving the car or staying more than 3 minutes is Parken."
+     },
+     {
+      "head": "No parking near junctions and driveways",
+      "body": "Keep 5 m before and after junctions, measured from the intersection of the kerb lines. Also keep clear of driveways (and opposite them on narrow roads) and lowered kerbs."
+     },
+     {
+      "head": "Bus stops and traffic lights",
+      "body": "No parking 15 m before and after a bus stop sign (Z 224). No parking or halting within 10 m before a traffic light if you would hide it."
+     },
+     {
+      "head": "Z 283 vs. Z 286",
+      "body": "Z 283 (absolute Haltverbot) means no stopping at all. Z 286 (eingeschränktes Haltverbot) allows halting up to 3 min for loading or passengers, but no parking."
+     },
+     {
+      "head": "Which side?",
+      "body": "Park on the right side in the direction of travel. On one-way streets both sides are allowed."
+     }
+    ]
+   },
+   {
+    "title": "Other rules you may meet tomorrow",
+    "icon": "⚠️",
+    "points": [
+     {
+      "head": "Zipper merge (Reißverschluss, §7(4))",
+      "body": "When a lane ends, use it to the end and merge alternately at the merge point."
+     },
+     {
+      "head": "Blue lights + siren",
+      "body": "Immediately clear the way (sofort freie Bahn schaffen)."
+     },
+     {
+      "head": "Narrow sections (Z 208 / Z 308)",
+      "body": "With Z 208 (red arrow smaller) you give priority to oncoming traffic. With Z 308 (blue square, white arrow bigger) you have priority."
+     },
+     {
+      "head": "Level crossing (Z 201)",
+      "body": "Trains always have priority. Do not overtake from the first countdown marker (Bake) before the crossing."
+     },
+     {
+      "head": "Winter tyres",
+      "body": "They are required in wintry conditions (black ice, snow, slush, frost). Since 1 Oct 2024 only tyres with the Alpine symbol (3PMSF) count, and 'M+S' alone no longer does."
+     }
+    ]
+   }
+  ],
+  "checklist": [
+   "Pack your driving licence (and glasses if your licence requires them).",
+   "Tell the instructor up front what you want to practise: multi-lane junctions, trams, cyclists on the right, rechts vor links in 30-zones, parallel/reverse parking, merging.",
+   "Do the cockpit drill: seat, steering wheel, head rest, mirrors, seat belt.",
+   "Use 'Kommentiertes Fahren': say out loud what you see and plan, so the instructor can see your scanning.",
+   "At every right turn, do the final shoulder check for cyclists and e-scooters.",
+   "At every STOP sign, come to a full stop at the line.",
+   "Watch for 30-zone start and end signs, and for the yellow town sign.",
+   "Stay off zebra crossings and bike lanes when stopping.",
+   "Slow down for buses with hazard lights."
+  ],
+  "mnemonics": [
+   {
+    "name": "Turning routine",
+    "text": "Mirror, mirror, signal, shoulder, position, slow, shoulder again, turn: inner mirror, outer mirror, indicate, Schulterblick, einordnen, slow down, final Schulterblick, turn."
+   },
+   {
+    "name": "No sign, no light",
+    "text": "Right before left: look right first, cyclists included."
+   },
+   {
+    "name": "Coming OUT of anything",
+    "text": "Driveway, parking lot, field track, lowered kerb or Spielstraße means you give way to ALL."
+   },
+   {
+    "name": "Who decides?",
+    "text": "Police > lights > signs > general rules."
+   },
+   {
+    "name": "Roundabout",
+    "text": "Enter silent, exit with a signal."
+   },
+   {
+    "name": "Grünpfeil",
+    "text": "Metal sign means stop first, then go if clear. Lit arrow means green, go."
+   }
+  ]
+ },
+ "scenarios": [
+  {
+   "id": "s1",
+   "topic": "Right of way",
+   "question": "You approach a junction in a residential street. There are no signs and no traffic lights. A cyclist is coming from the right. What do you do?",
+   "options": [
+    "Drive on, because a car has priority over a bicycle",
+    "Drive on, because the faster road user goes first",
+    "Give way to the cyclist, because rechts vor links also applies to cyclists",
+    "Stop and wave the cyclist through only if he is in a hurry"
+   ],
+   "answer": 2,
+   "explanation": "With no signs and no lights, rechts vor links (§8) applies. You must give way to vehicles coming from your right, including cyclists.",
+   "review": {
+    "id": "s1",
+    "my_answer": 2,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s2",
+   "topic": "Right of way",
+   "question": "You are driving out of a verkehrsberuhigter Bereich (Z 325.2) onto a normal road. A car is approaching from your right on that road. Who has to give way?",
+   "options": [
+    "You. When leaving a verkehrsberuhigter Bereich you must give way to all other road users (§10 StVO)",
+    "The other car, because it comes from your left",
+    "The other car, because you were driving at walking pace",
+    "Nobody, because rechts vor links applies"
+   ],
+   "answer": 0,
+   "explanation": "Under §10 StVO, anyone leaving a verkehrsberuhigter Bereich onto a normal road must give way to everyone. Rechts vor links does not apply in their favour.",
+   "review": {
+    "id": "s2",
+    "my_answer": 0,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s3",
+   "topic": "Right of way",
+   "question": "You leave a parking lot and cross a lowered kerb (abgesenkter Bordstein) to join the road. A car is coming from your right. What applies?",
+   "options": [
+    "You have priority, because you are on the car's right side",
+    "Rechts vor links applies, so you may go first if you are quicker",
+    "You may go first if you indicate clearly",
+    "You must give way to all road users on the road"
+   ],
+   "answer": 3,
+   "explanation": "Under §10 StVO, whoever enters the road from a parking lot, a driveway or over a lowered kerb must give way to all other road users. Rechts vor links does not apply in your favour.",
+   "review": {
+    "id": "s3",
+    "my_answer": 3,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s4",
+   "topic": "Right of way",
+   "question": "You reach a STOP sign (Z 206). There is no stop line, and parked cars block your view of the crossing road. What is correct?",
+   "options": [
+    "Slow to a rolling stop and go if nothing is coming",
+    "Stop completely at the point where you can see the crossing traffic, then give way",
+    "Stop at the sign only if another vehicle is visible",
+    "Give way as for Z 205, so stopping is optional"
+   ],
+   "answer": 1,
+   "explanation": "At Z 206 you must make a full stop. Without a stop line, stop where you can see the crossing traffic, then give way. A rolling stop is a violation and an instant test fail.",
+   "review": {
+    "id": "s4",
+    "my_answer": 1,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s5",
+   "topic": "Right of way",
+   "question": "You are entering a roundabout (Z 215 with Z 205). Another car is already circulating. When do you use your indicator?",
+   "options": [
+    "Left when entering and right when exiting",
+    "Right when entering and again when exiting",
+    "Not when entering, but right before you exit",
+    "Never, since traffic in a roundabout is always obvious"
+   ],
+   "answer": 2,
+   "explanation": "Traffic already in the circle has priority. You do not indicate when entering, but you must indicate right before exiting.",
+   "review": {
+    "id": "s5",
+    "my_answer": 2,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s6",
+   "topic": "Turning",
+   "question": "You are turning right at a green light. A cycle lane runs to your right, and a cyclist is riding straight on it. What do you do?",
+   "options": [
+    "Turn first, because you started to turn earlier",
+    "Give way to the cyclist after a shoulder check (Schulterblick), because cyclists going straight have priority",
+    "Sound your horn and turn",
+    "Speed up so you are across before the cyclist arrives"
+   ],
+   "answer": 1,
+   "explanation": "Cyclists and e-scooters going straight on the lane to your right have priority over you when you turn right. The right-turn shoulder check is the most important check in German cities.",
+   "review": {
+    "id": "s6",
+    "my_answer": 1,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s7",
+   "topic": "Turning",
+   "question": "You want to turn left at a green light. An oncoming car is going straight and is close. What do you do?",
+   "options": [
+    "Turn left, because you have green and he is only going straight",
+    "Flash your lights so he lets you go",
+    "Turn if you are faster than he is",
+    "Wait and give way to the oncoming traffic going straight or turning right"
+   ],
+   "answer": 3,
+   "explanation": "When turning left you must give way to oncoming traffic going straight or turning right (including trams) (§9). Having green does not change this.",
+   "review": {
+    "id": "s7",
+    "my_answer": 3,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s8",
+   "topic": "Turning",
+   "question": "You and an oncoming car both want to turn left at the same junction and are facing each other. How do you normally pass?",
+   "options": [
+    "Turn in front of each other (voreinander, tangentially), unless the layout requires passing first",
+    "Pass behind each other every time",
+    "The car that arrived second goes first",
+    "Both stop until one of you leaves the junction"
+   ],
+   "answer": 0,
+   "explanation": "Two cars facing each other and both turning left normally turn in front of each other (voreinander). Passing first is only for cases where traffic or the junction layout requires it.",
+   "review": {
+    "id": "s8",
+    "my_answer": 0,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s9",
+   "topic": "Turning",
+   "question": "You are turning right at a green light into a side street. Pedestrians are crossing that side street. What now?",
+   "options": [
+    "Go first, because you have green",
+    "Go first, because pedestrians must wait for turning cars",
+    "Let the pedestrians cross, because they have priority over you when you turn, even at green",
+    "Drive slowly through the group of pedestrians"
+   ],
+   "answer": 2,
+   "explanation": "When turning, pedestrians crossing the road you are turning into have priority, also at green lights (§9).",
+   "review": {
+    "id": "s9",
+    "my_answer": 2,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s10",
+   "topic": "Turning",
+   "question": "Which sequence is correct before turning or pulling out?",
+   "options": [
+    "Indicate, outer mirror, turn, shoulder check, slow down",
+    "Inner mirror, outer mirror, indicate, shoulder check, position (einordnen), slow down, final shoulder check, turn",
+    "Slow down, turn, indicate, mirrors, shoulder check",
+    "Shoulder check, turn, then inner mirror and indicate"
+   ],
+   "answer": 1,
+   "explanation": "The routine is: inner mirror, outer mirror, indicate, Schulterblick, einordnen, slow down, final Schulterblick, then turn. It is a fixed order so no check is skipped.",
+   "review": {
+    "id": "s10",
+    "my_answer": 1,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s11",
+   "topic": "Lights",
+   "question": "The light turns amber (Gelb) as you approach. You can stop safely before the stop line (Haltlinie). What do you do?",
+   "options": [
+    "Accelerate, because amber means clear the junction",
+    "Keep your speed to get through",
+    "Stop only if other traffic is already crossing",
+    "Stop at the stop line"
+   ],
+   "answer": 3,
+   "explanation": "At amber you must stop if you can do so safely before the stop line. Accelerating through amber is a typical mistake.",
+   "review": {
+    "id": "s11",
+    "my_answer": 3,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s12",
+   "topic": "Lights",
+   "question": "The light is red. Next to it is a metal green arrow on a black plate (Grünpfeil, Z 720). You want to turn right. What is correct?",
+   "options": [
+    "Stop fully at the stop line, then turn only if you do not hinder or endanger pedestrians, cyclists or crossing traffic",
+    "Turn right without stopping if the road looks empty",
+    "Wait for the green light, because the arrow changes nothing",
+    "Slow down, then turn right as long as no car is coming"
+   ],
+   "answer": 0,
+   "explanation": "With the Grünpfeil sign you may turn right on red only after a full stop at the stop line. You must not hinder or endanger pedestrians, cyclists or crossing traffic.",
+   "review": {
+    "id": "s12",
+    "my_answer": 0,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s13",
+   "topic": "Lights",
+   "question": "Beside the red light, a green arrow is lit as a light signal, not as a metal sign. You want to go in the arrow's direction. What does it mean?",
+   "options": [
+    "You must stop first, as with the Grünpfeil sign",
+    "It is only a recommendation, and you wait for the main green",
+    "It is a normal green light for that direction",
+    "It allows you to ignore all other traffic"
+   ],
+   "answer": 2,
+   "explanation": "A lit green arrow is a normal green light for that direction, a protected turn. The metal Grünpfeil sign is different and requires a full stop.",
+   "review": {
+    "id": "s13",
+    "my_answer": 2,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s14",
+   "topic": "Pedestrians & cyclists",
+   "question": "You approach a zebra crossing (Z 350). A pedestrian is clearly waiting at the kerb. What do you do?",
+   "options": [
+    "Drive on and let them cross behind you",
+    "Approach at moderate speed and let them cross",
+    "Overtake the car in front just before the zebra to save time",
+    "Stop on the zebra so he can walk around you"
+   ],
+   "answer": 1,
+   "explanation": "You must let pedestrians cross who are clearly waiting or crossing. Approach at moderate speed, do not overtake before the zebra, and do not halt on it or within 5 m before it.",
+   "review": {
+    "id": "s14",
+    "my_answer": 1,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s15",
+   "topic": "Pedestrians & cyclists",
+   "question": "You want to overtake a cyclist on a road inside a built-up area. What lateral distance must you keep?",
+   "options": [
+    "At least 1.5 m",
+    "About 0.5 m, as long as you drive slowly",
+    "Any distance, if you honk first",
+    "At least 2 m, but only outside built-up areas"
+   ],
+   "answer": 0,
+   "explanation": "The minimum lateral distance when overtaking cyclists, e-scooters or pedestrians is 1.5 m inside built-up areas and 2 m outside (since 2020).",
+   "review": {
+    "id": "s15",
+    "my_answer": 0,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s16",
+   "topic": "Pedestrians & cyclists",
+   "question": "You want to stop briefly to drop off a package. The only free space is a Radfahrstreifen with a solid line and Z 237. What is correct?",
+   "options": [
+    "Use it, since stopping briefly is always allowed",
+    "Use it, if you switch on your hazard lights",
+    "Use it, if no cyclist is in sight",
+    "Do not use it, because cars must not drive or halt on a Radfahrstreifen"
+   ],
+   "answer": 3,
+   "explanation": "On a Radfahrstreifen (solid line, Z 237), cars must neither drive nor halt. Only a Schutzstreifen with a dashed line may be crossed when needed.",
+   "review": {
+    "id": "s16",
+    "my_answer": 3,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s17",
+   "topic": "Pedestrians & cyclists",
+   "question": "You turn into a one-way street (Z 220) that has a Zusatzzeichen \"Radverkehr frei\". What should you expect?",
+   "options": [
+    "Nothing special, since one-way means everyone goes the same way",
+    "Cyclists only behind you",
+    "Oncoming cyclists, because many one-way streets allow bikes in both directions",
+    "Cyclists only on the pavement"
+   ],
+   "answer": 2,
+   "explanation": "Many one-way streets allow cyclists in both directions when signed with \"Radverkehr frei\". So you should expect oncoming bikes.",
+   "review": {
+    "id": "s17",
+    "my_answer": 2,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s18",
+   "topic": "Pedestrians & cyclists",
+   "question": "You are in a Fahrradstraße (Z 244.1) with a Zusatzzeichen that allows cars. Two cyclists are riding side by side ahead of you. What is correct?",
+   "options": [
+    "Honk and overtake them immediately",
+    "Stay behind at no more than 30 km/h, because cyclists may ride side by side and must not be hindered",
+    "Drive at 50 km/h, since cars are allowed",
+    "Push them to the side by driving close"
+   ],
+   "answer": 1,
+   "explanation": "In a Fahrradstraße, other vehicles are allowed only if a Zusatzzeichen permits them. The maximum speed is then 30 km/h, and cyclists may ride side by side and must not be hindered.",
+   "review": {
+    "id": "s18",
+    "my_answer": 1,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s19",
+   "topic": "Buses & trams",
+   "question": "A bus ahead is approaching a bus stop with its hazard lights on. You are behind it and the oncoming lane is free. What do you do?",
+   "options": [
+    "Do not overtake it",
+    "Overtake quickly before it stops",
+    "Overtake it if you indicate",
+    "Overtake it on the right"
+   ],
+   "answer": 0,
+   "explanation": "A bus approaching a stop with hazard lights on must not be overtaken.",
+   "review": {
+    "id": "s19",
+    "my_answer": 0,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s20",
+   "topic": "Buses & trams",
+   "question": "A bus is standing at a stop with hazard lights on, and passengers are getting out. You are coming from the opposite direction. How do you pass?",
+   "options": [
+    "At normal speed, because you are on the other side of the road",
+    "With a short honk and normal speed",
+    "Only if there are no passengers on your side",
+    "At walking pace, keeping a distance that does not endanger passengers, and stopping if necessary"
+   ],
+   "answer": 3,
+   "explanation": "Passing a bus standing at a stop with hazard lights is allowed in both directions, but only at walking pace and at a distance that does not endanger passengers. Stop if necessary.",
+   "review": {
+    "id": "s20",
+    "my_answer": 3,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s21",
+   "topic": "Buses & trams",
+   "question": "A tram has stopped at a stop with no traffic island, and passengers are boarding. You want to pass on the right. What applies?",
+   "options": [
+    "Pass at normal speed, because the tram is not moving",
+    "Never pass, even if the passengers have finished",
+    "Pass only at walking pace and only if passengers are not endangered, otherwise wait",
+    "Pass if you flash your lights first"
+   ],
+   "answer": 2,
+   "explanation": "At a tram stop without an island, you may pass on the right only at walking pace and only if passengers are not endangered. Otherwise you must wait.",
+   "review": {
+    "id": "s21",
+    "my_answer": 2,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s22",
+   "topic": "Parking",
+   "question": "You find a free space 3 m before a junction. Is it legal to park there?",
+   "options": [
+    "No, parking is not allowed within 5 m before and after junctions, measured from the intersection of the kerb lines",
+    "Yes, if you leave your hazard lights on",
+    "Yes, if the side street is quiet",
+    "Yes, if you stay for less than 3 minutes and leave the car"
+   ],
+   "answer": 0,
+   "explanation": "There is no parking within 5 m before and after junctions, measured from the intersection of the kerb lines. Leaving the car also makes it parking, not halting.",
+   "review": {
+    "id": "s22",
+    "my_answer": 0,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s23",
+   "topic": "Parking",
+   "question": "A bus stop sign (Z 224) stands on your side of the road. Where may you not park?",
+   "options": [
+    "Only directly at the sign",
+    "Only inside the marked bus bay",
+    "Nowhere, since parking next to bus stops is allowed",
+    "Within 15 m before and after the sign"
+   ],
+   "answer": 3,
+   "explanation": "Parking is forbidden 15 m before and after a bus stop sign (Z 224).",
+   "review": {
+    "id": "s23",
+    "my_answer": 3,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s24",
+   "topic": "Parking",
+   "question": "You see a Z 286 (eingeschränktes Haltverbot). You want to stay in the car for 2 minutes to unload a bag. What is correct?",
+   "options": [
+    "Not allowed, because there is no stopping at all",
+    "Allowed, because halting up to 3 minutes for loading or passengers is permitted, but parking is not",
+    "Allowed, and you may also park there if you stay for 10 minutes",
+    "Allowed, but only if you leave the car"
+   ],
+   "answer": 1,
+   "explanation": "Z 286 allows halting up to 3 minutes for loading or passengers but forbids parking. Only the absolute Haltverbot (Z 283) forbids all stopping.",
+   "review": {
+    "id": "s24",
+    "my_answer": 1,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s25",
+   "topic": "Speed",
+   "question": "You drive on a country road and reach the yellow town sign (Ortstafel, Z 310). There is no speed sign. What limit applies from there?",
+   "options": [
+    "70 km/h, until a speed sign says otherwise",
+    "Whatever the road allows outside towns",
+    "50 km/h, starting at the town sign",
+    "30 km/h, until you see Z 311"
+   ],
+   "answer": 2,
+   "explanation": "Inside built-up areas the limit is 50 km/h. It starts at the yellow town sign (Z 310), not at a speed sign, and ends at Z 311.",
+   "review": {
+    "id": "s25",
+    "my_answer": 2,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s26",
+   "topic": "Speed",
+   "question": "You pass the end of a Tempo-30-Zone (Z 274.2) but are still inside the town. What limit applies now?",
+   "options": [
+    "50 km/h again, because you are still in a built-up area",
+    "30 km/h, until you see a new sign",
+    "No limit, until the next speed sign",
+    "Walking pace, as in a verkehrsberuhigter Bereich"
+   ],
+   "answer": 0,
+   "explanation": "A Tempo-30-Zone lasts until Z 274.2. After it, the 50 km/h limit for built-up areas applies again. Speeding after a 30-zone ends is a typical mistake.",
+   "review": {
+    "id": "s26",
+    "my_answer": 0,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s27",
+   "topic": "Speed",
+   "question": "You drive into a verkehrsberuhigter Bereich (Z 325.1, \"Spielstraße\"), and children are playing in the road. What speed is right?",
+   "options": [
+    "30 km/h, as in a Tempo-30-Zone",
+    "20 km/h, because children are present",
+    "50 km/h, if you are careful",
+    "Schrittgeschwindigkeit (walking pace), about 4–7 km/h, never more than about 10 km/h"
+   ],
+   "answer": 3,
+   "explanation": "In a verkehrsberuhigter Bereich you must drive at walking pace (Schrittgeschwindigkeit). Courts accept about 4–7 km/h and never more than about 10 km/h. Pedestrians may use the whole road and children may play everywhere.",
+   "review": {
+    "id": "s27",
+    "my_answer": 3,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s28",
+   "topic": "Other",
+   "question": "You are stopped at a red light with the engine running (auto start-stop is currently off). May you pick up your phone to check a message?",
+   "options": [
+    "Yes, because you are not moving",
+    "No, holding or using a phone is forbidden even at a red light, unless the engine is fully switched off",
+    "Yes, if the phone is in your hand only briefly",
+    "Yes, if auto start-stop is switched on"
+   ],
+   "answer": 1,
+   "explanation": "Holding or using a phone while driving is forbidden, also when stopped at a red light. It is only allowed with the engine fully switched off, and auto start-stop does not count.",
+   "review": {
+    "id": "s28",
+    "my_answer": 1,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s29",
+   "topic": "Other",
+   "question": "You are driving in a city when you hear a siren and see blue lights approaching from behind. What do you do?",
+   "options": [
+    "Speed up to get out of its way",
+    "Ignore it, because you are driving correctly",
+    "Immediately clear the way (sofort freie Bahn schaffen)",
+    "Stop exactly where you are in the middle of the lane"
+   ],
+   "answer": 2,
+   "explanation": "When you see blue lights together with a siren, you must immediately clear the way (\"sofort freie Bahn schaffen\").",
+   "review": {
+    "id": "s29",
+    "my_answer": 2,
+    "ok": true,
+    "issues": ""
+   }
+  },
+  {
+   "id": "s30",
+   "topic": "Other",
+   "question": "Your lane ends ahead and traffic is dense. How should you merge?",
+   "options": [
+    "Merge early at the first sign of the lane closure",
+    "Use the lane until its end and merge alternately (Reißverschluss) at the merge point",
+    "Stay in the ending lane and force your way in",
+    "Use the lane until the end, then the vehicle in the through lane lets you in only if you honk"
+   ],
+   "answer": 1,
+   "explanation": "Under the zipper merge rule (Reißverschluss, §7(4)), you use the lane that ends until its end. You then merge alternately at the merge point.",
+   "review": {
+    "id": "s30",
+    "my_answer": 1,
+    "ok": true,
+    "issues": ""
+   }
+  }
+ ]
+}

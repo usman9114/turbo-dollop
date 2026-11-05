@@ -1,0 +1,2852 @@
+[
+ {
+  "num": "205",
+  "week": 1,
+  "name_de": "Vorfahrt gewähren!",
+  "name_en": "Give way",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign at a junction?",
+  "options": [
+   "Stop completely in every case, because the sign works like a stop sign",
+   "Let vehicles on the intersecting road go first, slow down and stop if necessary",
+   "Give way only to traffic coming from the right, as with right-before-left",
+   "Drive on with priority, because the sign only warns of a junction ahead"
+  ],
+  "answer": 1,
+  "explanation": "Sign 205 obliges you to give way to traffic on the intersecting road, from both left and right. You must reduce speed early and stop if necessary. A full stop is required only if the traffic situation demands it. The obligation applies at the junction where the sign stands.",
+  "tip": "Instructors want to see you slow down early and look both ways, not roll up to the junction at full speed. A hesitant, visible approach shows that you have noticed the sign. If you can see the road is clear, you may carry on without stopping.",
+  "confused_with": "206",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_205_-_Vorfahrt_gewähren!_StVO_1970.svg"
+ },
+ {
+  "num": "206",
+  "week": 1,
+  "name_de": "Halt! Vorfahrt gewähren!",
+  "name_en": "Stop and give way",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct for this sign?",
+  "options": [
+   "You may continue without stopping if no other vehicle is in sight",
+   "You must stop only if vehicles are approaching on the intersecting road",
+   "You must always come to a complete stop at the stop line, then give way",
+   "You must stop only when the sign is combined with a traffic light"
+  ],
+  "answer": 2,
+  "explanation": "Sign 206 requires a complete stop at the stop line (Haltlinie), even if the road is empty. If there is no line, stop at the point where you have a clear view of the intersecting road. Then give way to all traffic on that road and continue only when it is safe.",
+  "tip": "A 'rolling stop' is a classic test failure. The wheels must stop moving, and examiners often watch for this. Stop at the line first, and if you cannot see well from there, creep forward and give way again.",
+  "confused_with": "205",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_206_-_Halt!_Vorfahrt_gewähren!_StVO_2017.svg"
+ },
+ {
+  "num": "301",
+  "week": 1,
+  "name_de": "Vorfahrt",
+  "name_en": "Right of way at the next junction",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "You have right of way on this road until a sign cancels it",
+   "You have right of way at the next junction only",
+   "You must give way to traffic from the right at the next junction",
+   "Right-before-left applies on this road from here on"
+  ],
+  "answer": 1,
+  "explanation": "Sign 301 tells you that you have right of way at the next junction or intersection. Its effect ends there. Beyond that junction, the right of way is no longer guaranteed by this sign.",
+  "tip": "Do not assume the priority continues along the road. It does only with sign 306, which stays valid across junctions. Even with right of way, look at the side roads, because other drivers may overlook the signs.",
+  "confused_with": "306",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_301_-_Vorfahrt,_StVO_1970.svg"
+ },
+ {
+  "num": "306",
+  "week": 1,
+  "name_de": "Vorfahrtstraße",
+  "name_en": "Priority road",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "The sign applies only at the next junction",
+   "You must give way to traffic from the right at junctions",
+   "You have right of way at all following junctions until sign 307 or another sign cancels it",
+   "The sign allows you to drive faster than the usual speed limit"
+  ],
+  "answer": 2,
+  "explanation": "Sign 306 marks a priority road. You have right of way at following junctions and intersections until the priority ends, for example with sign 307. If the priority road turns, a Zusatzzeichen shows this and you must indicate accordingly. It does not change the speed limit.",
+  "tip": "Where the priority road bends at a junction (a plate shows the thick line turning), you must indicate when you follow the bend, and also when you leave it by going straight on. Keep watching side roads: others may miss your priority.",
+  "confused_with": "301",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_306_-_Vorfahrtstraße,_StVO_1970.svg"
+ },
+ {
+  "num": "307",
+  "week": 1,
+  "name_de": "Ende der Vorfahrtstraße",
+  "name_en": "End of priority road",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Your priority ends, and at the next junction the normal rules apply (usually right before left)",
+   "Your road ends and you must turn right",
+   "Priority is given to the road on the left from this point",
+   "The speed limit on this road is lifted"
+  ],
+  "answer": 0,
+  "explanation": "Sign 307 ends the priority road. After it, you no longer have right of way, and at the next junction the usual rules apply: right before left unless other signs or traffic lights regulate it. It does not itself give priority to another road.",
+  "tip": "Your priority stops at this sign. Slow down before the next junction and look right: without other signs, rechts vor links applies there.",
+  "confused_with": "306",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_307_-_Ende_der_Vorfahrtstraße,_StVO_1981.svg"
+ },
+ {
+  "num": "102",
+  "week": 1,
+  "name_de": "Kreuzung oder Einmündung mit Vorfahrt von rechts",
+  "name_en": "Junction with priority from the right",
+  "category": "Gefahrzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Keep your speed, because vehicles from the right must give way",
+   "Stop completely, because the sign works like a stop sign",
+   "Prepare to give way to vehicles from the right at the next junction, and be ready to brake",
+   "Give way to vehicles from both the left and right, as the road is a minor road"
+  ],
+  "answer": 2,
+  "explanation": "Sign 102 warns of a junction where traffic from the right has right of way (right-before-left). Reduce speed and be ready to brake. It is a warning sign that makes you aware of the junction; the priority rule itself comes from §8 StVO.",
+  "tip": "In 30 km/h zones in German cities, right before left is the normal rule and often has no sign at all. Examiners watch whether you slow down and look right at every unmarked junction.",
+  "confused_with": "205",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_102_-_Kreuzung_oder_Einmündung_mit_Vorfahrt_von_rechts,_StVO_1970.svg"
+ },
+ {
+  "num": "215",
+  "week": 1,
+  "name_de": "Kreisverkehr",
+  "name_en": "Roundabout",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement about this sign is correct?",
+  "options": [
+   "You must drive around the roundabout in the direction of the arrows (anticlockwise), and with sign 205 you give way to traffic in the circle",
+   "You always have priority over vehicles already in the roundabout",
+   "You must drive around clockwise, as in the UK",
+   "You must stop before entering, as with sign 206"
+  ],
+  "answer": 0,
+  "explanation": "Sign 215 is a mandatory sign: you must drive around the roundabout in the direction shown (anticlockwise). In Germany, vehicles in the roundabout have priority only if sign 205 is also present at the entry, which is normal. Without 205, ordinary priority rules apply.",
+  "tip": "Check for sign 205 at the entry. Indicate when leaving the roundabout, not on entering when you want the first exit. Examiners dislike an unclear exit signal.",
+  "confused_with": "205",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_215_-_Kreisverkehr,_StVO_2000.svg"
+ },
+ {
+  "num": "208",
+  "week": 1,
+  "name_de": "Dem Gegenverkehr Vorrang gewähren!",
+  "name_en": "Give way to oncoming traffic",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Drive through the narrow section first, because you have priority",
+   "Wait before the narrow section and let oncoming traffic pass first",
+   "Stop in every case, even if no vehicle is oncoming",
+   "Overtake slower vehicles before the narrow section"
+  ],
+  "answer": 1,
+  "explanation": "Sign 208 stands before a narrow section such as parked cars, roadworks or another obstacle. Oncoming traffic has priority there. If oncoming vehicles are in or approaching the narrow section, wait before it and proceed only when you can pass without obstructing them.",
+  "tip": "Look ahead early and position your car so that you leave room for oncoming traffic. In city streets, an approaching bus or lorry can need more room than you expect.",
+  "confused_with": "308",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_208_-_Dem_Gegenverkehr_Vorrang_gewähren!_600x600,_StVO_1992.svg"
+ },
+ {
+  "num": "308",
+  "week": 1,
+  "name_de": "Vorrang vor dem Gegenverkehr",
+  "name_en": "Priority over oncoming traffic",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "You must wait for oncoming traffic at the narrow section",
+   "Oncoming traffic has priority at the narrow section",
+   "Driving on the road is allowed only in one direction",
+   "You have priority over oncoming traffic at the narrow section"
+  ],
+  "answer": 3,
+  "explanation": "Sign 308 stands before a narrow section and gives you priority over oncoming traffic there. Oncoming drivers should wait for you. You still need to drive attentively and brake if they do not yield.",
+  "tip": "Do not insist on your priority at the cost of an accident. When you have priority, watch for a driver who ignores it. Do not confuse this sign with 208, which has the opposite meaning.",
+  "confused_with": "208",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_308_-_Vorrang_vor_dem_Gegenverkehr,_StVO_1992.svg"
+ },
+ {
+  "num": "267",
+  "week": 1,
+  "name_de": "Verbot der Einfahrt",
+  "name_en": "No entry",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "No parking in this street",
+   "The road is closed for all traffic in both directions",
+   "Only residents may enter this street",
+   "Vehicles may not enter from this direction"
+  ],
+  "answer": 3,
+  "explanation": "Sign 267 forbids vehicles to enter the road from your direction. You typically meet it at the far end of a one-way street, facing traffic that would drive in against the one-way direction. Exceptions apply only if a Zusatzzeichen allows them (often 'Radverkehr frei').",
+  "tip": "Be careful with cyclists: a plate such as 'Radfahrer frei' (Zusatzzeichen 1022-10) can allow them to enter, but not motorists. Entering a one-way street the wrong way is a serious offence. Always check the signs at street corners in unfamiliar areas.",
+  "confused_with": "250",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_267_-_Verbot_der_Einfahrt,_StVO_1970.svg"
+ },
+ {
+  "num": "220-20",
+  "week": 1,
+  "name_de": "Einbahnstraße, rechtsweisend",
+  "name_en": "One-way street (arrow pointing right)",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "No entry for vehicles coming from the right",
+   "One-way street: traffic may only travel in the direction of the arrow, here to the right",
+   "Compulsory turn to the right at the next junction",
+   "Priority for traffic coming from the right"
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 220 marks a one-way street. Vehicles may only drive in the direction the arrow points, and the sign is placed at the junction where the one-way section begins. It applies until the street ends or the one-way section is lifted.",
+  "tip": "Look for a Zusatzzeichen (e.g. 1022-10 'Radfahrer frei') under the sign, which allows cyclists to ride against the one-way direction. Without it, they are also prohibited. At the other end you will see Zeichen 267 (Verbot der Einfahrt).",
+  "confused_with": "267",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_220-20_-_Einbahnstraße,_rechtsweisend,_StVO_2017.svg"
+ },
+ {
+  "num": "250",
+  "week": 1,
+  "name_de": "Verbot für Fahrzeuge aller Art",
+  "name_en": "No vehicles of any kind",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Do not enter with a car, but motorcycles and bicycles may pass",
+   "Do not enter if you are driving a vehicle heavier than 3.5 t",
+   "Do not drive into this road with any vehicle, including bicycles",
+   "Do not enter from this direction, as it is a one-way street"
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 250 prohibits all vehicles, including cars, motorcycles, mopeds and bicycles. Pedestrians may still use the road, and so may a person pushing a bicycle, who counts as a pedestrian. The ban applies from the sign, unless a Zusatzzeichen limits or exempts it.",
+  "tip": "Read any Zusatzzeichen carefully, such as 'Anlieger frei' or 'Lieferverkehr frei', because the exceptions are what examiners ask about. Do not mistake this empty white disc for Zeichen 267, which is a white bar and only blocks entry from one direction.",
+  "confused_with": "267",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_250_-_Verbot_für_Fahrzeuge_aller_Art,_StVO_1970.svg"
+ },
+ {
+  "num": "260",
+  "week": 1,
+  "name_de": "Verbot für Krafträder, Mofas und sonstige mehrspurige Kraftfahrzeuge",
+  "name_en": "No motor vehicles (motorcycles, mopeds and cars)",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "Motor vehicles of all kinds, including motorcycles and mopeds, may not enter, but bicycles may",
+   "Only motorcycles and mopeds are prohibited; cars may enter",
+   "Only vehicles with more than two wheels are prohibited",
+   "All vehicles are prohibited, including bicycles"
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 260 prohibits all motor vehicles: motorcycles, mopeds and Mofas, and cars and other multi-track motor vehicles. Bicycles and pedestrians may still use the road. The ban begins at the sign and applies unless a Zusatzzeichen allows an exception.",
+  "tip": "A bicycle with a conventional pedelec motor (support up to 25 km/h) is legally a bicycle and may pass. A Mofa may not, which is a common trap for people coming from abroad. Do not mix this sign up with Zeichen 250, which bans all vehicles including bicycles.",
+  "confused_with": "251",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_260_-_Verbot_für_Krafträder_und_Mofas_und_sonstige_mehrspurige_Kraftfahrzeuge,_StVO_1992.svg"
+ },
+ {
+  "num": "251",
+  "week": 1,
+  "name_de": "Verbot für Kraftwagen und sonstige mehrspurige Kraftfahrzeuge",
+  "name_en": "No cars and other multi-track motor vehicles",
+  "category": "Vorschriftzeichen",
+  "question": "Which vehicle may pass this sign?",
+  "options": [
+   "A passenger car with a trailer",
+   "A delivery van",
+   "A camper van (Wohnmobil)",
+   "A motorcycle"
+  ],
+  "answer": 3,
+  "explanation": "Zeichen 251 prohibits cars and other multi-track motor vehicles such as vans, lorries and camper vans. Single-track vehicles such as motorcycles, mopeds and bicycles may still pass. The ban applies from the sign, unless a Zusatzzeichen allows an exception.",
+  "tip": "The picture shows a car, but the ban covers all multi-track motor vehicles, not just passenger cars. If the picture shows a motorcycle next to a car, it is Zeichen 260 instead, and motorcycles are banned there as well.",
+  "confused_with": "260",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_251_-_Verbot_für_Kraftwagen_und_sonstige_mehrspurige_Kraftfahrzeuge,_StVO_1992.svg"
+ },
+ {
+  "num": "274-30",
+  "week": 1,
+  "name_de": "Zulässige Höchstgeschwindigkeit (30 km/h)",
+  "name_en": "Maximum speed limit 30 km/h",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Reduce to 30 km/h, but only for the next 100 m",
+   "Not exceed 30 km/h from this sign until the limit is lifted or replaced",
+   "Drive exactly 30 km/h, as this is the minimum speed",
+   "Not exceed 30 km/h anywhere in the whole residential area"
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 274 sets a maximum speed of 30 km/h, here a single-road limit. It applies from the sign until it is lifted by Zeichen 278 (Ende der Höchstgeschwindigkeit) or replaced by another speed sign, or until a Zusatzzeichen shows its end. Note that it is a limit, not a required speed.",
+  "tip": "Be at the correct speed when you pass the sign, not shortly after. Instructors watch whether you brake early enough, and they expect you to check for time- or weather-related Zusatzzeichen. The round sign alone is not a zone, so right-before-left is not automatically in force.",
+  "confused_with": "274.1",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_274-30_-_Zulässige_Höchstgeschwindigkeit,_StVO_2017.svg"
+ },
+ {
+  "num": "274.1",
+  "week": 1,
+  "name_de": "Beginn einer Tempo 30-Zone",
+  "name_en": "Start of a 30 km/h zone",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "The limit of 30 km/h applies only on the road where the sign stands",
+   "It is a recommended speed that you may exceed in light traffic",
+   "From here, 30 km/h applies in the whole zone until the end-of-zone sign, and right-before-left usually applies",
+   "From here, 30 km/h applies, and you have priority over side roads"
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 274.1 begins a Tempo 30-Zone. The 30 km/h limit applies on all roads in the zone, and the signs are not repeated at each junction. It lasts until Zeichen 274.2 (Ende einer Tempo 30-Zone) or another sign. Inside the zone, right-before-left generally applies, and there are usually no traffic lights or Zebra crossings.",
+  "tip": "Do not look for a repeat sign after every junction: in a zone it will not appear, and the limit still holds. Examiners expect you to check right-before-left at every unsigned junction.",
+  "confused_with": "274-30",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_274.1_-_Beginn_einer_Tempo_30-Zone,_StVO_2013.svg"
+ },
+ {
+  "num": "274.2",
+  "week": 1,
+  "name_de": "Ende einer Tempo 30-Zone (einseitig)",
+  "name_en": "End of a 30 km/h zone (one-sided)",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "The Tempo 30-Zone ends here; after this sign the speed limit that normally applies on that road is in force, such as 50 km/h in town",
+   "A new 30 km/h zone starts here",
+   "All speed limits end, and you may drive as fast as you like",
+   "The built-up area ends here, so you may drive 100 km/h"
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 274.2 marks the end of a Tempo 30-Zone, and the sign appears on one side of the road only. After passing it the zone limit is lifted, and the speed limit for the road you are now on applies, normally 50 km/h inside a built-up area. Other signs may of course set a different limit.",
+  "tip": "Leaving the zone often takes you onto a road with different priority rules, so check the junction signs and the right-before-left situation rather than accelerating immediately. A cancelled limit does not end the built-up area, so 50 km/h is usually still the maximum.",
+  "confused_with": "278",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_274.2_-_Ende_einer_Tempo_30-Zone_(einseitig),_StVO_2013.svg"
+ },
+ {
+  "num": "325.1",
+  "week": 1,
+  "name_de": "Beginn eines verkehrsberuhigten Bereichs",
+  "name_en": "Start of a traffic-calmed area (shared space / living street)",
+  "category": "Richtzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Drive at most 30 km/h and keep to the right of the road",
+   "Give way to all vehicles from the right, but pedestrians must keep to the pavement",
+   "You may drive normally, but you may not park anywhere in the area",
+   "Drive at walking pace; pedestrians may use the whole road and children may play there, and you must not endanger or obstruct them"
+  ],
+  "answer": 3,
+  "explanation": "Zeichen 325.1 starts a verkehrsberuhigter Bereich. Vehicles must drive at walking pace (Schrittgeschwindigkeit), and pedestrians may use the whole width of the road, and children may play on it. Drivers must not endanger or obstruct pedestrians and must wait if necessary. Parking is allowed only in marked spaces, and the rules apply until Zeichen 325.2.",
+  "tip": "The StVO gives no exact figure for Schrittgeschwindigkeit; courts usually accept around 7 km/h at most, so keep clearly slower near children. Examiners watch for hesitation and anticipation near pedestrians, and for illegal parking outside marked spaces.",
+  "confused_with": "274.1",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_325.1_-_Beginn_eines_verkehrsberuhigten_Bereichs,_StVO_2013.svg"
+ },
+ {
+  "num": "325.2",
+  "week": 1,
+  "name_de": "Ende eines verkehrsberuhigten Bereichs",
+  "name_en": "End of a traffic-calmed area",
+  "category": "Richtzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "You may now drive at 50 km/h and have priority",
+   "You are leaving the traffic-calmed area and must give way to traffic on the road you are entering",
+   "Pedestrians must give way to you from here on, and priority comes from the right",
+   "You may now park anywhere along the road"
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 325.2 ends the traffic-calmed area, so the special rules (walking pace, pedestrian use of the whole road) no longer apply. When you drive out of this area onto another road, you must give way to other road users (§ 10 StVO). From here the normal rules and signs for the road apply.",
+  "tip": "A common mistake is to accelerate at once and pull out without giving way, because people assume they have right of way after the sign. Examiners expect you to stop or slow down, look both ways and also watch for cyclists and pedestrians on the pavement before you move out.",
+  "confused_with": "325.1",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_325.2_-_Ende_eines_verkehrsberuhigten_Bereichs,_StVO_2009.svg"
+ },
+ {
+  "num": "310",
+  "week": 1,
+  "name_de": "Ortstafel (Vorderseite)",
+  "name_en": "Town/village name sign (front: start of built-up area)",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "A recommended route to the named town",
+   "The end of the built-up area and the town named",
+   "You are entering a built-up area; the in-town rules apply, including a general 50 km/h limit unless signs show otherwise",
+   "A tourist information sign without legal effect"
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 310 (the yellow Ortstafel, front side) marks the beginning of a closed built-up area (geschlossene Ortschaft). From the sign the in-town rules apply, including the general limit of 50 km/h for motor vehicles unless other signs set a different limit. The area ends at the back of the sign, Zeichen 311.",
+  "tip": "Brake before the sign, not at it, because speed checks are often placed just behind Ortstafeln. Also keep in mind that if a lower limit was signed before the town, that remains in force. The yellow sign has legal effect and is not just a name board, which is why it is a favourite exam question.",
+  "confused_with": "311",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_310_-_Ortstafel_Vorderseite,_StVO_2017.svg"
+ },
+ {
+  "num": "311",
+  "week": 1,
+  "name_de": "Ortstafel (Rückseite)",
+  "name_en": "Town sign, reverse side: end of built-up area",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "You are entering a built-up area, so the 50 km/h limit now applies.",
+   "You are leaving the built-up area (geschlossene Ortschaft), so the town rules no longer apply from here.",
+   "A town district ends, but the town-specific rules continue.",
+   "A speed limit applies until the next village sign."
+  ],
+  "answer": 1,
+  "explanation": "The back of the town sign (Zeichen 311) marks the end of the geschlossene Ortschaft. From here the rules for roads outside built-up areas apply. For cars without a trailer the general limit is then 100 km/h on ordinary roads. The sign does not cancel speed limits that are signposted separately.",
+  "tip": "Do not speed up before you pass the sign. Speed checks are often set up just behind it, and instructors want to see your speed adapted to the road, not just to the sign. A separate speed-limit sign stays valid after the town sign.",
+  "confused_with": "310",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_311_-_Ortstafel_Rückseite,_StVO_2017.svg"
+ },
+ {
+  "num": "276",
+  "week": 1,
+  "name_de": "Überholverbot für Kraftfahrzeuge aller Art",
+  "name_en": "No overtaking for motor vehicles of all kinds",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "You may only overtake vehicles that are slower than 25 km/h.",
+   "You must not overtake any vehicle at all, including bicycles and motorcycles.",
+   "Motor vehicles must not overtake multi-track motor vehicles (cars, vans, lorries), but may still overtake bicycles and solo motorcycles.",
+   "Only lorries over 3.5 t are forbidden to overtake."
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 276 forbids motor vehicles of all kinds from overtaking multi-track vehicles and motorcycles with a sidecar. Single-track vehicles such as bicycles and solo motorcycles may still be overtaken. The ban lasts until a sign ending it, such as Zeichen 280 (end of overtaking ban) or 282 (end of all restrictions).",
+  "tip": "When you pass cyclists you must keep a lateral distance of at least 1.5 m in built-up areas and 2 m outside them (2020 amendment). If the lane is too narrow for that, stay behind. Examiners watch for this.",
+  "confused_with": "277",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_276_-_Überholverbot_für_Kraftfahrzeuge_aller_Art,_StVO_1992.svg"
+ },
+ {
+  "num": "283",
+  "week": 1,
+  "name_de": "Absolutes Haltverbot",
+  "name_en": "No stopping (absolute stopping ban)",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "You may stop for up to 3 minutes, but not park.",
+   "You may stop here only to load or unload.",
+   "You may stop here only if you stay in the vehicle.",
+   "You must not stop here even briefly, for example to let a passenger out. You may only wait when traffic forces you to, such as at a red light or in a queue."
+  ],
+  "answer": 3,
+  "explanation": "Zeichen 283 forbids all stopping and parking on the side of the road where the sign stands. Even a short stop to let someone out or to load is not allowed. You may only stop when the traffic situation requires it. The ban normally runs to the next junction or to the end indicated on Zusatzzeichen.",
+  "tip": "Even 'just a second' with hazard lights on to drop someone off is an offence here. The sign is easy to overlook near bus stops and junctions.",
+  "confused_with": "286",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_283_-_Absolutes_Haltverbot,_StVO_2017.svg"
+ },
+ {
+  "num": "286",
+  "week": 1,
+  "name_de": "Eingeschränktes Haltverbot",
+  "name_en": "Restricted stopping ban",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Stopping is forbidden at all times, including for passengers.",
+   "Parking is allowed, but only with a parking disc.",
+   "Stopping for longer than 3 minutes is forbidden, so you must not park. Loading, unloading and boarding or alighting are still allowed.",
+   "Only residents may park, and everyone else may stop for 3 minutes."
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 286 forbids stopping for more than 3 minutes on the marked side of the road. Parking, meaning leaving the vehicle or staying longer than 3 minutes, is therefore not allowed. Boarding, alighting, loading and unloading are exempt. The ban runs to the next junction or to the end indicated on Zusatzzeichen.",
+  "tip": "If you leave the vehicle, you are parking, and that is not allowed here, except while loading or unloading. Do not walk away \"just for a moment\".",
+  "confused_with": "283",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_286_-_Eingeschränktes_Halteverbot,_StVO_1970.svg"
+ },
+ {
+  "num": "290.1",
+  "week": 1,
+  "name_de": "Beginn eines eingeschränkten Haltverbotes für eine Zone",
+  "name_en": "Start of a zone with restricted stopping ban",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "The restricted stopping ban applies in the entire zone, on all its roads, until Zeichen 290.2 or until the zone ends. Parking is only allowed where marked parking areas or Zusatzzeichen permit it.",
+   "The ban applies only to the road where the sign stands and ends at the next junction.",
+   "This sign marks a zone where you may park anywhere for 3 minutes without a parking disc.",
+   "This sign introduces a 30 km/h zone."
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 290.1 starts a zone in which the restricted stopping ban (as for Zeichen 286) applies on all roads. Stopping for more than 3 minutes is forbidden, with the usual exceptions for loading and boarding. The zone ends with Zeichen 290.2. Marked parking areas and Zusatzzeichen can still allow parking.",
+  "tip": "Unlike a single Zeichen 286, a zone does not end at the next junction. Look for Zeichen 290.2 and for the Zusatzzeichen at the entrance. Many drivers wrongly assume the ban ends after the first crossing street.",
+  "confused_with": "286",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_290.1_-_Beginn_eines_eingeschränkten_Haltverbotes_für_eine_Zone,_StVO_2009.svg"
+ },
+ {
+  "num": "314",
+  "week": 1,
+  "name_de": "Parken",
+  "name_en": "Parking",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Parking is forbidden here.",
+   "Parking is permitted here, subject to conditions shown on Zusatzzeichen (such as time limits, parking disc, fee or permit holders only).",
+   "Only parking on the pavement is permitted.",
+   "Parking is allowed at any time and without conditions."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 314 marks a parking place or area where parking is permitted. Zusatzzeichen add conditions: maximum time with parking disc, fees, permit-holder-only, vehicle types, and the way you must park (parallel, diagonal, perpendicular). You must follow those conditions exactly. An arrow or symbol shows the layout.",
+  "tip": "The Zusatzzeichen is the legally decisive part. Read the whole signpost, including days and times, before you leave the car. A fine often results from overlooking small plates.",
+  "confused_with": "315",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_314_-_Parken,_StVO_2017.svg"
+ },
+ {
+  "num": "315",
+  "week": 1,
+  "name_de": "Parken auf Gehwegen",
+  "name_en": "Parking on pavements",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "Parking on the pavement is allowed in the way shown on the sign. Pedestrians must be left enough room, and the permission applies only to vehicles up to 2.8 t gross weight.",
+   "Parking is allowed on the pavement for any vehicle without restriction.",
+   "You may stop on the pavement, but not park.",
+   "Parking on the pavement is forbidden, but you may use the cycle lane."
+  ],
+  "answer": 0,
+  "explanation": "Without this sign, parking on a Gehweg is forbidden. Zeichen 315 allows it, and the symbol shows how: fully or partly on the pavement, parallel or at an angle. It applies to vehicles up to 2.8 t permissible gross weight. Pedestrians, including people with prams and wheelchairs, must still be able to pass. Zusatzzeichen can add limits.",
+  "tip": "Check the sign symbol for which wheels may go on the pavement. If a pram or wheelchair could not get past, you are parking too far in, even where the sign allows it.",
+  "confused_with": "314",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_315-55_-_Parken_halb_auf_Gehwegen_in_Fahrtrichtung_rechts,_StVO_1992.svg"
+ },
+ {
+  "num": "237",
+  "week": 1,
+  "name_de": "Radweg (Sonderweg Radfahrer)",
+  "name_en": "Cycle path (cyclists only)",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Pedestrians and cyclists share this path.",
+   "The path is for cyclists only. Cyclists must use it, and other vehicles must not drive on it.",
+   "Cyclists may use the path, but are allowed to use the road too.",
+   "Mopeds may also use the path."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 237 marks a cycle path (Radweg) reserved for cyclists, who must use it (Benutzungspflicht). Motor vehicles must not drive, stop or park on it.",
+  "tip": "Before turning right, check the cycle path with a shoulder check. Cyclists going straight have priority. Lorries over 3.5 t must also turn right at walking speed in built-up areas (2020 amendment).",
+  "confused_with": "240",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_237_-_Sonderweg_Radfahrer,_StVO_1992.svg"
+ },
+ {
+  "num": "240",
+  "week": 1,
+  "name_de": "Gemeinsamer Geh- und Radweg",
+  "name_en": "Shared path for pedestrians and cyclists",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "Pedestrians and cyclists have separate lanes, and each group stays in its own lane.",
+   "Only pedestrians may use this path, and cyclists must use the road.",
+   "Cyclists have priority on the path and pedestrians must give way.",
+   "Pedestrians and cyclists share this path. Cyclists must use it but must not endanger or obstruct pedestrians, so they may need to slow down or wait."
+  ],
+  "answer": 3,
+  "explanation": "Zeichen 240 marks a shared path with no dividing line. Cyclists are obliged to use it, and pedestrians may walk on all of it. Cyclists must show consideration for pedestrians, adapt their speed, and wait if necessary. Motor vehicles may not use the path.",
+  "tip": "Here the path has no dividing line. A line between two pictograms means Zeichen 241, a separated path. Mixing them up is a very common exam error.",
+  "confused_with": "241",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_240_-_Gemeinsamer_Fuß-_und_Radweg,_StVO_1992.svg"
+ },
+ {
+  "num": "241",
+  "week": 1,
+  "name_de": "Getrennter Rad- und Gehweg",
+  "name_en": "Separate cycle path and footpath",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Cyclists and pedestrians share the whole path equally.",
+   "Only cyclists are allowed on the path.",
+   "Pedestrians and cyclists must each use their own part of the path, as shown by the pictograms. The path is closed to motor vehicles.",
+   "Cyclists may choose between the cycle part and the road."
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 241 shows a path split into a cycle part and a pedestrian part, with each pictogram on its own side of a dividing line. Cyclists must use the cycle side and pedestrians the footpath side. Motor vehicles may not use the path. Note that the pedestrian-only path (Sonderweg Fußgänger) is Zeichen 239, a different sign.",
+  "tip": "Many foreign drivers confuse this with the shared path (Zeichen 240, no dividing line). For you as a driver: when turning across such a path, expect fast cyclists on their side.",
+  "confused_with": "240",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_241-30_-_getrennter_Rad-_und_Fußweg,_StVO_1992.svg"
+ },
+ {
+  "num": "239",
+  "week": 1,
+  "name_de": "Sonderweg Fußgänger (Gehweg)",
+  "name_en": "Footpath – pedestrians only",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Cyclists and pedestrians share this path.",
+   "Pedestrian zone in which delivery vehicles are allowed.",
+   "This path is reserved for pedestrians; vehicles may not use it.",
+   "Pedestrian crossing ahead; give way to pedestrians."
+  ],
+  "answer": 2,
+  "explanation": "Sign 239 marks a path that is reserved for pedestrians. Vehicles, including bicycles, may not use it unless a supplementary plate allows it (for example 'Radfahrer frei', which means walking speed and consideration for pedestrians). The rule applies along the path that the sign marks.",
+  "tip": "As a driver you may cross a Gehweg only to reach a driveway or car park, and then you give way to everyone (§10 StVO). Never park on it unless Z 315 or markings allow it.",
+  "confused_with": "240",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_239_-_Sonderweg_Fußgänger,_StVO_1992.svg"
+ },
+ {
+  "num": "242.1",
+  "week": 1,
+  "name_de": "Beginn einer Fußgängerzone",
+  "name_en": "Start of pedestrian zone",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Not drive in, unless a supplementary plate allows it. If it does, drive at walking speed and do not endanger or obstruct pedestrians.",
+   "Drive in at up to 30 km/h; pedestrians must give way when you signal.",
+   "Drive in only if you are a cyclist; all motor vehicles are prohibited without exception.",
+   "Drive in and park at the edge, as long as you leave a lane free for pedestrians."
+  ],
+  "answer": 0,
+  "explanation": "A pedestrian zone is closed to vehicle traffic. Only the exceptions on supplementary plates apply, for example delivery traffic at certain times or 'Radverkehr frei'. Where vehicles are allowed, they must drive at walking speed, must not endanger or obstruct pedestrians, and must wait if necessary. The zone lasts until sign 242.2 (Ende einer Fußgängerzone).",
+  "tip": "Read the plate closely before you enter, because the permitted times are often limited. Even if you may enter, pedestrians keep the right of way in practice, and examiners expect you to drive at walking speed.",
+  "confused_with": "239",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_242.1_-_Beginn_einer_Fußgängerzone,_StVO_2009.svg"
+ },
+ {
+  "num": "244.1",
+  "week": 1,
+  "name_de": "Beginn einer Fahrradstraße",
+  "name_en": "Start of cycle street",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "All vehicles may use the street, but cyclists must ride at the right edge.",
+   "Only cyclists may use it, and there is no speed limit for them.",
+   "Cars may use it at any time, but cyclists have priority at junctions.",
+   "Other vehicles may enter only if a plate allows it. The maximum speed is 30 km/h, and cyclists may ride side by side."
+  ],
+  "answer": 3,
+  "explanation": "A Fahrradstraße is a street for cyclists. Other vehicles may use it only if a supplementary plate allows them. The maximum speed for everyone is 30 km/h. Cyclists may ride side by side, and they may be neither endangered nor obstructed. The rules apply until sign 244.2 (Ende einer Fahrradstraße).",
+  "tip": "If a plate such as 'Kfz frei' lets you in as a car driver, stay behind slower cyclists and do not overtake closely. Do not honk at cyclists riding side by side.",
+  "confused_with": "237",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_244.1_-_Beginn_einer_Fahrradstraße,_StVO_2013.svg"
+ },
+ {
+  "num": "245",
+  "week": 1,
+  "name_de": "Bussonderfahrstreifen",
+  "name_en": "Bus lane",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "A bus stop; you may not stop or park in front of it.",
+   "A lane reserved for buses on scheduled service; other vehicles may use it only if a plate allows it.",
+   "A lane for all vehicles with three or more occupants.",
+   "A parking area for buses only."
+  ],
+  "answer": 1,
+  "explanation": "Sign 245 reserves a lane for buses on scheduled service (Linienverkehr). Other vehicles, such as taxis or cyclists, may use the lane only if a supplementary plate allows them. The rule applies to the lane that the sign marks, until the restriction ends or changes.",
+  "tip": "Do not rely on the lane colour or on the lane simply looking empty. Check the sign and any plate. Using the lane without permission is a common and costly mistake for newcomers.",
+  "confused_with": "237",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_245_-_Bussonderfahrstreifen,_StVO_2013.svg"
+ },
+ {
+  "num": "350",
+  "week": 1,
+  "name_de": "Fußgängerüberweg",
+  "name_en": "Pedestrian crossing (zebra crossing)",
+  "category": "Richtzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Honk briefly so that pedestrians know you are coming and let you pass.",
+   "Keep your speed, because pedestrians must wait for a gap in traffic.",
+   "Approach at moderate speed, let pedestrians cross who are on the crossing or clearly want to cross, and do not overtake.",
+   "Stop in every case, even if nobody wants to cross."
+  ],
+  "answer": 2,
+  "explanation": "At a Fußgängerüberweg, vehicles must approach at moderate speed and let pedestrians (and wheelchair users) who are crossing or clearly want to cross go first. If necessary, you must wait. Overtaking is not allowed on the approach to the crossing, and you may not stop or park on it or up to 5 m before it.",
+  "tip": "If a vehicle in front of you stops at the crossing, do not overtake it. A pedestrian you cannot see may be crossing in front of it. Watch the kerb for people who are about to step out.",
+  "confused_with": "133",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_350-10_-_Fußgängerüberweg_(rechts),_StVO_1992.svg"
+ },
+ {
+  "num": "101",
+  "week": 1,
+  "name_de": "Gefahrstelle",
+  "name_en": "General danger",
+  "category": "Gefahrzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "A danger spot ahead; adapt your speed and be ready to brake. A plate often says what the danger is.",
+   "A no-stopping zone; you may not stop or park here.",
+   "A police checkpoint ahead; have your documents ready.",
+   "A road closure ahead; you must turn around."
+  ],
+  "answer": 0,
+  "explanation": "Sign 101 warns of a danger that is not covered by a specific warning sign. A supplementary plate usually names it, for example roadworks or an obstacle. Reduce your speed, be ready to brake, and watch the road closely. The warning applies until you have passed the danger.",
+  "tip": "Always read the plate underneath, because it tells you what to expect. Slowing down early is what examiners look for.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_101_-_Gefahrstelle,_StVO_1970.svg"
+ },
+ {
+  "num": "133",
+  "week": 1,
+  "name_de": "Fußgänger",
+  "name_en": "Pedestrians",
+  "category": "Gefahrzeichen",
+  "question": "What does this sign warn you about?",
+  "options": [
+   "A pedestrian crossing, where pedestrians have priority.",
+   "A pedestrian zone starts here, and vehicles are prohibited.",
+   "A school or kindergarten nearby; children may run into the road.",
+   "Pedestrians crossing or walking on the road; be ready to brake and give them room."
+  ],
+  "answer": 3,
+  "explanation": "Sign 133 is a warning sign. It warns that pedestrians may be crossing the road or walking on it, often where there is no marked crossing. It does not give pedestrians priority by itself. Reduce your speed and be ready to brake. The warning applies until you have passed the danger spot.",
+  "tip": "In the city, look for people stepping out between parked cars or from behind tram stops. A blue sign with a zebra crossing is sign 350, which is a different rule.",
+  "confused_with": "350",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_133-10_-_Fußgänger_(Aufstellung_rechts),_StVO_1992.svg"
+ },
+ {
+  "num": "136",
+  "week": 1,
+  "name_de": "Kinder",
+  "name_en": "Children",
+  "category": "Gefahrzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "Children have priority here, and you must stop whenever you see one.",
+   "The sign warns of children, so you should reduce speed, be ready to brake, and watch the roadside.",
+   "The sign shows a playground; you may not drive past it.",
+   "The sign only applies during school hours."
+  ],
+  "answer": 1,
+  "explanation": "Sign 136 warns that children may enter the road, for example near schools, playgrounds or kindergartens. It does not grant priority. You must adapt your speed to the danger, be ready to brake, and watch the roadside closely. The warning applies until you have passed the danger spot.",
+  "tip": "Children are unpredictable, so cover the brake early and keep a wide gap to parked cars. Instructors watch for this in residential streets. A plate may add a time restriction; otherwise the warning is not time-limited.",
+  "confused_with": "133",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_136-10_-_Kinder,_Aufstellung_rechts,_StVO_1992.svg"
+ },
+ {
+  "num": "138",
+  "week": 1,
+  "name_de": "Radfahrer kreuzen",
+  "name_en": "Cyclists crossing",
+  "category": "Gefahrzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Cyclists have the right of way at the next junction.",
+   "A cycle path starts here, and cyclists must use it.",
+   "Cyclists may cross or join the road ahead; reduce speed and be ready to brake.",
+   "Cyclists are not allowed on this road."
+  ],
+  "answer": 2,
+  "explanation": "Sign 138 warns that cyclists may cross or enter the road, for example where a cycle path crosses it. The sign does not decide who has priority. That is decided by the right-of-way rules or signs at the junction. Be ready to brake and watch for cyclists, including fast ones. The warning applies until you have passed the danger spot.",
+  "tip": "Look carefully to the right and left before the crossing, because cyclists can appear quickly. Do not assume that you always have priority.",
+  "confused_with": "237",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_138-10_-_Radverkehr,_StVO_2013.svg"
+ },
+ {
+  "num": "131",
+  "week": 1,
+  "name_de": "Lichtzeichenanlage",
+  "name_en": "Traffic lights ahead",
+  "category": "Gefahrzeichen",
+  "question": "What does this sign warn you about?",
+  "options": [
+   "A traffic-light system ahead; be prepared to stop, because it may be hard to see in time.",
+   "A railway crossing with light signals.",
+   "A junction where the traffic lights do not work.",
+   "A pedestrian crossing with a button for pedestrians."
+  ],
+  "answer": 0,
+  "explanation": "Sign 131 warns of a traffic-light system (Lichtzeichenanlage) ahead. It is used where the lights are hard to see in time, for example after a bend or on a fast road. Reduce your speed and be ready to stop. The traffic lights themselves give the actual instruction. The sign only warns you.",
+  "tip": "Do not speed up to beat an amber light. After the sign, watch the lights early and be ready to stop smoothly.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_131_-_Lichtzeichenanlage,_StVO_1970.svg"
+ },
+ {
+  "num": "123",
+  "week": 1,
+  "name_de": "Arbeitsstelle",
+  "name_en": "Roadworks",
+  "category": "Gefahrzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "General danger spot (Gefahrstelle) – the type of danger is shown on a plate",
+   "Roadworks ahead – workers and machinery may be on or beside the road",
+   "Slippery road surface ahead",
+   "The road is closed to all traffic after the sign"
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 123 warns of a roadworks site ahead. Reduce speed early, be ready to brake and watch for workers, machinery and a narrowed or shifted lane. The sign does not close the road. Any binding speed limit or overtaking ban must be shown by separate regulatory signs, and the warning applies until the works section ends.",
+  "tip": "In city roadworks the lanes are often shifted and people on foot may cross suddenly. Instructors want to see an early speed reduction and a mirror check before you reach the narrowing, not braking at the last second.",
+  "confused_with": "101",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_123_-_Arbeitsstelle,_StVO_2013.svg"
+ },
+ {
+  "num": "209-20",
+  "week": 1,
+  "name_de": "Vorgeschriebene Fahrtrichtung, rechts",
+  "name_en": "Mandatory direction of travel: turn right",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "You may turn right, but going straight ahead is still allowed",
+   "Right-of-way applies for vehicles coming from the right",
+   "Only buses and taxis must turn right; other vehicles may continue",
+   "You must drive in the direction of the arrow (turn right); other directions are prohibited"
+  ],
+  "answer": 3,
+  "explanation": "This blue round sign (Zeichen 209) is a mandatory-direction sign. You may only continue in the direction the arrow shows, here to the right. It applies at the junction or intersection where it is posted, so go straight or left only if another sign allows it.",
+  "tip": "The sign usually stands right at the junction. Get into the right lane in good time and signal. Cutting across lanes at the last moment is a typical mistake in city lessons.",
+  "confused_with": "222",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_209_-_Vorgeschriebene_Fahrtrichtung,_rechts,_StVO_2017.svg"
+ },
+ {
+  "num": "222",
+  "week": 1,
+  "name_de": "Vorgeschriebene Vorbeifahrt, rechts vorbei",
+  "name_en": "Mandatory passing: pass on the right",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "You must pass the obstacle ahead (e.g. a traffic island or bollard) on its right-hand side",
+   "You must turn right at the next junction",
+   "You may pass either side, but the right side is recommended",
+   "The road narrows on the right and you must give way to oncoming traffic"
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 222 stands at an obstacle in the carriageway, such as a traffic island or a roadworks barrier. You must pass it on the right, as the arrow points. It does not order a turn. The obligation applies only at that obstacle.",
+  "tip": "Mixing this up with the turn-right sign 209-20 is the classic mistake. The arrow here points diagonally down past the obstacle, while the turn sign shows a plain arrow. Passing on the wrong side is a violation and very dangerous at an island.",
+  "confused_with": "209-20",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_222_-_Vorgeschriebene_Vorbeifahrt,_Rechts_vorbei,_StVO_2017.svg"
+ },
+ {
+  "num": "272",
+  "week": 1,
+  "name_de": "Verbot des Wendens",
+  "name_en": "No U-turns",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "No entry for vehicles of all kinds",
+   "Turning left is prohibited, but U-turns are allowed",
+   "U-turns are prohibited (you must not turn around)",
+   "No overtaking on this section"
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 272 shows a U-turn arrow in a red circle and prohibits turning the vehicle around to drive back the way you came. This includes turning in one move and turning in several moves, such as a three-point turn. The ban applies from the sign onward, so do not turn around until you are clear of the signed section.",
+  "tip": "Turning around is also forbidden where it is unsafe or obstructive, even without this sign. Do not reverse into a driveway to turn around where the sign stands. If you miss your turn, drive on and use a roundabout or a loop of side streets.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_272,_Verbot_des_Wendens,_StVO_1992.svg"
+ },
+ {
+  "num": "357",
+  "week": 1,
+  "name_de": "Sackgasse",
+  "name_en": "Dead end (no through road)",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "Entering this road is prohibited for all vehicles",
+   "The road has no through route for vehicles; you may enter, but you will have to turn around or return",
+   "Priority road ends and right-before-left applies",
+   "Parking is only allowed in this street"
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 357 informs you that the road ahead is a dead end for vehicles. It does not prohibit entering and does not change priority rules. Variants of the sign with an additional symbol can show that pedestrians or cyclists may still get through.",
+  "tip": "Look carefully at the lower part of the sign. A through-way for cyclists or pedestrians does not mean you can drive through. Do not reverse long distances in a narrow dead end. Find a safe place to turn and watch for playing children.",
+  "confused_with": "267",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_357_-_Sackgasse,_StVO_1992.svg"
+ },
+ {
+  "num": "720",
+  "week": 1,
+  "name_de": "Grünpfeil",
+  "name_en": "Green arrow (right turn on red allowed after stopping)",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "You may turn right on red without stopping if nobody is visible",
+   "The sign allows you to drive straight on at red if the road is clear",
+   "You must stop at the stop line first, and may then turn right only if you do not endanger or hinder anyone",
+   "The sign applies to buses and trams only"
+  ],
+  "answer": 2,
+  "explanation": "The green arrow on a black plate (Zeichen 720) beside a red traffic light allows a right turn on red. First stop at the stop line. Then turn only if you cannot endanger or hinder others, especially pedestrians and cyclists crossing and the cross traffic. The permission covers only the right turn.",
+  "tip": "A complete stop is the point instructors watch for. A rolling stop counts as a mistake. The arrow plate is not the same as an illuminated green-arrow light, which is a signal and has its own rules.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_720_-_Grünpfeil,_StVO_1994.svg"
+ },
+ {
+  "num": "278",
+  "week": 1,
+  "name_de": "Ende der zulässigen Höchstgeschwindigkeit",
+  "name_en": "End of the speed limit",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "The speed limit shown on the sign ends here; the general limits apply again",
+   "All speed limits and overtaking bans end here",
+   "You may now drive at any speed you like",
+   "A minimum speed ends here"
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 278 cancels the speed limit with that number that was signed earlier. The general limits apply again: 50 km/h in built-up areas, 100 km/h for cars outside them (on motorways there is no general limit, 130 km/h is only recommended). It ends only the speed limit, not an overtaking ban or other bans.",
+  "tip": "In town this sign never means 'free speed'. Check whether you are still in a built-up area and keep 50 km/h. A common trap is expecting it to cancel an overtaking ban as well. Only Zeichen 280 or 282 do that.",
+  "confused_with": "282",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_278-30_-_Ende_der_zulässigen_Höchstgeschwindigkeit,_StVO_2017.svg"
+ },
+ {
+  "num": "201",
+  "week": 1,
+  "name_de": "Andreaskreuz (liegend)",
+  "name_en": "St Andrew's cross (level crossing priority)",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign at a level crossing?",
+  "options": [
+   "You have priority over rail vehicles if you are already driving on the crossing",
+   "Cross at normal speed, because trams always yield in town",
+   "Stop only if a barrier is closed; otherwise drive on",
+   "Give priority to rail vehicles; if a train or tram approaches, or a signal or barrier says so, you must wait before the crossing"
+  ],
+  "answer": 3,
+  "explanation": "The Andreaskreuz (Zeichen 201) means that rail vehicles have priority at this crossing. Approach slowly, look both ways and wait if a train or tram is coming. Red flashing lights, a barrier or an acoustic signal also mean you must wait. Never stop on the tracks.",
+  "tip": "In cities this sign often marks tram crossings without any barrier. Look for trams even when the tracks seem quiet. Do not queue on the tracks. Only enter if your exit is clear and you will not have to stop on the crossing.",
+  "confused_with": "151",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_201_-_Andreaskreuz_(liegend),_StVO_1970.svg"
+ },
+ {
+  "num": "224",
+  "week": 1,
+  "name_de": "Haltestelle",
+  "name_en": "Public transport stop",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "Stopping and parking are completely forbidden everywhere on this street",
+   "It marks a bus or tram stop; you must not park within 15 m before and after the sign, and must not obstruct public transport",
+   "It marks a taxi rank where only taxis may wait",
+   "It marks a stop where all vehicles must stop and wait for a signal"
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 224 marks a stop for buses or trams. Parking is not allowed up to 15 m before and after the sign. You may stop briefly only if no public transport is impeded. When a bus or tram is standing at the stop, take extra care for passengers who get on or off.",
+  "tip": "Do not pass a standing tram or bus if passengers are crossing the road to reach it. Wait behind it. Only pass at very low speed and with enough distance if there is room and nobody is endangered.",
+  "confused_with": "283",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_224_-_Haltestelle,_StVO_2017.svg"
+ },
+ {
+  "num": "282",
+  "week": 1,
+  "name_de": "Ende sämtlicher Streckenverbote",
+  "name_en": "End of all section-based prohibitions",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Only the speed limit ends; an overtaking ban remains",
+   "All traffic bans in the whole city end, including parking bans",
+   "All route-based bans, such as speed limits and overtaking bans, end here",
+   "A zone with a speed limit ends here and you may drive without limit"
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 282 (white round sign with black diagonal stripes) ends all section-based prohibitions previously ordered, such as speed limits and overtaking bans. After it, the general rules apply again, for example 50 km/h in a built-up area. It does not cancel parking or stopping bans, or restrictions from other zones.",
+  "tip": "Do not treat it as permission to speed up. In town you are still limited to 50 km/h unless another sign says otherwise. Do not mix it up with 278, which ends only a speed limit.",
+  "confused_with": "278",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_282_-_Ende_sämtlicher_Streckenverbote,_StVO_1970.svg"
+ },
+ {
+  "num": "295",
+  "week": 2,
+  "name_de": "Fahrstreifenbegrenzung und Fahrbahnbegrenzung (durchgehende Linie)",
+  "name_en": "Lane boundary and carriageway edge line (solid line)",
+  "category": "Markierung",
+  "question": "Which statement about a solid white line (Zeichen 295) is correct?",
+  "options": [
+   "You may cross it to overtake as long as there is no oncoming traffic.",
+   "It is only a recommendation to stay in lane; crossing it is allowed with care.",
+   "It only applies to vehicles over 3.5 t.",
+   "You must not drive on or over it."
+  ],
+  "answer": 3,
+  "explanation": "A solid line separates lanes (Fahrstreifenbegrenzung) or marks the edge of the carriageway (Fahrbahnbegrenzung). It is a prohibition: you may not cross it or drive on it. This applies to all vehicles, whether or not other traffic is present, until the line ends or becomes a broken line.",
+  "tip": "Beginners often straddle a solid line while avoiding a cyclist or a parked car. Instructors watch for this, because even driving on the line counts as a violation. A broken line with long strokes (a warning line) often announces that a solid line is coming.",
+  "confused_with": "340",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_295_-_Fahrstreifenbegrenzung_und_Fahrbahnbegrenzung,_StVO_1970.svg"
+ },
+ {
+  "num": "340",
+  "week": 2,
+  "name_de": "Leitlinie",
+  "name_en": "Broken guide line (lane divider / centre line)",
+  "category": "Markierung",
+  "question": "What does a broken white line with short strokes and longer gaps (Zeichen 340) mean?",
+  "options": [
+   "It is a solid-line prohibition, so overtaking is forbidden.",
+   "It guides you in your lane. You may cross it, for example to overtake or turn, if you do not endanger anyone.",
+   "It marks the end of a no-stopping zone.",
+   "It marks a lane reserved for buses."
+  ],
+  "answer": 1,
+  "explanation": "The Leitlinie (Zeichen 340) separates lanes or marks the carriageway edge, and it helps you keep your position. Unlike the solid line (Zeichen 295), crossing it is not prohibited in itself. You may cross it to overtake, change lanes or turn, but you must not endanger or obstruct anyone. A line with strokes longer than the gaps is a warning line and announces a solid line ahead.",
+  "tip": "Crossing the line does not mean you have right of way. Check mirrors and shoulder over the line, and always signal. Treat a line with long strokes and short gaps as 'solid line coming soon'.",
+  "confused_with": "295",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_340_–_Leitlinie,_StVO_1970.svg"
+ },
+ {
+  "num": "297",
+  "week": 2,
+  "name_de": "Richtungspfeile (Pfeile)",
+  "name_en": "Directional arrows on the road surface",
+  "category": "Markierung",
+  "question": "What must you do when you are in a lane with arrow markings (Zeichen 297) pointing left and straight ahead?",
+  "options": [
+   "Turn right at the next junction, since arrows are only a suggestion.",
+   "Use the lane only to continue straight or turn left at the next junction or intersection.",
+   "Turn in any direction, because the arrows only apply to buses.",
+   "Stop before the arrows and wait for a green signal."
+  ],
+  "answer": 1,
+  "explanation": "Richtungspfeile prescribe which directions you may take from that lane at the next junction or intersection. With a left-and-straight arrow you may go straight or turn left, but not turn right. The marking applies at that junction, so choose your lane in good time.",
+  "tip": "In city traffic, read the arrows early and change lanes before the markings begin. Last-minute lane changes across a solid line, or turning against the arrow, are classic faults. Foreign-licence drivers often assume arrows are only advisory, but in Germany they are binding.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_297_-_Richtungspfeile,_StVO_1970.svg"
+ },
+ {
+  "num": "298",
+  "week": 2,
+  "name_de": "Sperrfläche",
+  "name_en": "Prohibited area (hatched / diagonal-stripe marking)",
+  "category": "Markierung",
+  "question": "What does a surface marked with diagonal stripes within a solid border (Zeichen 298) mean?",
+  "options": [
+   "It is a reserved parking area.",
+   "It is a bus lane that other vehicles may use briefly.",
+   "Vehicles must not use it: no driving, no stopping, no parking.",
+   "It is a lane for turning vehicles only."
+  ],
+  "answer": 2,
+  "explanation": "A Sperrfläche is closed to vehicles. You may not drive onto it, stop on it or park on it. It is often used to guide traffic around islands, junction approaches and lane shifts, and the ban applies at all times.",
+  "tip": "Do not cut across a Sperrfläche to dodge a queue or to reach a lane faster. Instructors treat it as an obvious violation. Do not confuse it with the zigzag line (Zeichen 299), which only forbids stopping.",
+  "confused_with": "299",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_298_-_Sperrflächen,_StVO_1970.svg"
+ },
+ {
+  "num": "299",
+  "week": 2,
+  "name_de": "Grenzmarkierung für Halt- und Parkverbote",
+  "name_en": "Boundary marking for no-stopping / no-parking zones (zigzag line)",
+  "category": "Markierung",
+  "question": "What does a yellow zigzag line along the edge of the road (Zeichen 299) mean?",
+  "options": [
+   "Parking is allowed there for up to 3 minutes.",
+   "It marks a lane for cyclists only.",
+   "It shows where a road narrows.",
+   "It marks a no-stopping zone along the zigzag line, so you may not stop or park there."
+  ],
+  "answer": 3,
+  "explanation": "The zigzag line is a Grenzmarkierung. It marks the length of a stopping and parking ban, commonly at bus stops and similar places. Do not stop or park along the marked stretch.",
+  "tip": "Do not stop 'just for a moment' to drop off passengers. At bus stops in particular you block public transport, and this is a typical fault on a driving test. Allow extra space when you are following buses.",
+  "confused_with": "298",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_299_-_Grenzmarkierung_für_Halt-_und_Parkverbote,_StVO_1992.svg"
+ },
+ {
+  "num": "103-10",
+  "week": 2,
+  "name_de": "Kurve (links)",
+  "name_en": "Curve ahead (to the left)",
+  "category": "Gefahrzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "A double bend, first to the right",
+   "A road that ends in a left turn only",
+   "A dangerous left-hand curve ahead",
+   "A one-way street turning left"
+  ],
+  "answer": 2,
+  "explanation": "This warning sign shows a left-hand curve ahead that you cannot always judge well in advance. Reduce speed in good time and stay in your lane, because speed must be adapted to the curve. The warning applies until you have driven through the curve.",
+  "tip": "Brake before the curve, not in it. In the city, a curve often hides pedestrians or cyclists, so keep to the right and look through the bend. Do not cut the curve, because oncoming traffic is a real risk.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_103-10_-_Kurve_(links),_StVO_1992.svg"
+ },
+ {
+  "num": "105-10",
+  "week": 2,
+  "name_de": "Doppelkurve (zunächst links)",
+  "name_en": "Double bend (first to the left)",
+  "category": "Gefahrzeichen",
+  "question": "Which statement is correct for this sign?",
+  "options": [
+   "Two left curves follow directly, with no change of direction.",
+   "Two curves follow one after the other, the first to the left and the second to the right.",
+   "Overtaking is generally forbidden from now on.",
+   "The road is slippery in the next two bends."
+  ],
+  "answer": 1,
+  "explanation": "The Doppelkurve warns of two consecutive curves in opposite directions, and here the first curve is to the left. Adjust your speed so that you can safely handle both curves. The sign does not itself prohibit overtaking, but visibility is limited and overtaking is often impractical.",
+  "tip": "Do not speed up when the first curve ends, because the second one comes immediately. A common trap is to read the sign as a single curve and brake too late. Check the symbol to see which direction comes first.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_105-10_-_Doppelkurve_(zunächst_links),_StVO_1992.svg"
+ },
+ {
+  "num": "108",
+  "week": 2,
+  "name_de": "Gefälle",
+  "name_en": "Steep descent",
+  "category": "Gefahrzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Prepare for a steep downhill section, adjust your speed and use engine braking if needed.",
+   "Switch off the engine to save fuel.",
+   "Give way to vehicles coming uphill.",
+   "Overtake slow vehicles before the slope."
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 108 warns of a downhill gradient. The figure on the sign, for example 10 %, gives the gradient in percent. Adjust your speed, maintain safe following distance and use engine braking, for example by changing down a gear, so your brakes do not overheat. The warning applies until the descent ends.",
+  "tip": "In the city, steep descents make braking distances longer, especially in wet or icy conditions. Instructors watch for early gear changes and a larger distance to the vehicle ahead. Do not coast in neutral.",
+  "confused_with": "110",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_108-10_-_Gefälle,_StVO_2017.svg"
+ },
+ {
+  "num": "110",
+  "week": 2,
+  "name_de": "Steigung",
+  "name_en": "Steep ascent",
+  "category": "Gefahrzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "A steep downhill section ahead",
+   "A steep uphill section ahead",
+   "The road ahead has an uneven surface",
+   "Vehicles over a certain weight must use a crawler lane"
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 110 warns of an uphill gradient ahead. The percentage on the sign shows how steep it is. Change down in time and keep up momentum, and expect slow vehicles such as lorries or cyclists. The warning applies until the climb ends.",
+  "tip": "A frequent test error is stalling on a hill start with a car behind you. Practice using the handbrake smoothly and keep a larger gap to the car ahead. Check which way the sign's slope tilts, so you do not confuse it with 108.",
+  "confused_with": "108",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_110-10_-_Steigung,_StVO_2017.svg"
+ },
+ {
+  "num": "112",
+  "week": 2,
+  "name_de": "Unebene Fahrbahn",
+  "name_en": "Uneven road surface",
+  "category": "Gefahrzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "The road ahead has bumps or dips, so you must reduce speed.",
+   "The road ahead is slippery because of leaves or mud.",
+   "The road ahead has a steep downhill section.",
+   "The road ahead is unpaved gravel only."
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 112 warns of an uneven road surface, for example bumps, dips or speed humps. Slow down early enough to keep control and avoid damaging the vehicle. The warning applies for the stretch of road where the surface is uneven.",
+  "tip": "Cyclists and motorcyclists are especially vulnerable on uneven surfaces and may swerve, so leave room. Brake before the bump, not on it. This sign often appears before speed humps in residential areas, so watch your speed and the road ahead.",
+  "confused_with": "114",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_112_–_Unebene_Fahrbahn,_StVO_1970.svg"
+ },
+ {
+  "num": "114",
+  "week": 2,
+  "name_de": "Schleuder- oder Rutschgefahr",
+  "name_en": "Slippery road / risk of skidding",
+  "category": "Gefahrzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Slippery road: speed limit of 30 km/h until the next junction",
+   "Winter-tyre obligation applies from here on",
+   "Danger of skidding or sliding, for example on a wet or dirty road surface",
+   "Skid-training area ahead: only vehicles with ESP may enter"
+  ],
+  "answer": 2,
+  "explanation": "The sign warns that the road surface can be slippery because of wetness, dirt, leaves, ice or similar. It sets no fixed speed limit, but under § 3 StVO you must adapt your speed and braking distance to the conditions. It applies to the stretch where the hazard exists. A supplementary plate such as 'bei Nässe' or a length in metres can narrow this down.",
+  "tip": "In the city the usual culprits are wet tram rails, cobblestones, painted markings and wet leaves. Brake early and gently, and avoid sudden steering. Instructors want to see anticipation, not just a lower speed.",
+  "confused_with": "101",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_114_-_Schleuder-_oder_Rutschgefahr,_StVO_2013.svg"
+ },
+ {
+  "num": "120",
+  "week": 2,
+  "name_de": "Verengte Fahrbahn",
+  "name_en": "Road narrows (both sides)",
+  "category": "Gefahrzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "The carriageway narrows ahead, so adapt your speed and watch for oncoming traffic",
+   "You have priority over oncoming traffic at the narrow point",
+   "Overtaking is forbidden for all vehicles from here",
+   "Only vehicles wider than 2 m must give way at the narrowing"
+  ],
+  "answer": 0,
+  "explanation": "The sign warns that the carriageway becomes narrower on both sides. It does not grant or take away priority, so you must adapt your speed and be ready to brake or let oncoming vehicles pass. Priority at a narrow point is only regulated by Zeichen 208 (Vorrang des Gegenverkehrs) or 308 (Vorrang vor dem Gegenverkehr), or by the general rules of § 6 StVO.",
+  "tip": "Do not assume that you have priority just because the other driver looks hesitant. Look for signs 208/308 before you enter. Also remember cyclists, who are easily squeezed at narrow points.",
+  "confused_with": "121-10",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_120_-_Verengte_Fahrbahn,_StVO_1970.svg"
+ },
+ {
+  "num": "121-10",
+  "week": 2,
+  "name_de": "Einseitig (rechts) verengte Fahrbahn",
+  "name_en": "Road narrows on the right",
+  "category": "Gefahrzeichen",
+  "question": "What must you expect when you see this sign?",
+  "options": [
+   "The right lane is closed for HGVs only",
+   "The road narrows on both sides, so you must drive in the middle",
+   "A left-hand bend with reduced width ahead",
+   "The carriageway narrows on the right, for example because of an obstacle, so you may have to move left or wait"
+  ],
+  "answer": 3,
+  "explanation": "The sign warns that the carriageway becomes narrower on the right-hand side only. The sign itself regulates no priority. If the obstacle is on your side, § 6 StVO requires you to let oncoming traffic pass first. Unless there are other signs, the narrowing is limited to the stretch where the road is actually narrower.",
+  "tip": "Check the mirror and shoulder before you move left. Cyclists riding on the right are often forced out into your path by this kind of narrowing, so leave a safe passing distance.",
+  "confused_with": "120",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_121-10_-_einseitig_(rechts)_verengte_Fahrbahn,_StVO_1992.svg"
+ },
+ {
+  "num": "124",
+  "week": 2,
+  "name_de": "Stau",
+  "name_en": "Traffic jam ahead",
+  "category": "Gefahrzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Leave the road at the next exit because of a closure",
+   "Be prepared for slow or stationary traffic ahead and brake in good time, and use hazard lights if necessary",
+   "Switch off the engine as soon as the first car stops",
+   "Use the left lane to pass the queue and merge later"
+  ],
+  "answer": 1,
+  "explanation": "The sign warns that there is a traffic jam or very slow-moving traffic ahead. Reduce speed early, brake gently and keep your distance. At the back of a jam you may switch on your hazard lights (Warnblinkanlage, § 16 StVO) to warn the traffic behind you. The warning applies to the stretch ahead, until the jam has dissolved.",
+  "tip": "On multi-lane roads outside built-up areas and on motorways you must form an emergency lane (Rettungsgasse) once traffic slows to walking pace (§ 11 StVO). In the city, watch for sudden queues behind curves and tunnel entrances.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_124_-_Stau,_StVO_1992.svg"
+ },
+ {
+  "num": "125",
+  "week": 2,
+  "name_de": "Gegenverkehr",
+  "name_en": "Two-way traffic ahead",
+  "category": "Gefahrzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "One-way street ahead, no entry from the opposite direction",
+   "Road works with alternating one-way traffic",
+   "Warning: oncoming traffic on a road section that was previously one-way or had separate carriageways",
+   "Overtaking is permitted because the road is wide enough for two vehicles"
+  ],
+  "answer": 2,
+  "explanation": "The sign warns that you are entering a section with two-way traffic, usually after a one-way section or a road with separate carriageways. Keep to the right, adapt your speed and expect oncoming vehicles. The warning applies until the road ahead is clearly two-way.",
+  "tip": "After a one-way system or a dual carriageway, drivers sometimes stay too far left out of habit. Move to the right deliberately. Examiners notice if you cut right bends or overtake at once.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_125_-_Gegenverkehr,_StVO_1992.svg"
+ },
+ {
+  "num": "142",
+  "week": 2,
+  "name_de": "Wildwechsel",
+  "name_en": "Wild animals crossing",
+  "category": "Gefahrzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Reduce speed and be ready to brake, because wild animals may cross, especially at dusk and dawn",
+   "Stop and wait until all animals have passed",
+   "Hooting loudly is mandatory here",
+   "Drive at least 70 km/h to leave the danger zone quickly"
+  ],
+  "answer": 0,
+  "explanation": "The sign warns that wild animals such as deer or boar may cross the road. Reduce speed, be ready to brake and watch the road edges. It applies to the stretch ahead, usually until the end of the wooded or open area. Speed must always suit conditions (§ 3 StVO).",
+  "tip": "Do not swerve violently for an animal; brake in a straight line. After a collision, secure the scene with hazard lights, call the police (110) and do not take the animal with you. This also matters on roads at the city edge near parks and woods.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_142-10_-_Wildwechsel,_Aufstellung_rechts,_StVO_1992.svg"
+ },
+ {
+  "num": "151",
+  "week": 2,
+  "name_de": "Bahnübergang",
+  "name_en": "Level crossing (unguarded, no barrier)",
+  "category": "Gefahrzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "You have priority over rail vehicles if you approach slowly",
+   "A level crossing with full barriers is ahead, so you only need to stop when they are closed",
+   "Railway traffic is forbidden here, so you can cross freely",
+   "A level crossing without barriers is ahead; rail vehicles have priority, so approach with great care and be ready to stop"
+  ],
+  "answer": 3,
+  "explanation": "The locomotive symbol warns of a level crossing without barriers. At the crossing itself, the Andreaskreuz (Zeichen 201) gives rail vehicles priority over road traffic (§ 19 StVO). Reduce speed, look both ways and listen. If a train is coming, wait before the crossing.",
+  "tip": "Never stop or queue on the tracks, and do not enter if traffic ahead may hold you on the crossing. If your vehicle stalls on the tracks, get everyone out and away from the line immediately, then call for help.",
+  "confused_with": "201",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_151_-_Bahnübergang,_StVO_2013.svg"
+ },
+ {
+  "num": "209-10",
+  "week": 2,
+  "name_de": "Vorgeschriebene Fahrtrichtung, links",
+  "name_en": "Turn left ahead (mandatory direction)",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "You may turn left or go straight, as you wish",
+   "At the next junction you may only continue to the left",
+   "Left-hand traffic is mandatory from here",
+   "You must turn left immediately after the sign, even before the junction"
+  ],
+  "answer": 1,
+  "explanation": "Vehicles may only continue in the direction of the arrow. The sign is a mandatory direction sign and applies to the junction or intersection at which it stands, so you may only turn left there. Other directions are prohibited unless a supplementary plate allows an exception. It applies until you have passed that junction.",
+  "tip": "Get into the correct lane early and indicate in good time. Going straight 'because nobody is coming' is still a violation. Watch for supplementary plates that may allow exceptions, for example for cyclists.",
+  "confused_with": "211-10",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_209-10_-_Vorgeschriebene_Fahrtrichtung,_links,_StVO_2017.svg"
+ },
+ {
+  "num": "209-30",
+  "week": 2,
+  "name_de": "Vorgeschriebene Fahrtrichtung, geradeaus",
+  "name_en": "Straight ahead only (mandatory direction)",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "You must go straight ahead for the next 500 m, wherever the road leads",
+   "You may go straight or turn right",
+   "At the junction where the sign stands you may only continue straight ahead and must not turn left or right",
+   "You must stop and then continue straight ahead"
+  ],
+  "answer": 2,
+  "explanation": "The straight arrow orders vehicles to continue straight ahead only. It applies at the junction or intersection where it stands, so turning left or right there is prohibited. Zeichen 209-30 also does not allow you to turn around. It applies until you have passed that junction, unless a supplementary plate adds exceptions.",
+  "tip": "Do not confuse it with signs that allow two directions, such as 214 (straight or right). Look carefully at the arrow shape. Examiners notice drivers who shift lanes late and then 'correct' the direction.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_209-30_-_Vorgeschriebene_Fahrtrichtung,_Geradeaus,_StVO_2017.svg"
+ },
+ {
+  "num": "211-10",
+  "week": 2,
+  "name_de": "Vorgeschriebene Fahrtrichtung, hier links",
+  "name_en": "Turn left here (mandatory direction)",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Turn left at this point, because you may only continue in the direction of the arrow",
+   "Go straight to the next junction and turn left there",
+   "Turn left only if the road is clear, otherwise go straight",
+   "Keep left until the end of the street"
+  ],
+  "answer": 0,
+  "explanation": "The sign with the angled arrow orders you to turn in the direction shown at the place where the sign stands. It is a mandatory direction sign; going straight or turning the other way is prohibited. Unlike Zeichen 209, which applies at the junction ahead, the 'hier' version applies at the sign's own position. It applies until you have made the turn.",
+  "tip": "Check the exact position of the sign. If it stands at a driveway or a bend, you must turn there and not at the next junction. As always, check mirrors and shoulder, signal and give way to pedestrians and cyclists when turning.",
+  "confused_with": "209-10",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_211-10_-_Vorgeschriebene_Fahrtrichtung,_hier_links,_StVO_2017.svg"
+ },
+ {
+  "num": "214-20",
+  "week": 2,
+  "name_de": "Vorgeschriebene Fahrtrichtung geradeaus und rechts",
+  "name_en": "Mandatory direction: straight ahead or right",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign at a junction?",
+  "options": [
+   "You may only continue straight ahead or turn right; turning left or making a U-turn is prohibited.",
+   "You may turn in any direction, but you must give way to traffic coming from the right.",
+   "You must turn right at the next junction and may not continue straight ahead.",
+   "You may only continue straight ahead; turning right is prohibited."
+  ],
+  "answer": 0,
+  "explanation": "The sign prescribes the permitted directions at the next junction or crossing: straight on or right. Left turns and U-turns are not allowed there. It applies at the junction where it is placed. Priority rules still apply as usual.",
+  "tip": "Check your lane position early. Instructors watch for drivers who see the sign too late and cut across to the left. The sign shows only the allowed directions, not who has priority.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_214_-_Vorgeschriebene_Fahrtrichtung,_Geradeaus_oder_rechts,_StVO_2017.svg"
+ },
+ {
+  "num": "220-10",
+  "week": 2,
+  "name_de": "Einbahnstraße, linksweisend",
+  "name_en": "One-way street (traffic flows to the left)",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "The street is closed to all vehicles in both directions.",
+   "Vehicles may only drive in the direction of the arrow (to the left); driving the opposite way is not allowed.",
+   "Left turns are mandatory at the next junction.",
+   "Traffic in both directions is allowed, but the left lane has priority."
+  ],
+  "answer": 1,
+  "explanation": "The sign marks a one-way street where traffic may only move in the direction of the arrow, here to the left. It is placed at the junction where the one-way section begins and repeated along it. Driving the opposite way is prohibited unless a Zusatzzeichen allows it for specific road users, for example cyclists.",
+  "tip": "Look for a Zusatzzeichen under the sign. Cyclists are often allowed to ride against the flow, but car drivers must expect them. Never enter from the opposite end: that end is normally marked with Zeichen 267 (Verbot der Einfahrt).",
+  "confused_with": "267",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_220-10_-_Einbahnstraße,_linksweisend,_StVO_2017.svg"
+ },
+ {
+  "num": "253",
+  "week": 2,
+  "name_de": "Verbot für Kraftfahrzeuge mit einer zulässigen Gesamtmasse über 3,5 t",
+  "name_en": "No motor vehicles over 3.5 t permissible gross mass (lorry ban)",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "All motor vehicles including cars are prohibited.",
+   "Only vehicles that are actually loaded with more than 3.5 t are prohibited.",
+   "Only vehicles carrying hazardous goods are prohibited.",
+   "Motor vehicles over 3.5 t permissible gross mass, including their trailers, and tractors are prohibited. Cars (Pkw) and buses are exempt."
+  ],
+  "answer": 3,
+  "explanation": "The sign bans lorries and similar motor vehicles whose permissible gross mass (zulässige Gesamtmasse) is over 3.5 t, including their trailers, and also tractors. Cars and buses are exempt. The ban applies from the sign up to the next junction or as limited by a Zusatzzeichen.",
+  "tip": "The ban refers to the permissible mass written in the vehicle papers, not the current load. Heavy motorhomes and vans with a high gross mass can be affected. Check the registration document, not just what is on board.",
+  "confused_with": "262",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_253_-_Verbot_für_Kraftfahrzeuge_mit_einem_zulässigen_Gesamtgewicht,_StVO_1992.svg"
+ },
+ {
+  "num": "254",
+  "week": 2,
+  "name_de": "Verbot für Radfahrer",
+  "name_en": "No cycling (no cyclists)",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Cyclists must use the cycle path to the right of the road.",
+   "Bicycles are prohibited from stopping here, but may pass.",
+   "Cyclists are not allowed to ride here.",
+   "Cyclists have priority over all other traffic."
+  ],
+  "answer": 2,
+  "explanation": "The sign prohibits cycling on this road or path. Cyclists must take another route or push their bike as pedestrians would. For you as a driver it tells you that you will not normally meet cyclists on this stretch, but a Zusatzzeichen may allow exceptions.",
+  "tip": "Do not mix it up with the blue Zeichen 237 (Radweg), which obliges cyclists to use a path. Here the prohibition sign is red and round. Cyclists who ignore it do occasionally appear, so stay alert.",
+  "confused_with": "237",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_254_-_Verbot_für_Radfahrer,_StVO_1992.svg"
+ },
+ {
+  "num": "255",
+  "week": 2,
+  "name_de": "Verbot für Krafträder, auch mit Beiwagen, Kleinkrafträder und Mofas",
+  "name_en": "No motorcycles (including with sidecar), mopeds/light motorcycles and mofas",
+  "category": "Vorschriftzeichen",
+  "question": "Which vehicles are prohibited by this sign?",
+  "options": [
+   "Only motorcycles over 125 cc.",
+   "Cars and motorcycles, but not mopeds.",
+   "All two-wheeled vehicles including bicycles.",
+   "Motorcycles (also with sidecar), Kleinkrafträder (mopeds) and Mofas."
+  ],
+  "answer": 3,
+  "explanation": "The sign bans motorcycles, including those with sidecars, as well as small motorcycles (Kleinkrafträder, e.g. mopeds) and Mofas. Cars and bicycles are not covered. The ban applies from the sign to the next junction unless a Zusatzzeichen states otherwise.",
+  "tip": "Cars may pass this sign. Don't confuse it with Zeichen 260 (car and motorcycle pictured), which bans all motor vehicles.",
+  "confused_with": "260",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_255_-_Verbot_für_Krafträder,_auch_mit_Beiwagen,_Kleinkrafträder_und_Mofas,_StVO_1992.svg"
+ },
+ {
+  "num": "259",
+  "week": 2,
+  "name_de": "Verbot für Fußgänger",
+  "name_en": "No pedestrians",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Pedestrians are not allowed to use this road or path.",
+   "Pedestrians must use the opposite side of the road.",
+   "Pedestrians have right of way at this point.",
+   "Pedestrians may only cross the road here."
+  ],
+  "answer": 0,
+  "explanation": "The sign prohibits pedestrians from using the road or path. It is often found on fast roads or at tunnels. It applies from the sign to the next junction unless a Zusatzzeichen changes this.",
+  "tip": "Drivers rarely see it, but it signals that the road is not designed for people on foot, so traffic may be faster. Do not confuse it with Zeichen 250, which closes the road to all vehicles but not pedestrians.",
+  "confused_with": "250",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_259_-_Verbot_für_Fußgänger,_StVO_1992.svg"
+ },
+ {
+  "num": "262",
+  "week": 2,
+  "name_de": "Verbot für Fahrzeuge über angegebene tatsächliche Masse",
+  "name_en": "No vehicles over the stated actual weight",
+  "category": "Vorschriftzeichen",
+  "question": "What must you check when you see this sign with a weight figure (e.g. 5.5 t)?",
+  "options": [
+   "The permissible gross mass shown in the vehicle registration document.",
+   "The axle load of your heaviest axle only.",
+   "The actual weight of your vehicle including load and passengers.",
+   "Only whether you are driving a lorry."
+  ],
+  "answer": 2,
+  "explanation": "The sign prohibits vehicles whose actual mass, including load and passengers, exceeds the stated value. The figure applies to the vehicle as it is right now, not to the registration papers. It is typically used before weak bridges or roads.",
+  "tip": "This one is about actual weight, so a heavily loaded van can be affected even if its permissible mass is lower. Compare with Zeichen 253, which relates to the permissible mass and a fixed 3.5 t.",
+  "confused_with": "263",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_262-5,5_-_Verbot_für_Fahrzeuge_über_angegebene_tatsächliche_Masse,_StVO_2017.svg"
+ },
+ {
+  "num": "264",
+  "week": 2,
+  "name_de": "Verbot für Fahrzeuge über angegebene Breite einschließlich Ladung",
+  "name_en": "No vehicles over the stated width (including load)",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct for a sign showing a width of 2 m?",
+  "options": [
+   "Only vehicles over 2 m wide with no load are prohibited.",
+   "Vehicles wider than 2 m, including their load, may not pass.",
+   "Vehicles must keep 2 m lateral distance from parked cars.",
+   "The road narrows to 2 m, but all vehicles may enter."
+  ],
+  "answer": 1,
+  "explanation": "The sign prohibits vehicles whose actual width, including load, exceeds the stated figure. Mirrors may matter if they extend the vehicle's width. It protects narrow passages, and you may not enter even if you think you can squeeze through.",
+  "tip": "Think of wide loads, trailers and large vans with mirrors folded out. Do not confuse it with the warning sign for a road narrowing (Zeichen 120), which only warns but does not ban.",
+  "confused_with": "265",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_264-2_-_Verbot_für_Fahrzeuge_über_angegebene_tatsächliche_Breite,_StVO_2017.svg"
+ },
+ {
+  "num": "265",
+  "week": 2,
+  "name_de": "Verbot für Fahrzeuge über angegebene tatsächliche Höhe einschließlich Ladung",
+  "name_en": "No vehicles over the stated actual height (including load)",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "A warning that the road ahead has a low underpass, but all vehicles may enter.",
+   "Vehicles with an actual height including load above the stated figure are prohibited.",
+   "Only trucks must check their height; cars may pass.",
+   "The height limit refers to the permissible vehicle height from the registration document."
+  ],
+  "answer": 1,
+  "explanation": "The sign bans vehicles whose actual height, including load, exceeds the figure shown. It is used for low bridges, tunnels or underpasses. It applies to all vehicles, not only lorries.",
+  "tip": "Remember roof boxes, bikes on the roof, aerials and roof racks: they count toward the height. If you are unsure, take another route. Instructors like to ask about this with loaded vans or roof cargo.",
+  "confused_with": "264",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_265-3,8_-_Verbot_für_Fahrzeuge_über_angegebene_tatsächliche_Höhe,_StVO_2017.svg"
+ },
+ {
+  "num": "270.1",
+  "week": 2,
+  "name_de": "Beginn eines Verkehrsverbots zur Verminderung schädlicher Luftverunreinigungen in einer Zone",
+  "name_en": "Start of low-emission zone (Umweltzone)",
+  "category": "Vorschriftzeichen",
+  "question": "What must you have before entering a zone marked with this sign?",
+  "options": [
+   "Nothing, the sign only recommends clean vehicles.",
+   "A vehicle allowed by the Zusatzzeichen, usually shown by the correct Umweltplakette (environmental sticker) on the windscreen.",
+   "A toll vignette for the city centre.",
+   "A special parking disc."
+  ],
+  "answer": 1,
+  "explanation": "The sign marks the start of a zone where vehicles with high emissions are not allowed. The Zusatzzeichen below it shows which Umweltplakette colour is required for entry. The zone applies until it is ended by Zeichen 270.2. All vehicles must comply, including foreign-registered ones.",
+  "tip": "Check the sticker before you enter. If you have a foreign-registered car, you must still obtain a valid Umweltplakette for the zone. Do not assume a vehicle that is considered clean elsewhere is automatically allowed.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_270.1_-_Beginn_eines_Verkehrsverbots_zur_Verminderung_schädlicher_Luftverunreinigungen_in_einer_Zone._I,_StVO_2007.svg"
+ },
+ {
+  "num": "277",
+  "week": 2,
+  "name_de": "Überholverbot für Kraftfahrzeuge mit einer zulässigen Gesamtmasse über 3,5 t (und Zugmaschinen)",
+  "name_en": "No overtaking for motor vehicles over 3.5 t permissible gross mass (and tractors)",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement about this sign is correct?",
+  "options": [
+   "It prohibits overtaking for all motor vehicles, including cars.",
+   "It prohibits overtaking only for motor vehicles with a permissible gross mass above 3.5 t, including their trailers, and for tractors. Cars and buses are exempt.",
+   "It prohibits overtaking only for vehicles carrying dangerous goods.",
+   "It is a recommendation for lorries to avoid overtaking in the city."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 277 bans overtaking of multi-track motor vehicles for lorries over 3.5 t permissible gross mass (including their trailers) and for tractors. Cars and buses are not covered. The ban applies from the sign until a Zeichen 281 or until the end of the stretch as shown by a Zeichen 282 or by a junction/road change. Note: older textbooks and some image databases still say '2.8 t', which is outdated. Check the current threshold of 3.5 t.",
+  "tip": "As a car driver you are not addressed by this sign. In the symbol the overtaking vehicle is a red lorry; in Z 276 it is a red car, and that one applies to you.",
+  "confused_with": "276",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_277_-_Überholverbot_für_Kraftfahrzeuge_mit_einem_zulässigen_Gesamtgewicht_über_2,8_t,_einschließlich_ihrer_Anhänger,_StVO_1992.svg"
+ },
+ {
+  "num": "280",
+  "week": 2,
+  "name_de": "Ende des Überholverbotes für Kraftfahrzeuge aller Art",
+  "name_en": "End of the overtaking ban for all motor vehicles",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "End of the overtaking ban for motor vehicles over 3.5 t only.",
+   "End of all prohibitions and restrictions, including speed limits.",
+   "End of the overtaking ban for motor vehicles of all kinds (ends Zeichen 276).",
+   "Overtaking is now mandatory for slow vehicles."
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 280 ends the overtaking ban imposed by Zeichen 276 for all motor vehicles. From the sign on, overtaking is allowed again under the general rules of §5 StVO. Other bans such as speed limits stay in force until they are cancelled separately.",
+  "tip": "'Overtaking allowed' does not mean 'overtaking safe'. Check for oncoming traffic, junctions, solid centre lines and a clear view before you pull out. Instructors watch for people who accelerate past the sign without checking.",
+  "confused_with": "281",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_280_-_Ende_des_Überholverbotes_für_Kraftfahrzeuge_aller_Art,_StVO_1992.svg"
+ },
+ {
+  "num": "281",
+  "week": 2,
+  "name_de": "Ende des Überholverbots für Kraftfahrzeuge mit einer zulässigen Gesamtmasse über 3,5 t",
+  "name_en": "End of the overtaking ban for motor vehicles over 3.5 t permissible gross mass",
+  "category": "Vorschriftzeichen",
+  "question": "Who is addressed by this sign?",
+  "options": [
+   "All motor vehicles, because the overtaking ban for everyone ends here.",
+   "Only motorcycles and mopeds.",
+   "Cars and buses only; lorries must continue to avoid overtaking.",
+   "Lorries over 3.5 t permissible gross mass (and tractors), for whom the ban of Zeichen 277 ends."
+  ],
+  "answer": 3,
+  "explanation": "Zeichen 281 cancels the overtaking ban of Zeichen 277 for lorries over 3.5 t (including their trailers) and tractors. After this sign these vehicles may overtake again under the general rules. For cars, nothing changes because the ban never applied to them.",
+  "tip": "Look at the symbol: the lorry on the sign tells you which ban ends. If you see only cars in the symbol (Z 280), the ban for all motor vehicles ends. Don't confuse the two.",
+  "confused_with": "280",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_281_-_Ende_des_Überholverbots_für_Kraftfahrzeuge_mit_einem_zulässigen_Gesamtgewicht_über_3,5_t,_StVO_1992.svg"
+ },
+ {
+  "num": "290.2",
+  "week": 2,
+  "name_de": "Ende eines eingeschränkten Haltverbots für eine Zone",
+  "name_en": "End of a restricted stopping zone",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "The zone of restricted stopping (Z 290.1) ends here; the general rules for stopping and parking apply again.",
+   "A parking-management zone with parking discs ends here.",
+   "A zone of absolute no stopping begins here.",
+   "Parking is now allowed everywhere, even at junctions and in front of driveways."
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 290.2 ends a zone that started with Zeichen 290.1 (eingeschränktes Haltverbot für eine Zone). Inside such a zone stopping for longer than three minutes is prohibited unless a plate allows something else. After the sign, the normal rules of §12 StVO apply again, including the general bans near junctions, bends and driveways.",
+  "tip": "Don't assume you may park anywhere after the zone ends. The general parking bans of §12 StVO still apply. Also keep in mind that this is not the same as the end of a parking-management zone (Z 314.2).",
+  "confused_with": "314.2",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_290.2_-_Ende_eines_eingeschränkten_Haltverbotes_für_eine_Zone,_StVO_2009.svg"
+ },
+ {
+  "num": "314.1",
+  "week": 2,
+  "name_de": "Beginn einer Parkraumbewirtschaftungszone",
+  "name_en": "Start of a parking-management zone",
+  "category": "Richtzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Nothing; the sign only shows that a car park is near.",
+   "Park only as allowed by the plates (e.g. parking disc, ticket, resident permit); the rule applies in the whole zone until Z 314.2.",
+   "Stop for at most three minutes anywhere in the zone.",
+   "Pay a toll when you enter the zone."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 314.1 marks the beginning of a zone in which parking is regulated, for example with a parking ticket, parking disc or a resident permit. The supplementary plates under the sign show the exact conditions. The rules apply to all roads in the zone, usually without repeating the sign, until Zeichen 314.2 ends the zone.",
+  "tip": "In cities you often see only the zone sign at the entrance, not at every parking space. If you can't find a plate, read the entrance sign again. Parking without a valid ticket or disc is an offence, so check before you leave the car.",
+  "confused_with": "290.1",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_314.1_-_Beginn_einer_Parkraumbewirtschaftungszone,_StVO_2009.svg"
+ },
+ {
+  "num": "314.2",
+  "week": 2,
+  "name_de": "Ende einer Parkraumbewirtschaftungszone",
+  "name_en": "End of a parking-management zone",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "The special parking rules of the zone no longer apply after this sign.",
+   "You must leave the zone within three minutes.",
+   "Parking is now free of charge but only with a parking disc.",
+   "You may park everywhere, including where a general parking ban applies."
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 314.2 ends the parking-management zone that started with Zeichen 314.1. After this sign the zone-specific conditions (ticket, disc, resident permit) are no longer valid. The general rules for stopping and parking in §12 StVO apply, and other signs are still valid.",
+  "tip": "Be careful when you park right after the sign: a single sign later in the street may start another regulated area. Always look for additional signs, not only for the end sign.",
+  "confused_with": "290.2",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_314.2_-_Ende_einer_Parkraumbewirtschaftungszone,_StVO_2009.svg"
+ },
+ {
+  "num": "242.2",
+  "week": 2,
+  "name_de": "Ende einer Fußgängerzone",
+  "name_en": "End of a pedestrian zone",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "End of a traffic-calmed area where walking speed applies.",
+   "The pedestrian zone ends here; the general traffic rules apply again.",
+   "End of a cycle street.",
+   "Pedestrians must leave the road here."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 242.2 marks the end of a pedestrian zone that started with Zeichen 242.1. In the zone, vehicles are only allowed if a plate permits them, and then only at walking speed. After the sign normal traffic rules apply again. When you drive out of the pedestrian zone onto a road, you must make sure that you don't endanger anyone (§10 StVO).",
+  "tip": "At the exit of a pedestrian zone you have no right of way. Roll out slowly, watch for cyclists and pedestrians and, if necessary, let yourself be guided. Don't confuse it with the end of a traffic-calmed area, which is Z 325.2.",
+  "confused_with": "325.2",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_242.2_-_Ende_einer_Fußgängerzone,_StVO_2009.svg"
+ },
+ {
+  "num": "244.2",
+  "week": 2,
+  "name_de": "Ende einer Fahrradstraße",
+  "name_en": "End of a cycle street",
+  "category": "Vorschriftzeichen",
+  "question": "What changes at this sign?",
+  "options": [
+   "The cycle street ends; its special rules (cyclists only, 30 km/h limit etc.) no longer apply.",
+   "The pedestrian zone ends and you may drive normally.",
+   "Cyclists must now use the cycle path next to the road.",
+   "The speed limit of 30 km/h begins."
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 244.2 ends a cycle street (Fahrradstraße) that started with Zeichen 244.1. In a cycle street only cyclists may use the road unless a plate allows other vehicles, and the speed limit is 30 km/h. After the end sign the usual rules apply again, so other vehicles may use the road and the 30 km/h limit of the cycle street no longer applies.",
+  "tip": "Remember that on a cycle street cyclists may ride side by side. Check your speed after the end sign: only the cycle-street limit is cancelled, and a general limit such as 50 km/h in the town may still be relevant.",
+  "confused_with": "242.2",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_244.2_-_Ende_einer_Fahrradstraße,_StVO_2013.svg"
+ },
+ {
+  "num": "330.1",
+  "week": 2,
+  "name_de": "Autobahn",
+  "name_en": "Motorway (Autobahn)",
+  "category": "Richtzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Nothing special; ordinary roads and rules apply.",
+   "Follow the special motorway rules; only motor vehicles with a design speed of more than 60 km/h may use it.",
+   "Reduce speed to 50 km/h.",
+   "Give way to all traffic from the right."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 330.1 marks the start of an Autobahn. From here the special rules of §18 StVO apply. Only motor vehicles with a design-related top speed of more than 60 km/h are allowed. Pedestrians, cyclists and slow vehicles are prohibited, and stopping and turning are not allowed. The rules apply until Zeichen 330.2.",
+  "tip": "When you are new to German motorways, remember that the recommended speed is 130 km/h unless a sign limits it, and that overtaking on the right is prohibited, with only a few exceptions. Don't confuse it with Z 331.1, a road for motor vehicles (Kraftfahrstraße).",
+  "confused_with": "331.1",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_330.1_-_Autobahn,_StVO_2013.svg"
+ },
+ {
+  "num": "330.2",
+  "week": 2,
+  "name_de": "Ende der Autobahn",
+  "name_en": "End of the motorway (Autobahn)",
+  "category": "Richtzeichen",
+  "question": "What does this sign tell you?",
+  "options": [
+   "The motorway starts here.",
+   "The motorway ends here; the ordinary rules of the road apply, including right of way at junctions.",
+   "You must leave the motorway at the next exit.",
+   "The recommended speed of 130 km/h ends and you must drive 30 km/h."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 330.2 marks the end of an Autobahn. The special motorway rules of §18 StVO end there and the usual rules of the road apply again. That means the normal right-of-way rules, and for example cyclists or pedestrians may be present on the road ahead depending on the type of road.",
+  "tip": "After a long motorway stretch drivers often keep too much speed. Check the speed limit on the next signs and adapt your speed early, especially if a town begins directly after the end of the motorway.",
+  "confused_with": "331.2",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_330.2_-_Ende_der_Autobahn,_StVO_2013.svg"
+ },
+ {
+  "num": "331.1",
+  "week": 2,
+  "name_de": "Kraftfahrstraße (Beginn)",
+  "name_en": "Motor-vehicle road (start)",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct for this sign?",
+  "options": [
+   "Only passenger cars may use this road; trucks and motorcycles are excluded.",
+   "Only motor vehicles with a design speed of more than 60 km/h may use this road, and stopping on the carriageway is prohibited.",
+   "You must drive at least 60 km/h on this road, otherwise you are blocking traffic.",
+   "All Autobahn rules end here and normal city traffic rules apply again."
+  ],
+  "answer": 1,
+  "explanation": "The sign marks a Kraftfahrstraße. Only motor vehicles whose construction allows more than 60 km/h are permitted. Pedestrians, cyclists, mopeds (Mofas) and slow vehicles such as tractors are not. Stopping on the carriageway is prohibited. The rule applies until the sign Ende der Kraftfahrstraße (331.2).",
+  "tip": "The 60 km/h refers to the vehicle's design speed, not to a minimum speed you must drive. A Kraftfahrstraße can be an urban Bundesstraße with junctions, so do not treat it like a full Autobahn. Instructors watch for hesitant stopping on the carriageway, which is not allowed.",
+  "confused_with": "330.1",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_331.1_-_Kraftfahrstraße,_StVO_2013.svg"
+ },
+ {
+  "num": "331.2",
+  "week": 2,
+  "name_de": "Ende der Kraftfahrstraße",
+  "name_en": "End of motor-vehicle road",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "End of the Autobahn; the speed limit of 50 km/h applies from here.",
+   "End of the Kraftfahrstraße; from here other road users such as cyclists may be allowed again.",
+   "Start of a Kraftfahrstraße; only fast motor vehicles may enter.",
+   "End of all speed limits and other prohibitions on this road."
+  ],
+  "answer": 1,
+  "explanation": "The sign ends the Kraftfahrstraße that started with sign 331.1. From here the special rules for motor-vehicle roads no longer apply, such as the restriction to vehicles above 60 km/h design speed and the stopping ban on the carriageway. The normal rules of the road then apply, and the road may be open to other road users.",
+  "tip": "After the sign, expect slower vehicles, cyclists or pedestrians to appear. Adjust your speed and check for junctions or crossings. Do not assume that other signs, such as speed limits, end here too.",
+  "confused_with": "331.1",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_331.2_-_Ende_der_Kraftfahrstraße,_StVO_2013.svg"
+ },
+ {
+  "num": "333",
+  "week": 2,
+  "name_de": "Pfeilschild – Ausfahrt von der Autobahn",
+  "name_en": "Arrow sign – exit from the Autobahn",
+  "category": "Richtzeichen",
+  "question": "What does this blue arrow sign on the Autobahn tell you?",
+  "options": [
+   "It marks the exit from the Autobahn; if you want to leave, you take this exit.",
+   "It prohibits all traffic from using the right-hand lane.",
+   "It announces a lane reduction in 500 m.",
+   "It is a recommended direction for lorries only."
+  ],
+  "answer": 0,
+  "explanation": "This blue arrow sign is placed at the actual exit of an Autobahn. It shows you where to leave the Autobahn. If you want to exit, follow the arrow into the exit lane. It does not forbid anything and does not limit your speed by itself.",
+  "tip": "Prepare early: get into the right lane in good time, indicate, and reduce speed in the exit lane, not on the main carriageway. Slowing down abruptly on the through lane is a classic mistake that examiners criticise.",
+  "confused_with": "448",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_333_-_Pfeilschild_-_Ausfahrt_von_der_Autobahn,_StVO_1980.svg"
+ },
+ {
+  "num": "448",
+  "week": 2,
+  "name_de": "Ankündigungstafel auf Autobahnen",
+  "name_en": "Advance exit sign on Autobahnen",
+  "category": "Richtzeichen",
+  "question": "What is the purpose of this sign?",
+  "options": [
+   "It gives the speed limit for the next exit.",
+   "It marks the end of the Autobahn.",
+   "It announces an upcoming exit or junction and shows the distance to it.",
+   "It orders you to leave the Autobahn at the next exit."
+  ],
+  "answer": 2,
+  "explanation": "This large blue sign announces an upcoming exit or junction on the Autobahn. It usually lists the destination, the road number and the distance to the exit. It is only information; you decide whether to leave. It does not give any order.",
+  "tip": "Use the announcement to plan your lane change early and signal in time. Late, hard lane changes in front of an exit are a common cause of accidents and of lost points in a driving test.",
+  "confused_with": "333",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_448_-_Ankündigungstafel_auf_Autobahnen,_StVO_1992.svg"
+ },
+ {
+  "num": "274-50",
+  "week": 2,
+  "name_de": "Zulässige Höchstgeschwindigkeit (50)",
+  "name_en": "Maximum permitted speed (50 km/h)",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Recommended speed of 50 km/h; you may exceed it if the road is clear.",
+   "Minimum speed of 50 km/h.",
+   "Maximum permitted speed of 50 km/h from this sign onward.",
+   "Start of a zone with a 50 km/h limit that ends automatically at the next junction."
+  ],
+  "answer": 2,
+  "explanation": "Sign 274 sets a binding maximum speed, here 50 km/h. It applies from the sign until it is cancelled, for example by an end-of-limit sign or by another speed sign. You may drive slower, but not faster than the limit.",
+  "tip": "Inside built-up areas, 50 km/h is already the general limit. A 50 sign there can serve as a reminder after a section with a different limit. Look for signs that end or change the limit, and do not rely on 'it must be over by now'.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_274-50_-_Zulässige_Höchstgeschwindigkeit,_StVO_2017.svg"
+ },
+ {
+  "num": "274-70",
+  "week": 2,
+  "name_de": "Zulässige Höchstgeschwindigkeit (70)",
+  "name_en": "Maximum permitted speed (70 km/h)",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Drive at least 70 km/h.",
+   "Not exceed 70 km/h from here on, until the limit is cancelled or changed.",
+   "Drive exactly 70 km/h.",
+   "Reduce speed to 70 km/h only if there is oncoming traffic."
+  ],
+  "answer": 1,
+  "explanation": "This sign sets a maximum speed of 70 km/h. It applies from the sign until it is cancelled by an end sign or replaced by another speed sign. Drive slower whenever road, traffic, visibility or weather require it.",
+  "tip": "It is a maximum, not a target. Wet roads, fog or heavy traffic can require a lower speed even when the sign allows 70. Do not confuse it with the blue round minimum-speed sign 275.",
+  "confused_with": "275",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_274-70_-_Zulässige_Höchstgeschwindigkeit,_StVO_2017.svg"
+ },
+ {
+  "num": "274-100",
+  "week": 2,
+  "name_de": "Zulässige Höchstgeschwindigkeit (100)",
+  "name_en": "Maximum permitted speed (100 km/h)",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "The sign is only a recommendation; the Autobahn recommended speed is 130 km/h anyway.",
+   "You must drive at least 100 km/h here.",
+   "The limit applies only to lorries.",
+   "You may not drive faster than 100 km/h from this sign until it is cancelled or replaced."
+  ],
+  "answer": 3,
+  "explanation": "Sign 274 with 100 is a binding maximum speed of 100 km/h. It overrides any general recommended speed such as the Autobahn Richtgeschwindigkeit of 130 km/h. It applies from the sign until it is ended or replaced.",
+  "tip": "On the Autobahn many drivers confuse the recommended speed with a legal limit. A red-ringed round sign is always a binding limit. A blue rectangular sign 380 is only a recommendation.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_274-100_-_Zulässige_Höchstgeschwindigkeit,_StVO_2017.svg"
+ },
+ {
+  "num": "293",
+  "week": 2,
+  "name_de": "Fußgängerüberweg",
+  "name_en": "Pedestrian crossing (zebra crossing)",
+  "category": "Markierung",
+  "question": "What must you do when approaching this marking?",
+  "options": [
+   "Let pedestrians and wheelchair users who are crossing or about to cross go first; approach at moderate speed and stop if necessary.",
+   "Speed up so that pedestrians have no time to cross.",
+   "Pedestrians always have to wait for a gap in the traffic here.",
+   "Overtake slow vehicles in front of the crossing to keep traffic flowing."
+  ],
+  "answer": 0,
+  "explanation": "The white stripes mark a Fußgängerüberweg (zebra crossing). Pedestrians and wheelchair users who are on or clearly want to use it have priority. Approach at moderate speed and be ready to stop, and stop in front of the crossing if needed. Overtaking vehicles at the crossing is prohibited.",
+  "tip": "Do not overtake on the approach, and do not wave pedestrians through if the lane next to you is also blocked by a stopped vehicle. Instructors watch for early speed reduction and eye contact. Never park or stop on the crossing itself.",
+  "confused_with": "350",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_293_-_Fußgängerüberweg,_StVO_1970.svg"
+ },
+ {
+  "num": "341",
+  "week": 2,
+  "name_de": "Wartelinie",
+  "name_en": "Give-way line (waiting line)",
+  "category": "Markierung",
+  "question": "What does this broken transverse line mean?",
+  "options": [
+   "You must stop completely here in every case, like at a stop sign.",
+   "It is a parking-space marking.",
+   "You must wait here if necessary to give way to traffic with priority.",
+   "Overtaking is allowed beyond this line."
+  ],
+  "answer": 2,
+  "explanation": "The Wartelinie (341) is a broken line across the lane. It marks where you must wait if the traffic situation requires it, because someone else has priority. It reinforces a give-way obligation, for example together with sign 205 Vorfahrt gewähren. You only have to stop if there is traffic you must let pass.",
+  "tip": "A broken line means 'wait if necessary', a solid line means 'stop'. At a give-way line, stop behind the line if you must wait, and roll forward carefully if your view is blocked. Do not mistake it for a Haltlinie.",
+  "confused_with": "294",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_341_–_Wartelinie,_StVO_1970.svg"
+ },
+ {
+  "num": "294",
+  "week": 2,
+  "name_de": "Haltlinie",
+  "name_en": "Stop line",
+  "category": "Markierung",
+  "question": "Where must you stop when you have to stop at this marking?",
+  "options": [
+   "With your front wheels on the line.",
+   "Anywhere in the junction as long as you can see cross traffic.",
+   "Just before the line, so that no part of the vehicle crosses it.",
+   "Behind the line, but only if other vehicles are waiting."
+  ],
+  "answer": 2,
+  "explanation": "The Haltlinie is a solid transverse line. It shows where you must stop when required, for example at a red light, at a stop sign (Zeichen 206 Halt. Vorfahrt gewähren), at a level crossing barrier or when signalled by police. You must stop in front of the line, not over it. At a stop sign you may continue only when it is safe.",
+  "tip": "At a STOP sign, stop with the car stationary in front of the line. If you still cannot see, creep forward slowly and stop again where you can. Rolling stops and stopping on top of the line are typical test mistakes.",
+  "confused_with": "341",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_294_-_Haltlinie,_StVO_1970.svg"
+ },
+ {
+  "num": "1000-10",
+  "week": 3,
+  "name_de": "Richtungsangaben durch Pfeile, linksweisend",
+  "name_en": "Direction arrow pointing left",
+  "category": "Zusatzzeichen",
+  "question": "What does this supplementary plate mean?",
+  "options": [
+   "The main sign applies only to the area or road section in the direction of the arrow (to the left)",
+   "You must turn left at the next junction",
+   "The main sign applies only to vehicles that are turning left",
+   "The main sign ends at this point"
+  ],
+  "answer": 0,
+  "explanation": "An arrow plate shows the direction in which the regulation of the main sign applies. A left-pointing arrow means the regulation applies in that direction, for example along the kerb or road section to the left of the sign. It is not an order to turn. It applies for as long as the regulation of the main sign applies.",
+  "tip": "Do not read the arrow as a turning instruction. In the city, check the arrow direction before you park, because the same pole may carry two signs with opposite arrows.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zusatzzeichen_1000-10_-_Richtungsangaben_durch_Pfeile,_linksweisend,_StVO_1992.svg"
+ },
+ {
+  "num": "1004-30",
+  "week": 3,
+  "name_de": "nach 100 m",
+  "name_en": "After 100 m",
+  "category": "Zusatzzeichen",
+  "question": "Which statement is correct for this plate below a sign?",
+  "options": [
+   "The regulation applies only for the next 100 m",
+   "The hazard or regulation of the main sign begins only after the stated distance of 100 m",
+   "The speed limit is 100 km/h",
+   "You must stop after 100 m"
+  ],
+  "answer": 1,
+  "explanation": "This plate tells you that the danger or rule of the sign above starts after the stated distance, here 100 m ahead. Prepare to adapt your driving as you approach that point.",
+  "tip": "Do not confuse 'nach 100 m' (distance to the start) with 'auf 100 m' (length of the stretch affected). Start looking and slowing early, so you are ready when the stated point arrives.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zusatzzeichen_1004-30_-_nach_100_m,_StVO_1992.svg"
+ },
+ {
+  "num": "1010-52",
+  "week": 3,
+  "name_de": "Radverkehr",
+  "name_en": "Cycle traffic",
+  "category": "Zusatzzeichen",
+  "question": "What does this supplementary plate below a sign mean?",
+  "options": [
+   "Cyclists are exempt from the main sign",
+   "Cyclists must dismount and push their bikes",
+   "Cyclists are prohibited here",
+   "The main sign refers to cycle traffic, so it is directed at cyclists"
+  ],
+  "answer": 3,
+  "explanation": "A plate with a bicycle symbol shows that the main sign concerns cycle traffic. It is not a general exemption. Check which main sign it is combined with and what that sign orders or warns about. It applies where the main sign applies.",
+  "tip": "Do not mix it up with 'Radfahrer frei'. This plate defines who is addressed, while 'frei' means an exemption. Cyclists and parked cars are often where city lessons go wrong, so check mirrors and shoulder before turning.",
+  "confused_with": "1022-10",
+  "source": "https://commons.wikimedia.org/wiki/File:Zusatzzeichen_1010-52_-_Radverkehr_(600x330),_StVO_2017.svg"
+ },
+ {
+  "num": "1012-31",
+  "week": 3,
+  "name_de": "Ende",
+  "name_en": "End (of the regulation)",
+  "category": "Zusatzzeichen",
+  "question": "What does this plate mean?",
+  "options": [
+   "The regulation shown by the main sign ends here",
+   "The regulation begins in 100 m",
+   "The regulation continues only on weekends",
+   "It is the last warning before a dead end"
+  ],
+  "answer": 0,
+  "explanation": "The plate 'Ende' shows that the regulation of the associated main sign ends at this point. From here you are no longer bound by the restriction. Other signs that apply on the road remain valid.",
+  "tip": "A sign with 'Ende' only cancels that specific regulation, not everything else. Check what else is still in force, for example a general speed limit of the built-up area.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zusatzzeichen_1012-31_-_Ende_(600x330),_StVO_1992.svg"
+ },
+ {
+  "num": "1020-30",
+  "week": 3,
+  "name_de": "Anlieger frei",
+  "name_en": "Residents/access only",
+  "category": "Zusatzzeichen",
+  "question": "What must you do when you see this plate below a prohibition sign?",
+  "options": [
+   "Drive through only if you are a resident registered in this street",
+   "Use the road freely, because the prohibition applies only at night",
+   "Use the road only if you have a destination along it (for example residents, visitors, deliveries); through traffic is not allowed",
+   "Use the road only with a residents' parking permit"
+  ],
+  "answer": 2,
+  "explanation": "'Anlieger frei' exempts people who have a legitimate destination along the road from the prohibition. This covers residents but also visitors, customers and suppliers. Through traffic, which only uses the street as a shortcut, remains prohibited. It applies for the stretch covered by the main sign.",
+  "tip": "Shortcutting through a residential street is not allowed even if it is 'only a short way'. Without a destination in the street, turn away.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zusatzzeichen_1020-30_-_Anlieger_frei_(600x330),_StVO_1992.svg"
+ },
+ {
+  "num": "1022-10",
+  "week": 3,
+  "name_de": "Radfahrer frei",
+  "name_en": "Cyclists permitted",
+  "category": "Zusatzzeichen",
+  "question": "Which statement is correct for a sign with this plate?",
+  "options": [
+   "The main sign applies only to cyclists",
+   "Cyclists are exempt from the restriction of the main sign",
+   "Cyclists must give way to all other traffic",
+   "Mopeds are also allowed"
+  ],
+  "answer": 1,
+  "explanation": "'Radfahrer frei' exempts cyclists from the prohibition or restriction of the main sign. For example, cyclists may be allowed through a road otherwise closed to vehicles. The exemption covers cyclists only, not other vehicles. It applies as long as the main sign applies.",
+  "tip": "Expect cyclists where you would not normally expect traffic, such as in a one-way street from the opposite direction. Keep a safe lateral distance and watch junction exits.",
+  "confused_with": "1010-52",
+  "source": "https://commons.wikimedia.org/wiki/File:Zusatzzeichen_1022-10_-_Radfahrer_frei,_StVO_1992.svg"
+ },
+ {
+  "num": "1024-14",
+  "week": 3,
+  "name_de": "Kraftomnibusse frei",
+  "name_en": "Buses permitted",
+  "category": "Zusatzzeichen",
+  "question": "What does this plate mean?",
+  "options": [
+   "Only buses must obey the main sign",
+   "Buses may stop here at any time",
+   "Only buses are exempt from the main sign; all other vehicles must obey it",
+   "All vehicles with more than eight seats are exempt"
+  ],
+  "answer": 2,
+  "explanation": "The plate exempts buses (Kraftomnibusse) from the restriction or prohibition of the main sign. All other vehicles, including cars and trucks, remain bound by it. The exemption is valid where the main sign applies.",
+  "tip": "Do not follow a bus into a restricted street just because it entered. Look for the plate that includes your vehicle type.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zusatzzeichen_1024-14_-_Kraftomnibusse_frei,_StVO_1992.svg"
+ },
+ {
+  "num": "1040-30",
+  "week": 3,
+  "name_de": "Zeitliche Beschränkung (16 - 18 h)",
+  "name_en": "Time restriction (16:00 - 18:00)",
+  "category": "Zusatzzeichen",
+  "question": "What does this plate mean?",
+  "options": [
+   "The main sign applies only in the stated time window, 16:00 to 18:00, on all days of the week",
+   "The main sign applies only from Monday to Friday",
+   "The main sign applies except between 16:00 and 18:00",
+   "The main sign applies for a maximum of 18 hours"
+  ],
+  "answer": 0,
+  "explanation": "The regulation of the main sign is in force only during the stated hours, 16:00 to 18:00. Because no days are given, it applies on every day of the week, not only on working days. Outside this window the regulation does not apply.",
+  "tip": "Check the clock when you park. A space that is allowed at 15:45 can become a violation at 16:00 if you stay. Also note the missing weekday information: it covers weekends too.",
+  "confused_with": "1042-33",
+  "source": "https://commons.wikimedia.org/wiki/File:Zusatzzeichen_1040-30_-_Zeitliche_Beschränkung_(16_-_18_h),_330x600,_StVO_1992.svg"
+ },
+ {
+  "num": "1042-33",
+  "week": 3,
+  "name_de": "Mo - Fr, 16 - 18 h",
+  "name_en": "Mon - Fri, 16:00 - 18:00",
+  "category": "Zusatzzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "The main sign applies on every day from 16:00 to 18:00",
+   "The main sign applies on weekdays from Monday to Friday, all day except 16:00 to 18:00",
+   "The main sign applies only on Mondays and Fridays",
+   "The main sign applies only from Monday to Friday between 16:00 and 18:00"
+  ],
+  "answer": 3,
+  "explanation": "The main sign is valid only on the stated days (Monday to Friday) and in the stated hours (16:00 to 18:00). Outside this time, including weekends, it does not apply. A public holiday falling on a weekday is not mentioned on the plate, so check carefully if it matters.",
+  "tip": "Check both day and hour. Parking at 17:00 on Saturday is a different case from 17:00 on Thursday. Hold on to your parking disc or keep a clear note of when the regulation starts.",
+  "confused_with": "1040-30",
+  "source": "https://commons.wikimedia.org/wiki/File:Zusatzzeichen_1042-33_-_Mo_-_Fr,_16_-_18_h_(600x330),_StVO_1992.svg"
+ },
+ {
+  "num": "1044-10",
+  "week": 3,
+  "name_de": "nur Schwerbehinderte mit außergewöhnlicher Gehbehinderung und Blinde",
+  "name_en": "Only severely disabled people with extraordinary walking disability (aG) and the blind",
+  "category": "Zusatzzeichen",
+  "question": "What must you do when you see this plate below a parking sign?",
+  "options": [
+   "Park here only if you display the matching special parking permit for severely disabled people with aG or the blind",
+   "Park here for up to 30 minutes with a parking disc",
+   "Park here only if you are over 65",
+   "Park here freely, because the plate applies only to buses"
+  ],
+  "answer": 0,
+  "explanation": "The parking space is reserved for severely disabled people with extraordinary walking disability (aG) and for blind people. They must display the corresponding special permit clearly visible behind the windscreen. Other drivers may not park there, even briefly.",
+  "tip": "A normal parking permit, or no permit at all, is not enough. Do not use these spaces 'just for a minute'. Instructors count it as a clear mistake.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zusatzzeichen_1044-10_-_nur_Schwerbehinderte_mit_außergewöhnlicher_Gehbehinderung_und_Blinde,_StVO_1992.svg"
+ },
+ {
+  "num": "1052-36",
+  "week": 3,
+  "name_de": "bei Nässe",
+  "name_en": "When the road is wet",
+  "category": "Zusatzzeichen",
+  "question": "This plate is mounted under a speed-limit sign. Which statement is correct?",
+  "options": [
+   "The speed limit applies only when the road surface is wet.",
+   "The speed limit applies only while it is actually raining, not on a wet surface after the rain stops.",
+   "The speed limit applies only in the first 100 m after the sign.",
+   "The speed limit is a recommendation in wet conditions and not binding."
+  ],
+  "answer": 0,
+  "explanation": "The Zusatzzeichen 'bei Nässe' limits the sign above it to times when the road surface is wet. The limit applies from the sign until it is cancelled or the road ends or changes. When the road is dry, the sign above it does not apply.",
+  "tip": "A road can still be wet after the rain has stopped, and the limit still applies then. Assume that a damp surface counts as 'Nässe', and adjust your speed to what the road is like now.",
+  "confused_with": "114",
+  "source": "https://commons.wikimedia.org/wiki/File:Zusatzzeichen_1053-35_-_Bei_Nässe_(600x600),_StVO_2017.svg"
+ },
+ {
+  "num": "1060-31",
+  "week": 3,
+  "name_de": "Haltverbot auch auf dem Seitenstreifen",
+  "name_en": "Stopping ban also applies on the hard shoulder / verge",
+  "category": "Zusatzzeichen",
+  "question": "What does this plate mean when it is shown with a stopping-ban sign?",
+  "options": [
+   "Stopping is allowed on the shoulder but not on the carriageway.",
+   "The stopping ban applies only on the carriageway, and the shoulder may be used for parking.",
+   "The stopping ban also applies on the Seitenstreifen (shoulder), not just on the carriageway.",
+   "The shoulder is reserved for emergency vehicles only."
+  ],
+  "answer": 2,
+  "explanation": "The plate extends the stopping restriction of the sign it is attached to, so it also covers the hard shoulder or verge next to the road. You may not stop or park there either, within the area the main sign covers.",
+  "tip": "Don't assume a wide verge is a safe place for a 'quick stop'. If the plate is there, the shoulder is covered by the ban just like the carriageway.",
+  "confused_with": "283",
+  "source": "https://commons.wikimedia.org/wiki/File:Zusatzzeichen_1060-31_-_Haltverbot_auch_auf_dem_Seitenstreifen_(600x330),_StVO_2017.svg"
+ },
+ {
+  "num": "117",
+  "week": 3,
+  "name_de": "Seitenwind",
+  "name_en": "Crosswinds",
+  "category": "Gefahrzeichen",
+  "question": "Which statement about this sign is correct?",
+  "options": [
+   "It warns of a stretch where strong side winds may push the vehicle off course.",
+   "It shows that the road is closed to light vehicles in windy weather.",
+   "It indicates a nearby airport and low-flying aircraft.",
+   "It permits you to drive faster, since a tailwind helps you."
+  ],
+  "answer": 0,
+  "explanation": "The sign warns of strong gusts from the side, for example on bridges, embankments or open stretches. Slow down, hold the steering wheel firmly with both hands, and watch for lateral drift, especially when passing trucks or leaving a sheltered stretch. The warning applies to the section ahead, as far as the danger lasts.",
+  "tip": "Be careful when overtaking cyclists or trucks in gusty conditions, because the wind can push you sideways. Give extra lateral space.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_117-10_-_Seitenwind_von_rechts,_StVO_1992.svg"
+ },
+ {
+  "num": "150",
+  "week": 3,
+  "name_de": "Beschrankter Bahnübergang",
+  "name_en": "Level crossing with barriers",
+  "category": "Gefahrzeichen",
+  "question": "What does this warning sign tell you?",
+  "options": [
+   "There is a level crossing ahead with barriers or gates.",
+   "There is a level crossing ahead without any barriers.",
+   "Trains have priority only when the barriers are lowered.",
+   "A tram crossing ahead has priority over you, but trains do not."
+  ],
+  "answer": 0,
+  "explanation": "The sign warns of a level crossing with barriers (Schranken) ahead. At the crossing, rail traffic has priority, and the Andreaskreuz (Zeichen 201) marks that priority. You must wait in front of the crossing when a barrier is closing or closed, when red lights flash, or when a train is approaching.",
+  "tip": "Never stop on the tracks. Before you cross in slow-moving city traffic, make sure there is space for your car on the other side. Zeichen 151 shows a level crossing without barriers and is not the same.",
+  "confused_with": "151",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_150_-_Beschrankter_Bahnübergang,_StVO_1992.svg"
+ },
+ {
+  "num": "153",
+  "week": 3,
+  "name_de": "Dreistreifige Bake (links) vor beschranktem Bahnübergang",
+  "name_en": "Three-bar distance marker (left side) before a level crossing with barriers",
+  "category": "Richtzeichen",
+  "question": "What does this sign tell you?",
+  "options": [
+   "A level crossing is exactly 300 m away.",
+   "It is the last warning, and the crossing is directly ahead.",
+   "It is the first of three markers, and the level crossing with barriers is still some distance ahead.",
+   "The crossing ahead has no barriers, and you must stop."
+  ],
+  "answer": 2,
+  "explanation": "Baken count down the distance to a level crossing. The three-bar marker is the first and the farthest from the crossing, followed by the two-bar and one-bar markers. Outside towns the three-bar marker is typically at roughly 240 m, but spacing can vary. You can use the markers to judge how far away the crossing is and to slow down in time.",
+  "tip": "A marker on the left side is a version for the left. Follow the same pattern: three bars, then two, then one. In a city a crossing can be close, so watch for it with signal lights and barriers.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_153_-_dreistreifige_Bake_(links)_vor_beschranktem_Bahnübergang,_StVO_1970.svg"
+ },
+ {
+  "num": "223.1",
+  "week": 3,
+  "name_de": "Seitenstreifen befahren",
+  "name_en": "Hard shoulder may be used as a lane",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct when you see this sign?",
+  "options": [
+   "The hard shoulder is reserved for breakdowns and is still closed to normal traffic.",
+   "The hard shoulder may be used as an additional lane from here.",
+   "You must leave the hard shoulder immediately.",
+   "The hard shoulder may be used for parking."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 223.1 opens the Seitenstreifen as a driving lane on the road, usually on an Autobahn when traffic is heavy. From the sign you may drive on the shoulder as a lane, and the rules for lane use then apply. The opening applies until the sign 223.2 or another sign changes it.",
+  "tip": "This sign is not for city lessons, but it can come up in the test. A shoulder open as a lane is not an emergency lane, and breakdowns need special care. Look at the signs on gantries for the current status.",
+  "confused_with": "223.2",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_223.1-50_-_Seitenstreifen_befahren,_2_Fahrstreifen_u._Seitenstreifen,_StVO_2017.svg"
+ },
+ {
+  "num": "223.2",
+  "week": 3,
+  "name_de": "Seitenstreifen nicht mehr befahren",
+  "name_en": "Hard shoulder no longer to be used as a lane",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "The hard shoulder is now open as an extra lane.",
+   "The hard shoulder may now be used for stopping and parking.",
+   "The hard shoulder is closed for repairs for the next 5 km.",
+   "From here the hard shoulder may no longer be used as a driving lane."
+  ],
+  "answer": 3,
+  "explanation": "Zeichen 223.2 ends the shoulder opening that was started by Zeichen 223.1. From here the Seitenstreifen is a shoulder again and not a lane. If you are driving on it, move back into the regular lanes in good time and with consideration for other traffic.",
+  "tip": "The pair of signs (223.1 and 223.2) is a start and an end. Remember that the end is not a place to stop, since the shoulder is only for emergencies again.",
+  "confused_with": "223.1",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_223.2-50_-_Seitenstreifen_nicht_mehr_befahren,_2_Fahrstreifen_u._Seitenstreifen,_StVO_2017.svg"
+ },
+ {
+  "num": "229",
+  "week": 3,
+  "name_de": "Taxenstand",
+  "name_en": "Taxi rank",
+  "category": "Richtzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Park there if you have a hotel booking.",
+   "Treat the area as a bus stop, where you may stop briefly.",
+   "You may stop for up to 3 minutes to let passengers out.",
+   "Do not stop or park there with a car that is not a taxi, because the space is reserved for taxis."
+  ],
+  "answer": 3,
+  "explanation": "Zeichen 229 marks a taxi rank, where only taxis may wait for passengers. Other vehicles may not park or stop in the marked area. The area runs along the sign's marked length or the road markings, which show where the rank starts and ends.",
+  "tip": "Stopping 'just for a moment' to drop someone off is a common mistake. Instructors and traffic wardens look for it. The sign for bus stops is Zeichen 224 (Haltestelle), which is different.",
+  "confused_with": "224",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_229_-_Taxenstand,_StVO_1994.svg"
+ },
+ {
+  "num": "238",
+  "week": 3,
+  "name_de": "Reitweg (Sonderweg Reiter)",
+  "name_en": "Bridleway (riders only)",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct for this sign?",
+  "options": [
+   "Horse riders may use this path, but cyclists may also use it if they ride slowly.",
+   "The path is a shared path for pedestrians and riders; both have equal rights.",
+   "The path is reserved for riders. Other road users, including cyclists and motor vehicles, must not use it.",
+   "The sign only advises riders to avoid the carriageway; the carriageway remains open to everyone."
+  ],
+  "answer": 2,
+  "explanation": "The sign (Zeichen 238, Sonderweg Reiter) marks a path reserved for horse riders. Other road users, including cyclists and drivers, may not use it. It applies along the path it marks. Where the path crosses a road, normal right-of-way rules for that junction apply.",
+  "tip": "Cyclists and cars often drive onto a bridleway by mistake in suburbs and park edges. Watch for the horse symbol, and if you meet riders near the path, give them plenty of room and slow down so you do not startle the animals.",
+  "confused_with": "239",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_238_-_Sonderweg_Reiter,_StVO_1992.svg"
+ },
+ {
+  "num": "261",
+  "week": 3,
+  "name_de": "Verbot für kennzeichnungspflichtige Kraftfahrzeuge mit gefährlichen Gütern",
+  "name_en": "No vehicles carrying dangerous goods that require hazard marking",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Motor vehicles that must display hazard-goods markings (Gefahrgut) because of their load may not pass.",
+   "Only vehicles carrying goods that are hazardous to water are banned.",
+   "Vehicles over a stated weight are banned from this road.",
+   "All trucks are banned from this road, whether or not they carry dangerous goods."
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 261 bans motor vehicles that, under the dangerous-goods rules, must carry warning markings (orange plates or placards) because of their load. An ordinary car without such a load is not affected. It applies from the sign onward. Supplementary plates can add exceptions or a distance.",
+  "tip": "Instructors like to ask whether it affects an ordinary Pkw. It does not, because the ban depends on the load, not on the vehicle size. Do not confuse it with the water-hazard sign 269.",
+  "confused_with": "269",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_261_-_Verbot_für_kennzeichnungspflichtige_Kraftfahrzeuge_mit_gefährlichen_Gütern,_StVO_1988.svg"
+ },
+ {
+  "num": "263",
+  "week": 3,
+  "name_de": "Verbot für Fahrzeuge über angegebene tatsächliche Achslast",
+  "name_en": "No vehicles exceeding the stated actual axle load",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Do not enter if the total weight of your vehicle exceeds the figure shown.",
+   "Reduce speed, because heavy vehicles may only drive slowly on this road.",
+   "Do not enter if any single axle of your vehicle, including its load, carries more than the stated weight.",
+   "Enter only if your vehicle's permitted weight, as shown in the registration document, is below the figure shown."
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 263 bans vehicles whose actual axle load, i.e. the load carried by one axle including cargo, is above the tonnage shown. The decisive figure is the real axle load, not the permitted maximum in the papers. It protects weak bridges and road surfaces. Check any supplementary plates for exceptions or distances.",
+  "tip": "Do not mix up weight signs. Zeichen 262 refers to total actual weight, while 263 refers to the load on one axle. If you drive a loaded van, think about how the load is distributed.",
+  "confused_with": "262",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_263-8_-_Verbot_für_Fahrzeuge_über_angegebene_tatsächliche_Achslast,_StVO_2017.svg"
+ },
+ {
+  "num": "266",
+  "week": 3,
+  "name_de": "Verbot für Fahrzeuge und Züge über angegebene Länge einschließlich Ladung",
+  "name_en": "No vehicles or combinations longer than the stated length, including load",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "Only vehicles carrying loads that stick out past the rear are affected.",
+   "Vehicles and combinations (e.g. with a trailer) whose total length, including load, exceeds the figure shown may not enter.",
+   "The sign gives the minimum length a vehicle must have to use this road.",
+   "The sign limits the width of the vehicle, not its length."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 266 bans vehicles and combinations whose length including the load is greater than the figure shown. A car with a long trailer or a large load can therefore be affected even if the car itself is short. It applies from the sign onward, subject to any supplementary plates.",
+  "tip": "Remember to count a trailer or a roof-loaded ladder in the total length. Width has its own sign (264), height another (265). These signs are mostly aimed at narrow old-town streets.",
+  "confused_with": "264",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_266-10_-_Verbot_für_Fahrzeuge_über_angegebene_tatsächliche_Länge,_StVO_2017.svg"
+ },
+ {
+  "num": "268",
+  "week": 3,
+  "name_de": "Schneeketten sind vorgeschrieben",
+  "name_en": "Snow chains required",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Change to winter tyres within the next kilometre.",
+   "Drive slowly because snow chains are recommended but not mandatory.",
+   "Fit snow chains to the drive wheels before continuing, if you want to drive on this stretch.",
+   "Keep snow chains in the vehicle, but only fit them if the road is actually covered with snow."
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 268 is a mandatory sign: motor vehicles may drive on this section only with snow chains fitted to the drive wheels. Winter tyres alone are not enough here. The rule applies on the signposted stretch. Check for any end sign or supplementary plate that limits it.",
+  "tip": "You will rarely see this in a city, but it matters on trips to the Alps or the Black Forest. Learn how to fit chains before you need them, not at the roadside. Drive slowly, as chains are only suitable for low speeds.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_268_-_Schneeketten_sind_vorgeschrieben,_StVO_1992.svg"
+ },
+ {
+  "num": "269",
+  "week": 3,
+  "name_de": "Verbot für Fahrzeuge mit wassergefährdender Ladung",
+  "name_en": "No vehicles carrying goods that endanger water",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Vehicles carrying goods that could pollute water, such as fuel or chemicals, may not enter.",
+   "All vehicles with a trailer are banned.",
+   "The road is closed to all traffic when there is flooding.",
+   "Washing your car on this road is prohibited."
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 269 bans vehicles whose cargo could pollute water, such as fuel or other substances classified as water-endangering. It is typically placed near water protection zones. It applies from the sign onward, subject to supplementary plates.",
+  "tip": "A normal private car with a full tank is not what the sign targets. It concerns the cargo. Do not mix it up with the dangerous-goods sign 261. 269 is about water protection, 261 is about Gefahrgut marking.",
+  "confused_with": "261",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_269_-_Verbot_für_Fahrzeuge_mit_wassergefährdender_Ladung,_StVO_1988.svg"
+ },
+ {
+  "num": "273",
+  "week": 3,
+  "name_de": "Verbot des Fahrens ohne Mindestabstand",
+  "name_en": "Minimum following distance required",
+  "category": "Vorschriftzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Overtake only if you leave the stated distance in metres in front of the vehicle you pass.",
+   "Keep the distance in metres shown to the vehicle ahead only at junctions.",
+   "Keep at least 50 m to the vehicle in front, whatever number is on the sign.",
+   "If the sign applies to your vehicle, never keep less than the distance in metres shown to the vehicle ahead."
+  ],
+  "answer": 3,
+  "explanation": "Zeichen 273 prohibits driving closer to the vehicle in front than the distance in metres shown on the sign. It applies to the vehicles the sign and its plates cover, and it continues along the signposted section. The normal rule of keeping safe distance also still applies.",
+  "tip": "The number on the sign is the minimum, not a guarantee of safety. In wet weather or in a city queue you may need more. Never assume you are exempt just because you drive a car. Look at the plates.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_273-70_-_Verbot_des_Unterschreitens_des_angegebenen_Mindestabstandes,_StVO_2017.svg"
+ },
+ {
+  "num": "275",
+  "week": 3,
+  "name_de": "Vorgeschriebene Mindestgeschwindigkeit",
+  "name_en": "Minimum speed",
+  "category": "Vorschriftzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "It is a recommended speed. You may ignore it if you wish.",
+   "You must not drive slower than the stated speed, unless traffic, road, visibility or weather conditions require it, and vehicles that cannot reach it may not use the road.",
+   "You may not drive faster than the stated speed.",
+   "It means you must drive exactly at that speed."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 275 is a mandatory sign. You must not go slower than the stated speed, unless traffic, road, visibility or weather conditions force you to. Vehicles that cannot or may not drive that fast must not use the road. It applies until the next junction or until Zeichen 279.",
+  "tip": "The sign is blue and round, which makes it a Gebot, not a limit. Learners often confuse it with the red-ringed speed limit 274. A blue number means 'at least', a red ring means 'at most'.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_275-30_-_Vorgeschriebene_Mindestgeschwindigkeit,_StVO_2017.svg"
+ },
+ {
+  "num": "279",
+  "week": 3,
+  "name_de": "Ende der vorgeschriebenen Mindestgeschwindigkeit",
+  "name_en": "End of minimum speed",
+  "category": "Vorschriftzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "All speed restrictions end here.",
+   "The speed limit shown now applies.",
+   "The minimum speed requirement ends. You may drive slower again.",
+   "The recommended speed ends here, and the road reverts to the usual limit."
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 279 cancels the minimum speed set by Zeichen 275. From this point you are no longer obliged to drive at least that speed. General rules still apply, so you must drive at a speed suited to the conditions and may not impede traffic without reason.",
+  "tip": "A common trap is thinking this sign lifts a speed limit. It does not. It ends a minimum, not a maximum. A red-ringed limit is ended by 278.",
+  "confused_with": "278",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_279-30_-_Ende_der_vorgeschriebenen_Mindestgeschwindigkeit,_StVO_2017.svg"
+ },
+ {
+  "num": "316",
+  "week": 3,
+  "name_de": "Parken und Reisen",
+  "name_en": "Park and ride",
+  "category": "Richtzeichen",
+  "question": "What does this sign indicate?",
+  "options": [
+   "A car park with a connection to public transport, so you can park and continue your trip by bus or train.",
+   "A car park that is free for everyone, including long-term parking for caravans.",
+   "A car park reserved for taxis.",
+   "A rest area on a motorway with a hotel."
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 316 points to a parking facility with a connection to public transport (park and ride). The sign is informational and does not itself set parking rules or fees. These come from plates and signs at the site.",
+  "tip": "In city lessons, expect a question about when to use these car parks. Read the plates for fees, time limits and any restriction to public-transport users. Do not assume parking is free or unlimited.",
+  "confused_with": "314",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_316_-_Parken_und_Reisen,_StVO_1992.svg"
+ },
+ {
+  "num": "317",
+  "week": 3,
+  "name_de": "Wandererparkplatz",
+  "name_en": "Hikers' car park",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Park-and-ride car park where you change to public transport",
+   "Parking reserved for severely disabled drivers",
+   "Car park from which marked hiking trails start",
+   "Rest area with picnic tables and toilets"
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 317 marks a car park intended for hikers, usually at the start of walking trails. It is an informational sign, so it adds no new obligation. The normal parking rules and any Zusatzzeichen (for example a fee or a time limit) still apply.",
+  "tip": "Do not mix it up with the Park-and-ride sign (Zeichen 316). Always read the plates beneath a parking sign before you leave the car.",
+  "confused_with": "316",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_317_-_Wandererparkplatz,_StVO_1992.svg"
+ },
+ {
+  "num": "327",
+  "week": 3,
+  "name_de": "Tunnel",
+  "name_en": "Tunnel",
+  "category": "Richtzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Switch on your dipped headlights (Abblendlicht)",
+   "Sound your horn before entering",
+   "Stop and check the clearance height",
+   "Reduce speed to 30 km/h"
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 327 shows that a tunnel begins. Under § 17 StVO you must drive with dipped headlights in tunnels, even in daylight. The sign does not set a speed limit. Any limit comes from separate signs.",
+  "tip": "Daytime running lights are not enough, because they often leave the rear lights off. Switch to Abblendlicht manually if your car's automatic system does not do it. Keep a generous distance, because you may only stop in the tunnel in an emergency.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_327_-_Tunnel,_StVO_2017.svg"
+ },
+ {
+  "num": "328",
+  "week": 3,
+  "name_de": "Nothalte- und Pannenbucht",
+  "name_en": "Emergency stopping and breakdown bay",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "You may use the bay for a short rest when you are tired.",
+   "The bay is for emergencies and breakdowns only.",
+   "The bay is a loading zone for delivery vehicles.",
+   "The bay is a normal bus stop."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 328 marks a bay where you may stop if your vehicle breaks down or you have an emergency. It is not for ordinary stopping, resting or phone calls. Leave the bay as soon as the problem is solved or help has arrived.",
+  "tip": "If you have to use the bay, switch on the hazard lights straight away. On roads like these, instructors expect you to put safety first and not just leave the car anywhere.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_328_-_Nothalte-_und_Pannenbucht,_StVO_2006.svg"
+ },
+ {
+  "num": "332",
+  "week": 3,
+  "name_de": "Ausfahrt von der Autobahn",
+  "name_en": "Exit from the motorway",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "The motorway begins here",
+   "A service area follows in the next few hundred metres",
+   "You are entering an expressway (Kraftfahrstraße)",
+   "This is the exit where you leave the motorway"
+  ],
+  "answer": 3,
+  "explanation": "Zeichen 332 marks the exit (Ausfahrt) from the motorway. Use the exit lane to leave. The sign gives no speed limit, but you should not slow down on the main carriageway. Brake only once you are in the deceleration lane.",
+  "tip": "Decide early which exit you need. Motorway exits are only allowed at junctions (Anschlussstellen). A last-second swerve across the lanes is an obvious fault in a driving test.",
+  "confused_with": "330.1",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_332_-_Ausfahrt_von_der_Autobahn,_StVO_1981.svg"
+ },
+ {
+  "num": "405",
+  "week": 3,
+  "name_de": "Nummernschild für Autobahnen",
+  "name_en": "Motorway number plate (here: A 999)",
+  "category": "Richtzeichen",
+  "question": "What does this sign show?",
+  "options": [
+   "The number of the motorway you are driving on (here A 999)",
+   "The number of a Bundesstraße",
+   "The number of a European road",
+   "The number of the next exit"
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 405 is a blue road-number sign with the letter A and a number. It identifies the motorway (Autobahn). It is purely informational and carries no rule. Use it with the direction signs to follow your route.",
+  "tip": "Remember the sign colours for navigating: blue for Autobahn (A), yellow for Bundesstraße (B), green for European roads (E). Confusing them is a common beginner mistake in lessons.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_405_-_Nummernschild_für_Autobahnen,_StVO_1992.svg"
+ },
+ {
+  "num": "415",
+  "week": 3,
+  "name_de": "Wegweiser auf Bundesstraßen",
+  "name_en": "Direction sign on federal roads",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "It shows that the motorway starts ahead.",
+   "It gives destinations and direction on a Bundesstraße.",
+   "It marks a diversion because of roadworks.",
+   "It gives you priority at the next junction."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 415 is a direction sign used on Bundesstraßen. It shows destinations and the direction to them. It is purely informational, so it does not grant right of way or change any speed limit.",
+  "tip": "Use the arrows to choose your lane early. A late lane change at a junction is a typical examiner's complaint in town traffic.",
+  "confused_with": "434",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_415-10_-_Wegweiser_auf_Bundesstraßen_(linksweisend),_StVO_1992.svg"
+ },
+ {
+  "num": "430",
+  "week": 3,
+  "name_de": "Wegweiser zur Autobahn",
+  "name_en": "Direction sign to the motorway",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "Motorway rules apply from this sign onwards",
+   "A motorway service area lies ahead",
+   "The motorway is closed",
+   "It points the way to the nearest motorway access"
+  ],
+  "answer": 3,
+  "explanation": "Zeichen 430 is a direction sign that leads you to a motorway entrance. You are not yet on the motorway, so the usual city rules still apply. Motorway rules only begin at Zeichen 330.1 (Autobahn).",
+  "tip": "Keep to the speed limit until you are really on the slip road and the acceleration lane. Check the mirrors, signal, and merge without forcing others to brake.",
+  "confused_with": "330.1",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_430-10_-_Wegweiser_zur_Autobahn,_StVO_1992.svg"
+ },
+ {
+  "num": "432",
+  "week": 3,
+  "name_de": "Wegweiser zu innerörtlichen Zielen",
+  "name_en": "Direction sign to local destinations (e.g. station)",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "A railway station is the only destination on this road",
+   "Trains cross the road ahead",
+   "It points the way to a destination in town, here the railway station (Bahnhof)",
+   "Parking is reserved for station users"
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 432 is a white direction sign for destinations inside a town, such as the station, city centre or a hospital. It is purely informational and does not change priority or any speed limit.",
+  "tip": "Do not stop for a last-minute check of the signs, especially near airports. Use your satnav earlier and follow the arrows in good time.",
+  "confused_with": "430",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_432-10_-_Wegweiser_zu_innerörtlichen_Zielen_und_zu_Einrichtungen_mit_erheblicher_Verkehrsbedeutung_(linksweisend,_nach_RWB),_StVO_1992.svg"
+ },
+ {
+  "num": "434",
+  "week": 3,
+  "name_de": "Tabellenwegweiser",
+  "name_en": "Table-style direction sign",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "It shows a table of the speed limits ahead",
+   "It lists several destinations with arrows and distances",
+   "It lists the parking zones in the town",
+   "It gives a map of the diversion"
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 434 is a table-style direction sign. It lists several destinations, usually with arrows and often distances. It is only a guide. It sets no rules about speed, priority or lane use.",
+  "tip": "Read the table before the junction, not at it. Searching for your destination while stopped in the traffic flow is a typical city-driving error.",
+  "confused_with": "415",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_434-50_-_Tabellenwegweiser,_kompakte_Form_(nach_RWB),_StVO_2017.svg"
+ },
+ {
+  "num": "437",
+  "week": 3,
+  "name_de": "Straßennamenschild",
+  "name_en": "Street name sign",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "It names the street you are on or that crosses here. It is purely informational and gives no right of way.",
+   "It marks a priority road (Vorfahrtstraße) with the street name shown.",
+   "It is a signpost to the next town, shown with its name.",
+   "It marks a residential zone (verkehrsberuhigter Bereich) with a street name."
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 437 (Straßennamenschild) only shows the name of a street, often at junctions or on a building wall. It orders nothing and does not regulate right of way. It applies only as orientation information.",
+  "tip": "Do not read anything about priority into the sign. At a junction, look for Zeichen 306, 205 or 206, or apply 'rechts vor links'. Do not let street-name hunting distract you from pedestrians and cyclists.",
+  "confused_with": "415",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_437_-Straßennamensschilder,_StVO_1970.svg"
+ },
+ {
+  "num": "438",
+  "week": 3,
+  "name_de": "Vorwegweiser für bestimmte Verkehrsarten",
+  "name_en": "Advance direction sign for specific types of traffic",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "It is a speed limit that applies to the vehicle types shown.",
+   "It is a general stop sign for the lane ahead.",
+   "It announces a detour that all road users must follow.",
+   "It announces, ahead of a junction, the route recommended for the specific traffic type shown, for example heavy goods vehicles."
+  ],
+  "answer": 3,
+  "explanation": "Zeichen 438 (Vorwegweiser für bestimmte Verkehrsarten) stands before a junction and shows which route is signposted for a specific type of traffic. It is a recommendation with no own prohibition. A matching Wegweiser (Zeichen 442) often follows at the junction.",
+  "tip": "If the symbol shown does not apply to you, the sign is not aimed at you. Use the normal Wegweiser instead. In city traffic, watch which lane the sign leads you into.",
+  "confused_with": "442",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_438_-_Vorwegweiser;_StVO_1992.svg"
+ },
+ {
+  "num": "440",
+  "week": 3,
+  "name_de": "Vorwegweiser zur Autobahn",
+  "name_en": "Advance direction sign to the Autobahn",
+  "category": "Richtzeichen",
+  "question": "What does this sign tell you?",
+  "options": [
+   "The Autobahn starts immediately here, and Autobahn rules apply at once.",
+   "It shows ahead how to reach the Autobahn at the junction and which direction it leads.",
+   "A detour around the Autobahn is signposted.",
+   "A rest area is coming up in 1 km."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 440 (Vorwegweiser zur Autobahn) is a blue advance sign in front of a junction. It points the way to the Autobahn and often shows the junction layout. It is purely informational. Autobahn rules apply only from Zeichen 330.1 onwards.",
+  "tip": "Choose your lane early in the city. A last-minute lane change right in front of the junction is a typical mistake in lessons. Remember that the Autobahn rules start with Zeichen 330.1, not with this advance sign.",
+  "confused_with": "330.1",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_440_-_Vorwegweiser_zur_Autobahn_(3000x3250);_StVO_1988.svg"
+ },
+ {
+  "num": "442",
+  "week": 3,
+  "name_de": "Wegweiser für bestimmte Verkehrsarten (Kfz über 3,5 t, linksweisend)",
+  "name_en": "Direction sign for specific traffic types (motor vehicles over 3.5 t, pointing left)",
+  "category": "Richtzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "All vehicles must turn left here.",
+   "Only motor vehicles with a permissible gross mass over 3.5 t have to follow the signposted route, here to the left.",
+   "Motor vehicles over 3.5 t are prohibited in this street.",
+   "Everyone must follow the route, because it is a detour."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 442 (Wegweiser für bestimmte Verkehrsarten) gives the direction for the group shown, here motor vehicles over 3.5 t. The arrow points left. For other drivers it has no meaning, and they follow the normal Wegweiser.",
+  "tip": "In an ordinary car you are not addressed. Be careful, though: a truck turning from a left-pointing lane may swing wide, so keep your distance when it turns.",
+  "confused_with": "438",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_442-10_-_Vorwegweiser_für_bestimmte_Verkehrsarten_„KFZ_mit_einer_zulässigen_Gesamtmasse_über_3,5_t“_-_linksweisend;_StVO_2017.svg"
+ },
+ {
+  "num": "450",
+  "week": 3,
+  "name_de": "Ankündigungsbake auf Autobahnen",
+  "name_en": "Advance exit beacon on the Autobahn",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "A road works section begins in 300 m.",
+   "The Autobahn ends in 100 m.",
+   "A speed limit will start soon.",
+   "It marks the distance to an exit ahead, in steps of 300 m, 200 m and 100 m, shown by the number of stripes."
+  ],
+  "answer": 3,
+  "explanation": "Zeichen 450 (Ankündigungsbake) stands at the right edge before an Autobahn exit. Three red stripes mean 300 m to the exit, two mean 200 m, one means 100 m. The sign is purely informational.",
+  "tip": "Move to the exit lane in good time and avoid braking sharply on the main carriageway. Examiners watch your checks in mirror and shoulder (Schulterblick) before you leave the right-hand lane.",
+  "confused_with": "453",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_450-50_-_Ankündigungsbake_einstreifig_(100_m),_StVO_2013.svg"
+ },
+ {
+  "num": "453",
+  "week": 3,
+  "name_de": "Entfernungstafel auf Autobahnen",
+  "name_en": "Distance board on the Autobahn",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "It shows the minimum following distance between vehicles.",
+   "It lists the speed limit for the next kilometres.",
+   "It shows the distance to the next exits or destinations along the Autobahn.",
+   "It marks a rest area where you may stop."
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 453 (Entfernungstafel) is placed on the Autobahn after a junction or exit. It shows the distances to upcoming destinations along the route. It does not regulate traffic.",
+  "tip": "Use these boards to plan which lane you need well before the exit. This is a common weakness among drivers new to German motorways.",
+  "confused_with": "450",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_453_-_Entfernungstafel_auf_Autobahnen,_StVO_1992.svg"
+ },
+ {
+  "num": "454",
+  "week": 3,
+  "name_de": "Umleitungswegweiser",
+  "name_en": "Detour direction sign",
+  "category": "Richtzeichen",
+  "question": "What must you do when you see this sign?",
+  "options": [
+   "Follow the arrow while the detour is signposted; it leads around a blocked section.",
+   "Turn right at once, because no other direction is allowed.",
+   "Leave the road at the next exit.",
+   "Park at the right edge of the road."
+  ],
+  "answer": 0,
+  "explanation": "Zeichen 454 (Umleitungswegweiser) shows the way of a detour, for example around a blocked section. Follow the signs one after another until the detour ends. It is a guidance sign, not a turn command like Zeichen 209.",
+  "tip": "Do not lose the next detour sign at the next junction. If you miss one, stop safely or turn around at a suitable place instead of guessing. In city traffic watch for cyclists and pedestrians on the detour as well.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_454-10_-_Umleitungswegweiser_(linksweisend),_StVO_1992.svg"
+ },
+ {
+  "num": "457.1",
+  "week": 3,
+  "name_de": "Umleitungsankündigung",
+  "name_en": "Detour announcement",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "The detour has just ended.",
+   "A detour begins ahead, and this sign announces it before the junction.",
+   "Entering a one-way street is forbidden for all vehicles.",
+   "A road works zone begins with speed limit 30 km/h."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 457.1 (Umleitungsankündigung) announces ahead that a detour starts. It gives early information so you can choose your lane in time. Afterwards you follow the Umleitungswegweiser (Zeichen 454 and similar).",
+  "tip": "Use the advance notice to look at the signs calmly and choose your lane early. Do not turn into the blocked road because you think you know a shortcut. The sign itself does not order anything.",
+  "confused_with": "454",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_457.1_-_Umleitungsankündigung,_StVO_2013.svg"
+ },
+ {
+  "num": "458",
+  "week": 3,
+  "name_de": "Planskizze",
+  "name_en": "Plan sketch (diagram of the detour or junction layout)",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct?",
+  "options": [
+   "It shows a map of the one-way streets of the whole city.",
+   "It is a prohibition sign for the street shown.",
+   "It gives an overview drawing of the route or junction situation, for example how the detour runs.",
+   "It marks a permanent bypass for heavy goods vehicles."
+  ],
+  "answer": 2,
+  "explanation": "Zeichen 458 (Planskizze) gives a simplified drawing of the traffic layout, for example a detour or the junction layout ahead. It is only information and orders nothing. The actual rules come from the other signs.",
+  "tip": "Read the sketch before the junction, not while you are already moving through it. Look at it once and then watch the road again.",
+  "confused_with": "457.1",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_458_-_Planskizze,_StVO_2013.svg"
+ },
+ {
+  "num": "460",
+  "week": 3,
+  "name_de": "Bedarfsumleitung",
+  "name_en": "Diversion route used when needed",
+  "category": "Richtzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "A permanent detour for all road users on this road.",
+   "It shows a route to follow when the Autobahn is blocked and the diversion is ordered. Otherwise you ignore it.",
+   "The road ahead is closed for all vehicles.",
+   "The Autobahn ends and a normal road begins."
+  ],
+  "answer": 1,
+  "explanation": "Zeichen 460 (Bedarfsumleitung), usually with a U and a number, marks a prepared diversion route. It is used only when needed, for example if the Autobahn is blocked by an accident and traffic is led off it. If there is no blockage, you do not follow it.",
+  "tip": "Do not follow the U signs without a reason, such as a blocked road or a traffic message. Watch for signs and for police instructions, which override the plan.",
+  "confused_with": "454",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_460-13_-_Bedarfsumleitung_im_Kreisverkehr_links,_StVO_2021.svg"
+ },
+ {
+  "num": "466",
+  "week": 3,
+  "name_de": "Bedarfsumleitungstafel",
+  "name_en": "Alternative (on-demand) diversion route sign",
+  "category": "Richtzeichen",
+  "question": "Which statement is correct about this sign?",
+  "options": [
+   "It prohibits all traffic from entering the road ahead.",
+   "It permanently replaces the normal route, so every driver must follow it.",
+   "It guides traffic along a signed diversion route (marked with a U-number) that is used when the normal route is closed or blocked.",
+   "It shows that the road ahead is a dead end."
+  ],
+  "answer": 2,
+  "explanation": "This is an informational sign (Richtzeichen), not a prohibition. It marks a prepared alternative route, identified by its U-number, which drivers use only when the main route is closed or congested, for example after a motorway closure. If you are diverted, follow the signs with the same U-number until the diversion ends or you rejoin your original route.",
+  "tip": "In unfamiliar areas, keep following the same U-number at every junction. If one sign is missing, do not guess: stop safely, check the navigation, and rejoin the U-route. Examiners like to see that you read signs ahead instead of relying only on the sat-nav.",
+  "confused_with": "454",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_466_-_Bedarfsumleitungstafel,_StVO_1970.svg"
+ },
+ {
+  "num": "318",
+  "week": 3,
+  "name_de": "Parkscheibe",
+  "name_en": "Parking disc (parking with parking disc)",
+  "category": "Richtzeichen",
+  "question": "What must you do when you see this sign at a parking space?",
+  "options": [
+   "Place a correctly set parking disc visibly behind the windscreen and observe the permitted parking time.",
+   "Pay at a ticket machine and put the receipt on the dashboard.",
+   "Park only if you hold a residents' parking permit.",
+   "Park for free for an unlimited time, as the sign only shows that the parking space is public."
+  ],
+  "answer": 0,
+  "explanation": "The sign tells you that parking is allowed only with a parking disc. Set the disc to the next half-hour mark after your arrival time and place it clearly visible behind the windscreen. The maximum parking time is shown on the sign or on a supplementary plate, and it applies in the times shown there.",
+  "tip": "A very common trap is setting the disc to the exact minute of arrival instead of rounding up to the next half hour mark. Also remember that the disc must be readable from outside, and you cannot reset it while you are still parked there. If you do not have a disc, buy one at a petrol station or an ADAC office before you start city driving.",
+  "confused_with": "314",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_318_-_Parkscheibe,_StVO_2013.svg"
+ },
+ {
+  "num": "103-20",
+  "week": 3,
+  "name_de": "Kurve (rechts)",
+  "name_en": "Curve to the right",
+  "category": "Gefahrzeichen",
+  "question": "What does this sign mean?",
+  "options": [
+   "A series of two curves, the first to the right",
+   "Turning right is mandatory at the next junction",
+   "Right of way changes to the right at the next junction",
+   "A single curve to the right ahead; reduce speed and be ready to brake"
+  ],
+  "answer": 3,
+  "explanation": "This warning sign (Gefahrzeichen) announces a single curve to the right. It does not set a speed limit, but you must adapt your speed to the curve and conditions and keep to the right. In built-up areas warning signs stand shortly before the hazard, outside them usually 150–250 m before.",
+  "tip": "Instructors watch whether you brake before entering the curve and do not cut into the oncoming lane, especially when cyclists or parked cars narrow the road. The direction of the curve is shown by the sign graphic itself, so read the symbol and not just the number.",
+  "confused_with": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeichen_103-20_-_Kurve_(rechts),_StVO_1992.svg"
+ }
+]
