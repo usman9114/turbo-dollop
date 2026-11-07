@@ -77,6 +77,8 @@ Use reverse engineering / traffic capture only on systems you own or are authori
 | DeqmMGqj6BM | @ikramrana.ai | FreeHire. Real. |
 | DfBOiXfqycl | @abhijayarora_ | Career Ops job-hunting agent. Real; "740 listings → 68 applied → 12 interviews → 1 offer" is the creator's own claim (repeated in the README). Reel says 76k★, now ~80k. |
 | DdIm3-lII8B, DcljTqnsCn1, DePPO_4PpRk | various | Upwork connector in Claude. Real; ignore "it auto-submits". |
+| DfWpXdIRf-t | @chrissy.vc | WWT "Infinite AI" free European compute for startups. **Unverified**: company is real (WWT + Polarise Oslo sovereign AI), but no source for the program. Go to wwt.com directly, don't DM for the link. |
+| DfZuWw-OWqR | @thevibefounder | Claude video-effects "slash commands" (/tier-list, /glass-graph…). Product is almost certainly Higgsfield's MCP connector (real, custom connector at mcp.higgsfield.ai/mcp, runs on paid Higgsfield credits). The specific effect commands are unverified; "MrBeast hiding this" is hype. Real editing connector in Claude's directory: Riverside. |
 | Dda6O2GCz1s | @nicksaraevonetakes | Upwork search method: OR-keyword saved searches. Good. |
 | DEFzsYQuyXP | @remoteoliver | Proposals: open with the client's problem. Fine. |
 | DdLrNcYtiWy | @ahmadzabir_official | Upwork ranking claims unverified; sells a book. |
