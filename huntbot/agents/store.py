@@ -10,7 +10,7 @@ from ..db import DB
 from ..models import Listing
 from .schemas import Verdict
 
-PROMPT_VERSION = {"reader": "reader-v1", "inspector": "inspector-v1", "skeptic": "skeptic-v1"}
+PROMPT_VERSION = {"reader": "reader-v2", "inspector": "inspector-v1", "skeptic": "skeptic-v1"}
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT);

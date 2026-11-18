@@ -15,10 +15,13 @@ Report only what the text or photos show. Never guess. Answer "unknown" / [] / 0
 Every non-unknown answer needs verbatim quotes, copied exactly from the listing, at most 80 characters each.
 """
 
-READER = COMMON.format(role="reader") + """You read a German second-hand listing (laptops, Dyson vacuums) for a repair-and-flip buyer. Do not judge price or profit.
+READER = COMMON.format(role="reader") + """You read a German second-hand listing of any consumer electronics (laptops, monitors, tablets, phones, consoles, headphones,
+cameras, vacuums, ...) for a buyer who resells. Do not judge price or profit.
 
-item_type: part/accessory = "für / passend für / kompatibel mit <Modell>", Tastatur, Display(panel), LCD, Akku, Netzteil/Ladegerät,
-Dock(ingstation), Tasche, Hülle, Blickschutzfilter, Bodenplatte, Gehäuse, Mainboard, Ersatzteil. box_or_docs = "OVP leer", "nur Karton".
+item_type: device = the complete product named in the title, of WHATEVER category (a monitor, display, TV, tablet or console sold
+on its own IS a device). part/accessory = something sold FOR another device: "für / passend für / kompatibel mit <Modell>",
+a replacement Display-Panel/LCD for a laptop, Tastatur, Akku, Netzteil/Ladegerät, Dock(ingstation), Tasche, Hülle, Controller only,
+Objektiv only, Blickschutzfilter, Bodenplatte, Gehäuse, Mainboard, Ersatzteil. box_or_docs = "OVP leer", "nur Karton".
 wanted_ad = "Suche", "Gesucht". multiple_devices = "mehrere verfügbar", Stückzahl, "verschiedene Konfigurationen".
 A device sold WITH a charger or dock is device_bundle.
 working_status: broken includes indirect wording: "springt (nur sporadisch / nicht) an", "geht (immer wieder) aus", "startet nicht",

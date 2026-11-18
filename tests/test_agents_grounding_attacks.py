@@ -21,3 +21,13 @@ def test_truncated_positive_quote_is_rejected():
 def test_rules_catch_plain_not_working():
     for d in ["Laptop funktioniert nicht", "nicht mehr funktionsfähig", "ungetestet, daher Bastler"]:
         assert screen(Listing(source="kleinanzeigen", ad_id="1", url="u", title="ThinkPad T480", description=d)).fault_category != "none"
+
+
+def test_reader_prompt_treats_standalone_monitor_as_device():
+    """Regression (live run 2026-11-17): GLM labelled 'Dell P2415Q 4K (23,8 Zoll) Monitor' an accessory because the
+    prompt was laptop-only and listed Display/LCD as part words."""
+    from huntbot.agents.prompts import READER
+    from huntbot.agents.store import PROMPT_VERSION
+    assert "monitor, display, TV, tablet or console sold" in READER and "on its own IS a device" in READER
+    assert "(laptops, Dyson vacuums)" not in READER
+    assert PROMPT_VERSION["reader"] != "reader-v1"   # cached v1 answers must not be reused
