@@ -170,3 +170,9 @@ def test_local_listing_is_picked_up_even_if_seller_ships():
 def test_retail_parse(text, price):
     from huntbot.features import retail_from_text
     assert retail_from_text(text) == price
+
+
+def test_display_lid_is_a_part():
+    # Real ad 2026-11-18: "Original Lenovo ThinkPad X1 Carbon Gen 9 Displaydeckel" €40 scored as a cheap laptop.
+    assert rules.is_accessory("Original Lenovo ThinkPad X1 Carbon Gen 9 Displaydeckel")
+    assert not rules.is_accessory("Lenovo ThinkPad X1 Carbon Gen 9 i7 16GB")

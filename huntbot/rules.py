@@ -56,7 +56,8 @@ def _text(listing: Listing) -> str:
 _ACC = (r"docking\s?station|dockingstation|docstation|dock|port\s?replicator|\w*tasche|\w*rucksack|sleeve|\w*hülle|"
         r"netzteil|ladegerät|ladekabel|maus|displayschutz\w*|blickschutz\w*|\w*filter|halterung|ständer|stylus|"
         r"\w*folie|skin|aufkleber")
-_PART = (r"tastatur|keyboard|display(?:einheit|panel)?|panel|lcd|bildschirm|akku|batterie|mainboard|motherboard|"
+_PART = (r"tastatur|keyboard|display(?:einheit|panel|deckel)?|panel|lcd|bildschirm|akku|batterie|mainboard|motherboard|"
+         r"\w*deckel|a[- ]?cover|lcd[- ]?cover|"
          r"lüfter|kühler|scharnier\w*|gehäuse\w*|bodenplatte|palmrest|handauflage|touchpad|ram[- ]?riegel|"
          r"arbeitsspeicher|ersatzteil\w*|ersatzakku")
 ACCESSORY_TITLE = re.compile(rf"\b({_ACC})\b", re.I)
