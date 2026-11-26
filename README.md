@@ -6,6 +6,16 @@ Pipeline for a **fictional, adult, AI-generated Instagram persona**:
 persona.yaml ─▶ face + stills (fal.ai Flux) ─▶ Claude (plan) ─▶ Wan 2.1 on fal.ai (5s 9:16 clips) ─▶ Claude vision (review) ─▶ approved/ + captions
 ```
 
+```mermaid
+flowchart LR
+    Y["persona.yaml"] --> L["Look<br/>face + reference stills<br/>fal.ai Flux"]
+    L --> PL["Plan<br/>Claude: shots, prompts,<br/>captions, alt text"]
+    PL --> RN["Render<br/>Wan 2.1 on fal.ai<br/>5 s, 9:16 clips"]
+    RN --> RV["Review<br/>Claude vision on<br/>start, middle, end frames"]
+    RV -->|approved| OK["out/batch/approved/<br/>clip + caption JSON"]
+    RV -->|"rejected, with<br/>suggested prompt fix"| RN
+```
+
 0. **Look**: fal.ai generates a face for the persona once, then reference stills in different outfits and settings that keep that face.
 1. **Plan**: Claude writes a batch of shot ideas, Wan 2.1 prompts, captions, hashtags and alt text in the persona's voice.
 2. **Render**: Wan 2.1 on fal.ai turns each prompt into a ~5 second vertical clip (81 frames at 16 fps). It animates a reference still, which keeps the face consistent.
